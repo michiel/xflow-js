@@ -1,0 +1,14 @@
+{
+  "name": "xflow-js",
+  "version": "0.0.1",
+  "description": "xflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Michiel Kalkman <michiel@nosuchtype.com>",
+  "license": "(c) NST",
+  "devDependencies": {
+    "broccoli-babel-transpiler": "^4.0.0"
+  }
+}

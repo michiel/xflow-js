@@ -1,0 +1,63 @@
+{
+  "id": "asd",
+  "name": "asd",
+  "data": {
+    "capabilities": [
+      {
+        "type": "flow",
+        "version": 1
+      },
+      {
+        "type": "object",
+        "version": 1
+      }
+    ],
+    "nodes": [
+      {
+        "id": 1,
+        "type": "flow",
+        "action": "start",
+        "parameters": {}
+      },
+      {
+        "id": 2,
+        "type": "object",
+        "action": "create",
+        "parameters": {
+          "object": "User"
+        }
+      },
+      {
+        "id": 3,
+        "type": "object",
+        "action": "setattributes",
+        "parameters": {
+          "object": "User",
+          "attributes": {
+            "name": "Joe Blow"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "object",
+        "action": "save",
+        "parameters": {
+          "object": "User"
+        }
+      },
+      {
+        "id": 5,
+        "type": "flow",
+        "action": "end",
+        "parameters": {}
+      }
+    ],
+    "edges": [
+      [ 1, 2 ],
+      [ 2, 3 ],
+      [ 3, 4 ],
+      [ 4, 5 ]
+    ]
+  }
+}

@@ -22,6 +22,10 @@ describe('xflow async ', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = xflow(json, {}).startQ();
+        res.then(function(x) {
+            console.log('xxxxx');
+            return x;
+          });
         res.should.eventually.equal(true);
       });
   });

@@ -12,6 +12,22 @@
         "version": 1
       }
     ],
+    "signature" : {
+      "in" : [
+        {
+          "name"  : "UserName",
+          "type"  : "string",
+          "value" : "Joe Blow"
+        }
+      ],
+      "out" : [
+        {
+          "type" : "boolean"
+        }
+      ]
+    },
+    "variables" : [
+    ],
     "nodes": [
       {
         "id": 1,
@@ -39,7 +55,7 @@
         }
       },
       {
-        "id": 3,
+        "id": 4,
         "type": "object",
         "action": "save",
         "parameters": {

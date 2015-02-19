@@ -10,10 +10,12 @@
   "license": "(c) NST",
   "dependencies": {
     "q": "^1.1.2",
+    "rsvp": "^3.0.17",
     "tv4": "^1.1.9"
   },
   "devDependencies": {
     "chai": "^2.0.0",
+    "chai-as-promised": "^4.2.0",
     "mocha": "^2.1.0"
   }
 }

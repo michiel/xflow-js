@@ -39,7 +39,7 @@
       {
         "id": 2,
         "type": "flow",
-        "action": "flox-arithmetic",
+        "action": "flox",
         "parameters": {
           "expression" : "1+2",
           "returns"    : {

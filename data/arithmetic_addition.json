@@ -1,0 +1,63 @@
+{
+  "id": "add",
+  "name": "add",
+  "data": {
+    "capabilities": [
+      {
+        "type": "flow",
+        "version": 1
+      }
+    ],
+    "signature" : {
+      "in" : [
+        {
+          "name"  : "value4",
+          "type"  : "number",
+          "value" : 4
+        },
+        {
+          "name"  : "value5",
+          "type"  : "number",
+          "value" : 5
+        }
+      ],
+      "out" : [
+        {
+          "type" : "number"
+        }
+      ]
+    },
+    "variables" : [
+    ],
+    "nodes": [
+      {
+        "id": 1,
+        "type": "flow",
+        "action": "start",
+        "parameters": {}
+      },
+      {
+        "id": 2,
+        "type": "flow",
+        "action": "flox-arithmetic",
+        "parameters": {
+          "expression" : "1+2",
+          "returns"    : {
+            "name"   : "result",
+            "type"   : "number"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "flow",
+        "action": "end",
+        "parameters": {}
+      }
+    ],
+    "edges": [
+      [ 1, 2 ],
+      [ 2, 3 ]
+    ]
+  }
+}

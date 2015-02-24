@@ -23,11 +23,16 @@
       ],
       "out" : [
         {
-          "type" : "number"
+          "type" : "number",
+          "name" : "ReturnValue"
         }
       ]
     },
     "variables" : [
+      {
+        "type" : "boolean",
+        "name" : "ReturnValue"
+      }
     ],
     "nodes": [
       {
@@ -43,7 +48,7 @@
         "parameters": {
           "expression" : "1+2",
           "returns"    : {
-            "name"   : "result",
+            "name"   : "ReturnValue",
             "type"   : "number"
           }
         }

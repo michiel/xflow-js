@@ -22,11 +22,16 @@
       ],
       "out" : [
         {
-          "type" : "boolean"
+          "type" : "boolean",
+          "name" : "ReturnValue"
         }
       ]
     },
     "variables" : [
+      {
+        "type" : "boolean",
+        "name" : "ReturnValue"
+      }
     ],
     "nodes": [
       {

@@ -1,28 +1,27 @@
-var chai           = require('chai');
-// var should         = chai.should();
-var chaiAsPromised = require('chai-as-promised');
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-var xflow  = require('../lib/xflow');
+import xFlow from '../../lib/xflow';
 
-var fs = require('fs');
 
-describe('xflow sync ', function() {
+describe('xFlow sync ', function() {
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = xflow(json, {}).start();
-        res.should.equal(true);
+        var res = xFlow(json, {}).start();
+        expect(res).to.equal(true);
       });
 
 
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = xflow(json, {}).start();
+        var res = xFlow(json, {}).start();
 
-        JSON.stringify(res).should.equal(
+        expect(JSON.stringify(res)).to.equal(
           JSON.stringify([{
             'ReturnValue': 3
           }]));
@@ -30,12 +29,12 @@ describe('xflow sync ', function() {
 
   });
 
-describe('xflow async ', function() {
+describe('xFlow async ', function() {
 
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = xflow(json, {}).startQ();
+        var res = xFlow(json, {}).startQ();
         res.then(function(x) {
             console.log('xxxxx');
             x.should.equal(true);
@@ -47,7 +46,7 @@ describe('xflow async ', function() {
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = xflow(json, {}).startQ();
+        var res = xFlow(json, {}).startQ();
 
         res.then(
           function(x) {

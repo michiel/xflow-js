@@ -1,6 +1,6 @@
 var chai           = require('chai');
-var should         = chai.should();
-var chaiAsPromised = require("chai-as-promised");
+// var should         = chai.should();
+var chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 

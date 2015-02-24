@@ -1,6 +1,6 @@
 var chai           = require('chai');
-var should         = chai.should();
-var chaiAsPromised = require("chai-as-promised");
+// var should         = chai.should();
+var chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 
@@ -90,14 +90,14 @@ describe('flox flow invocation ', function() {
     it('evaluates an expression without variables "1+2"', function() {
 
         var node = {
-          "id"     : 2,
-          "type"   : "flow",
-          "action" : "flox-arithmetic",
-          "parameters": {
-            "expression" : "1+2",
-            "returns"    : {
-              "name"   : "result",
-              "type"   : "number"
+          'id'     : 2,
+          'type'   : 'flow',
+          'action' : 'flox-arithmetic',
+          'parameters': {
+            'expression' : '1+2',
+            'returns'    : {
+              'name'   : 'result',
+              'type'   : 'number'
             }
           }
         };
@@ -109,14 +109,14 @@ describe('flox flow invocation ', function() {
     it('evaluates an expression with variables "$A+$B"', function() {
 
         var node = {
-          "id"     : 2,
-          "type"   : "flow",
-          "action" : "flox-arithmetic",
-          "parameters": {
-            "expression" : "$A+$B",
-            "returns"    : {
-              "name"   : "result",
-              "type"   : "number"
+          'id'     : 2,
+          'type'   : 'flow',
+          'action' : 'flox-arithmetic',
+          'parameters': {
+            'expression' : '$A+$B',
+            'returns'    : {
+              'name'   : 'result',
+              'type'   : 'number'
             }
           }
         };

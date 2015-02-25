@@ -1,0 +1,74 @@
+{
+  "id": "branch",
+  "name": "branch",
+  "data": {
+    "capabilities": [
+      {
+        "type": "flow",
+        "version": 1
+      }
+    ],
+    "signature" : {
+      "in" : [
+        {
+          "name"  : "value4",
+          "type"  : "number",
+          "value" : 4
+        }
+      ],
+      "out" : [
+        {
+          "type" : "number",
+          "name" : "ReturnValue"
+        }
+      ]
+    },
+    "variables" : [
+      {
+        "type" : "boolean",
+        "name" : "ReturnValue"
+      }
+    ],
+    "nodes": [
+      {
+        "id": 1,
+        "type": "flow",
+        "action": "start",
+        "parameters": {}
+      },
+      {
+        "id": 2,
+        "type": "flow",
+        "action": "branch",
+        "parameters": {
+          "name": "MatchValue"
+        }
+      },
+      {
+        "id": 3,
+        "type": "flow",
+        "action": "end",
+        "parameters": {}
+      }
+    ],
+    "edges": [
+      [ 1, 2 ],
+      [ 2, 3 ],
+      [ 2, 4 ],
+      [ 3, 5 ],
+      [ 4, 5]
+    ],
+    "branches" : [
+      {
+        "branch" : [2,3],
+        "name"   : "MatchValue",
+        "value"  : true
+      },
+      {
+        "branch" : [2,4],
+        "name"   : "MatchValue",
+        "value"  : false
+      }
+    ]
+  }
+}

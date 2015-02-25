@@ -6,13 +6,12 @@ chai.use(chaiAsPromised);
 
 import xFlow from '../../lib/xflow';
 
-
 describe('xFlow sync ', function() {
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = xFlow(json, {}).start();
-        expect(res).to.equal(true);
+        expect(res).to.deep.equal([{}]);
       });
 
 

@@ -7,13 +7,13 @@ chai.use(chaiAsPromised);
 import xFlow from '../../lib/xflow';
 
 describe('xFlow sync ', function() {
+
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = xFlow(json, {}).start();
         expect(res).to.deep.equal([{}]);
       });
-
 
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
@@ -34,32 +34,16 @@ describe('xFlow async ', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = xFlow(json, {}).startQ();
-        res.then(function(x) {
-            console.log('xxxxx');
-            x.should.equal(true);
-            return x;
-          });
-        // res.should.eventually.equal(true);
+        expect(res).to.eventually.deep.equal([{}]);
       });
 
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
         var res = xFlow(json, {}).startQ();
-
-        res.then(
-          function(x) {
-            console.log('xxxxx', x);
-
-            JSON.stringify(x).should.equal(
-              JSON.stringify([{
-                  'ReturnValue': 3
-                }]));
-
-          }, function(err) {
-            console.log('xxxxx booo', err);
-          });
-
+        expect(res).to.eventually.deep.equal([{
+            'ReturnValue' : 3
+          }]);
       });
 
   });

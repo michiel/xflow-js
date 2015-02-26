@@ -1,0 +1,692 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "id",
+      "type": "string",
+      "minLength": 1,
+      "default": "flowId"
+    },
+    "name": {
+      "id": "name",
+      "type": "string",
+      "minLength": 1,
+      "default": "flowName"
+    },
+    "data": {
+      "id": "data",
+      "type": "object",
+      "properties": {
+        "capabilities": {
+          "id": "capabilities",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "additionalItems": true,
+          "items": {
+            "id": "0",
+            "type": "object",
+            "properties": {
+              "type": {
+                "id": "type",
+                "type": "string",
+                "minLength": 1,
+                "default": "flow",
+                "enum": [
+                  null,
+                  "flow"
+                ]
+              },
+              "version": {
+                "id": "version",
+                "type": "integer",
+                "multipleOf": 1,
+                "maximum": 100,
+                "minimum": 1,
+                "exclusiveMaximum": false,
+                "exclusiveMinimum": false,
+                "default": 1,
+                "enum": [
+                  null,
+                  1
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "signature": {
+          "id": "signature",
+          "type": "object",
+          "properties": {
+            "in": {
+              "id": "in",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": {
+                "id": "0",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "id": "name",
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "value4",
+                    "enum": [
+                      null,
+                      "value4"
+                    ]
+                  },
+                  "type": {
+                    "id": "type",
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "number",
+                    "enum": [
+                      null,
+                      "number"
+                    ]
+                  },
+                  "value": {
+                    "id": "value",
+                    "type": "integer",
+                    "multipleOf": 1,
+                    "maximum": 100,
+                    "minimum": 1,
+                    "exclusiveMaximum": false,
+                    "exclusiveMinimum": false,
+                    "default": 4,
+                    "enum": [
+                      null,
+                      4
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "out": {
+              "id": "out",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": {
+                "id": "0",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "id": "type",
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "number",
+                    "enum": [
+                      null,
+                      "number"
+                    ]
+                  },
+                  "name": {
+                    "id": "name",
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "ReturnValue",
+                    "enum": [
+                      null,
+                      "ReturnValue"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "variables": {
+          "id": "variables",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": false,
+          "additionalItems": true,
+          "items": {
+            "id": "0",
+            "type": "object",
+            "properties": {
+              "type": {
+                "id": "type",
+                "type": "string",
+                "minLength": 1,
+                "default": "boolean",
+                "enum": [
+                  null,
+                  "boolean"
+                ]
+              },
+              "name": {
+                "id": "name",
+                "type": "string",
+                "minLength": 1,
+                "default": "ReturnValue",
+                "enum": [
+                  null,
+                  "ReturnValue"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "nodes": {
+          "id": "nodes",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": false,
+          "additionalItems": true,
+          "items": [
+            {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "id",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 1,
+                  "enum": [
+                    null,
+                    1
+                  ]
+                },
+                "type": {
+                  "id": "type",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "flow",
+                  "enum": [
+                    null,
+                    "flow"
+                  ]
+                },
+                "action": {
+                  "id": "action",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "start",
+                  "enum": [
+                    null,
+                    "start"
+                  ]
+                },
+                "parameters": {
+                  "id": "parameters",
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "id": "1",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "id",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 2,
+                  "enum": [
+                    null,
+                    2
+                  ]
+                },
+                "type": {
+                  "id": "type",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "flow",
+                  "enum": [
+                    null,
+                    "flow"
+                  ]
+                },
+                "action": {
+                  "id": "action",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "branch",
+                  "enum": [
+                    null,
+                    "branch"
+                  ]
+                },
+                "parameters": {
+                  "id": "parameters",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "id": "name",
+                      "type": "string",
+                      "minLength": 1,
+                      "default": "MatchValue",
+                      "enum": [
+                        null,
+                        "MatchValue"
+                      ]
+                    },
+                    "type": {
+                      "id": "type",
+                      "type": "string",
+                      "minLength": 1,
+                      "default": "boolean",
+                      "enum": [
+                        null,
+                        "boolean"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "id": "2",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "id",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 3,
+                  "enum": [
+                    null,
+                    3
+                  ]
+                },
+                "type": {
+                  "id": "type",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "flow",
+                  "enum": [
+                    null,
+                    "flow"
+                  ]
+                },
+                "action": {
+                  "id": "action",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "end",
+                  "enum": [
+                    null,
+                    "end"
+                  ]
+                },
+                "parameters": {
+                  "id": "parameters",
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "edges": {
+          "id": "edges",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": false,
+          "additionalItems": true,
+          "items": [
+            {
+              "id": "0",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": [
+                {
+                  "id": "0",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 1,
+                  "enum": [
+                    null,
+                    1
+                  ]
+                },
+                {
+                  "id": "1",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 2,
+                  "enum": [
+                    null,
+                    2
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": [
+                {
+                  "id": "0",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 2,
+                  "enum": [
+                    null,
+                    2
+                  ]
+                },
+                {
+                  "id": "1",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 3,
+                  "enum": [
+                    null,
+                    3
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": [
+                {
+                  "id": "0",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 2,
+                  "enum": [
+                    null,
+                    2
+                  ]
+                },
+                {
+                  "id": "1",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 4,
+                  "enum": [
+                    null,
+                    4
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": [
+                {
+                  "id": "0",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 3,
+                  "enum": [
+                    null,
+                    3
+                  ]
+                },
+                {
+                  "id": "1",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 5,
+                  "enum": [
+                    null,
+                    5
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": false,
+              "additionalItems": true,
+              "items": [
+                {
+                  "id": "0",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 4,
+                  "enum": [
+                    null,
+                    4
+                  ]
+                },
+                {
+                  "id": "1",
+                  "type": "integer",
+                  "multipleOf": 1,
+                  "maximum": 100,
+                  "minimum": 1,
+                  "exclusiveMaximum": false,
+                  "exclusiveMinimum": false,
+                  "default": 5,
+                  "enum": [
+                    null,
+                    5
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "branches": {
+          "id": "branches",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": false,
+          "additionalItems": true,
+          "items": [
+            {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "branch": {
+                  "id": "branch",
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": false,
+                  "additionalItems": true,
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "integer",
+                      "multipleOf": 1,
+                      "maximum": 100,
+                      "minimum": 1,
+                      "exclusiveMaximum": false,
+                      "exclusiveMinimum": false,
+                      "default": 2,
+                      "enum": [
+                        null,
+                        2
+                      ]
+                    },
+                    {
+                      "id": "1",
+                      "type": "integer",
+                      "multipleOf": 1,
+                      "maximum": 100,
+                      "minimum": 1,
+                      "exclusiveMaximum": false,
+                      "exclusiveMinimum": false,
+                      "default": 3,
+                      "enum": [
+                        null,
+                        3
+                      ]
+                    }
+                  ]
+                },
+                "name": {
+                  "id": "name",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "MatchValue",
+                  "enum": [
+                    null,
+                    "MatchValue"
+                  ]
+                },
+                "value": {
+                  "id": "value",
+                  "type": "boolean",
+                  "default": true,
+                  "enum": [
+                    null,
+                    true
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "id": "1",
+              "type": "object",
+              "properties": {
+                "branch": {
+                  "id": "branch",
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": false,
+                  "additionalItems": true,
+                  "items": [
+                    {
+                      "id": "0",
+                      "type": "integer",
+                      "multipleOf": 1,
+                      "maximum": 100,
+                      "minimum": 1,
+                      "exclusiveMaximum": false,
+                      "exclusiveMinimum": false,
+                      "default": 2,
+                      "enum": [
+                        null,
+                        2
+                      ]
+                    },
+                    {
+                      "id": "1",
+                      "type": "integer",
+                      "multipleOf": 1,
+                      "maximum": 100,
+                      "minimum": 1,
+                      "exclusiveMaximum": false,
+                      "exclusiveMinimum": false,
+                      "default": 4,
+                      "enum": [
+                        null,
+                        4
+                      ]
+                    }
+                  ]
+                },
+                "name": {
+                  "id": "name",
+                  "type": "string",
+                  "minLength": 1,
+                  "default": "MatchValue",
+                  "enum": [
+                    null,
+                    "MatchValue"
+                  ]
+                },
+                "value": {
+                  "id": "value",
+                  "type": "boolean",
+                  "default": false,
+                  "enum": [
+                    null
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "data"
+  ]
+}

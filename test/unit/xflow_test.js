@@ -29,6 +29,28 @@ describe('xFlow sync ', function() {
         expect(res).to.deep.equal([{}]);
       });
 
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
+        var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {
+          'MatchValue' : true
+        })).start();
+        expect(res).to.deep.equal([{
+          'ReturnValue' : 3
+        }]);
+      });
+
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
+        var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {
+          'MatchValue' : false
+        })).start();
+        expect(res).to.deep.equal([{
+          'ReturnValue' : 6
+        }]);
+      });
+
   });
 
 describe('xFlow async ', function() {
@@ -49,5 +71,33 @@ describe('xFlow async ', function() {
           }]);
       });
 
+    it('runs a flow with a branch  ', function() {
+        var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {})).startQ();
+        expect(res).to.eventually.deep.equal([{}]);
+      });
+
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
+        var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {
+          'MatchValue' : true
+        })).startQ();
+        expect(res).to.eventually.deep.equal([{
+          'ReturnValue' : 3
+        }]);
+      });
+
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
+        var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {
+          'MatchValue' : false
+        })).startQ();
+        expect(res).to.eventually.deep.equal([{
+          'ReturnValue' : 6
+        }]);
+      });
   });
 

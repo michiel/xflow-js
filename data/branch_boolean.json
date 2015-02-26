@@ -41,7 +41,8 @@
         "type": "flow",
         "action": "branch",
         "parameters": {
-          "name": "MatchValue"
+          "name": "MatchValue",
+          "type": "boolean"
         }
       },
       {

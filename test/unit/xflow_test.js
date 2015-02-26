@@ -19,11 +19,14 @@ describe('xFlow sync ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (new xFlow(json, {})).start();
+        expect(res).to.deep.equal([{ 'ReturnValue': 3 }]);
+      });
 
-        expect(JSON.stringify(res)).to.equal(
-          JSON.stringify([{
-            'ReturnValue': 3
-          }]));
+    it('runs a flow with a branch  ', function() {
+        var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (new xFlow(json, {})).start();
+        expect(res).to.deep.equal([{}]);
       });
 
   });

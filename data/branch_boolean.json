@@ -11,9 +11,9 @@
     "signature" : {
       "in" : [
         {
-          "name"  : "value4",
-          "type"  : "number",
-          "value" : 4
+          "name"  : "MatchValue",
+          "type"  : "boolean",
+          "value" : true
         }
       ],
       "out" : [
@@ -25,8 +25,9 @@
     },
     "variables" : [
       {
-        "type" : "boolean",
-        "name" : "ReturnValue"
+        "name"  : "MatchValue",
+        "type"  : "boolean",
+        "value" : true
       }
     ],
     "nodes": [
@@ -50,14 +51,18 @@
         "type": "flow",
         "action": "end",
         "parameters": {}
+      },
+      {
+        "id": 4,
+        "type": "flow",
+        "action": "end",
+        "parameters": {}
       }
     ],
     "edges": [
       [ 1, 2 ],
       [ 2, 3 ],
-      [ 2, 4 ],
-      [ 3, 5 ],
-      [ 4, 5]
+      [ 2, 4 ]
     ],
     "branches" : [
       {

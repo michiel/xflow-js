@@ -35,8 +35,9 @@
                 "minLength": 1,
                 "default": "flow",
                 "enum": [
-                  null,
-                  "flow"
+                  "object",
+                  "flow",
+                  "list"
                 ]
               },
               "version": {
@@ -45,13 +46,7 @@
                 "multipleOf": 1,
                 "maximum": 100,
                 "minimum": 1,
-                "exclusiveMaximum": false,
-                "exclusiveMinimum": false,
-                "default": 1,
-                "enum": [
-                  null,
-                  1
-                ]
+                "default": 1
               }
             },
             "additionalProperties": false
@@ -64,8 +59,8 @@
             "in": {
               "id": "in",
               "type": "array",
-              "minItems": 1,
-              "uniqueItems": false,
+              "minItems": 0,
+              "uniqueItems": true,
               "additionalItems": true,
               "items": {
                 "id": "0",
@@ -73,22 +68,17 @@
                 "properties": {
                   "name": {
                     "id": "name",
-                    "type": "string",
-                    "minLength": 1,
-                    "default": "value4",
-                    "enum": [
-                      null,
-                      "value4"
-                    ]
+                    "type": "string"
                   },
                   "type": {
                     "id": "type",
                     "type": "string",
                     "minLength": 1,
-                    "default": "number",
+                    "default": "string",
                     "enum": [
-                      null,
-                      "number"
+                      "boolean",
+                      "number",
+                      "string"
                     ]
                   },
                   "value": {

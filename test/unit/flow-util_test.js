@@ -152,6 +152,72 @@ describe('XFlow utils ', function() {
     });
   });
 
+  describe('isObject ', function() {
+    it('should always return false for various null forms', function() {
+      var res;
+      res = Util.isObject();
+      expect(res).to.equal(false);
+      res = Util.isObject(null);
+      expect(res).to.equal(false);
+      res = Util.isObject(undefined);
+      expect(res).to.equal(false);
+    });
+    it('should always return false for various non-Object values', function() {
+      var res;
+      res = Util.isObject([]);
+      expect(res).to.equal(false);
+      res = Util.isObject(123);
+      expect(res).to.equal(false);
+      res = Util.isObject('string');
+      expect(res).to.equal(false);
+      res = Util.isObject(NaN);
+      expect(res).to.equal(false);
+      res = Util.isObject([1,2,3]);
+      expect(res).to.equal(false);
+    });
+    it('should always return true for Object values', function() {
+      var res;
+      res = Util.isObject({});
+      expect(res).to.equal(true);
+      res = Util.isObject({'a' : 2 });
+      expect(res).to.equal(true);
+    });
+  });
+
+  describe('isDate ', function() {
+    it('should always return false for various null forms', function() {
+      var res;
+      res = Util.isDate();
+      expect(res).to.equal(false);
+      res = Util.isDate(null);
+      expect(res).to.equal(false);
+      res = Util.isDate(undefined);
+      expect(res).to.equal(false);
+    });
+    it('should always return false for various non-Date values', function() {
+      var res;
+      res = Util.isDate([]);
+      expect(res).to.equal(false);
+      res = Util.isDate(123);
+      expect(res).to.equal(false);
+      res = Util.isDate('string');
+      expect(res).to.equal(false);
+      res = Util.isDate(NaN);
+      expect(res).to.equal(false);
+      res = Util.isDate([1,2,3]);
+      expect(res).to.equal(false);
+      res = Util.isDate(0);
+      expect(res).to.equal(false);
+      res = Util.isDate(1231323120);
+      expect(res).to.equal(false);
+    });
+    it('should always return true for Date values', function() {
+      var res;
+      res = Util.isDate((new Date()));
+      expect(res).to.equal(true);
+    });
+  });
+
 });
 
 

@@ -20,15 +20,15 @@ describe('xFlow sync emitter ', function() {
         var flow = getXFlow(json, {});
 
         flow.emitter.on('start', function() {
-          console.log('Flow start sync event');
+          // console.log('Flow start sync event');
         });
 
         flow.emitter.on('nextStep', function() {
-          console.log('Flow nextStep sync event');
+          // console.log('Flow nextStep sync event');
         });
 
         flow.emitter.on('end', function() {
-          console.log('Flow end sync event');
+          // console.log('Flow end sync event');
         });
 
         var res = flow.start();
@@ -45,15 +45,15 @@ describe('xFlow async event emission', function() {
         var flow = getXFlow(json, {});
 
         flow.emitter.on('start', function() {
-          console.log('Flow start async event');
+          // console.log('Flow start async event');
         });
 
         flow.emitter.on('nextStep', function() {
-          console.log('Flow nextStep async event');
+          // console.log('Flow nextStep async event');
         });
 
         flow.emitter.on('end', function() {
-          console.log('Flow end async event');
+          // console.log('Flow end async event');
         });
 
         var res = flow.startQ();

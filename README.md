@@ -11,10 +11,10 @@ Test
 Build
 ----
 
-  gulp build
+    gulp build
 
 Browser,
 
-  webpack --module-bind "js=babel-loader" lib/xflow-target-browser.js xfb.js
+    webpack --module-bind "js=babel-loader" lib/xflow-target-browser.js xfb.js
 
 

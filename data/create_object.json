@@ -1,84 +1,82 @@
 {
   "id": "asd",
   "name": "asd",
-  "data": {
-    "capabilities": [
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    },
+    {
+      "type": "object",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
       {
-        "type": "flow",
-        "version": 1
-      },
-      {
-        "type": "object",
-        "version": 1
+        "name"  : "UserName",
+        "type"  : "string",
+        "value" : "Joe Blow"
       }
     ],
-    "signature" : {
-      "in" : [
-        {
-          "name"  : "UserName",
-          "type"  : "string",
-          "value" : "Joe Blow"
-        }
-      ],
-      "out" : [
-        {
-          "type" : "boolean",
-          "name" : "ReturnValue"
-        }
-      ]
-    },
-    "variables" : [
+    "out" : [
       {
         "type" : "boolean",
         "name" : "ReturnValue"
       }
-    ],
-    "nodes": [
-      {
-        "id": 1,
-        "type": "flow",
-        "action": "start",
-        "parameters": {}
-      },
-      {
-        "id": 2,
-        "type": "object",
-        "action": "create",
-        "parameters": {
-          "object": "User"
-        }
-      },
-      {
-        "id": 3,
-        "type": "object",
-        "action": "setattributes",
-        "parameters": {
-          "object": "User",
-          "attributes": {
-            "name": "Joe Blow"
-          }
-        }
-      },
-      {
-        "id": 4,
-        "type": "object",
-        "action": "save",
-        "parameters": {
-          "object": "User"
-        }
-      },
-      {
-        "id": 5,
-        "type": "flow",
-        "action": "end",
-        "parameters": {}
-      }
-    ],
-    "edges": [
-      [ 1, 2 ],
-      [ 2, 3 ],
-      [ 3, 4 ],
-      [ 4, 5 ]
     ]
-  }
+  },
+  "variables" : [
+    {
+      "type" : "boolean",
+      "name" : "ReturnValue"
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "object",
+      "action": "create",
+      "parameters": {
+        "object": "User"
+      }
+    },
+    {
+      "id": 3,
+      "type": "object",
+      "action": "setattributes",
+      "parameters": {
+        "object": "User",
+        "attributes": {
+          "name": "Joe Blow"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "object",
+      "action": "save",
+      "parameters": {
+        "object": "User"
+      }
+    },
+    {
+      "id": 5,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ],
+    [ 3, 4 ],
+    [ 4, 5 ]
+  ]
 }

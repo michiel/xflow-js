@@ -1,68 +1,66 @@
 {
   "id": "add",
   "name": "add",
-  "data": {
-    "capabilities": [
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
       {
-        "type": "flow",
-        "version": 1
+        "name"  : "value4",
+        "type"  : "number",
+        "value" : 4
+      },
+      {
+        "name"  : "value5",
+        "type"  : "number",
+        "value" : 5
       }
     ],
-    "signature" : {
-      "in" : [
-        {
-          "name"  : "value4",
-          "type"  : "number",
-          "value" : 4
-        },
-        {
-          "name"  : "value5",
-          "type"  : "number",
-          "value" : 5
-        }
-      ],
-      "out" : [
-        {
-          "type" : "number",
-          "name" : "ReturnValue"
-        }
-      ]
-    },
-    "variables" : [
+    "out" : [
       {
-        "type" : "boolean",
+        "type" : "number",
         "name" : "ReturnValue"
       }
-    ],
-    "nodes": [
-      {
-        "id": 1,
-        "type": "flow",
-        "action": "start",
-        "parameters": {}
-      },
-      {
-        "id": 2,
-        "type": "flow",
-        "action": "flox",
-        "parameters": {
-          "expression" : "1+2",
-          "returns"    : {
-            "name"   : "ReturnValue",
-            "type"   : "number"
-          }
-        }
-      },
-      {
-        "id": 3,
-        "type": "flow",
-        "action": "end",
-        "parameters": {}
-      }
-    ],
-    "edges": [
-      [ 1, 2 ],
-      [ 2, 3 ]
     ]
-  }
+  },
+  "variables" : [
+    {
+      "type" : "boolean",
+      "name" : "ReturnValue"
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "1+2",
+        "returns"    : {
+          "name"   : "ReturnValue",
+          "type"   : "number"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ]
+  ]
 }

@@ -1,44 +1,42 @@
 {
   "id": "multiple_entry",
   "name": "multiple_entry",
-  "data": {
-    "capabilities": [
-      {
-        "type": "flow",
-        "version": 1
-      }
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
     ],
-    "signature" : {
-      "in" : [
-      ],
-      "out" : [
-      ]
-    },
-    "variables" : [
-    ],
-    "nodes": [
-      {
-        "id": 1,
-        "type": "flow",
-        "action": "start",
-        "parameters": {}
-      },
-      {
-        "id": 2,
-        "type": "flow",
-        "action": "start",
-        "parameters": {}
-      },
-      {
-        "id": 3,
-        "type": "flow",
-        "action": "end",
-        "parameters": {}
-      }
-    ],
-    "edges": [
-      [ 1, 3 ],
-      [ 2, 3 ]
+    "out" : [
     ]
-  }
+  },
+  "variables" : [
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 3 ],
+    [ 2, 3 ]
+  ]
 }

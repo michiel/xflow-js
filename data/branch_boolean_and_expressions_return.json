@@ -1,100 +1,98 @@
 {
   "id": "branch",
   "name": "branch",
-  "data": {
-    "capabilities": [
-      {
-        "type": "flow",
-        "version": 1
-      }
-    ],
-    "signature" : {
-      "in" : [
-        {
-          "name"  : "MatchValue",
-          "type"  : "boolean",
-          "value" : true
-        }
-      ],
-      "out" : [
-        {
-          "type" : "number",
-          "name" : "ReturnValue"
-        }
-      ]
-    },
-    "variables" : [
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
       {
         "name"  : "MatchValue",
         "type"  : "boolean",
         "value" : true
       }
     ],
-    "nodes": [
+    "out" : [
       {
-        "id": 1,
-        "type": "flow",
-        "action": "start",
-        "parameters": {}
-      },
-      {
-        "id": 2,
-        "type": "flow",
-        "action": "branch",
-        "parameters": {
-          "name": "MatchValue",
-          "type": "boolean"
-        }
-      },
-      {
-        "id": 3,
-        "type": "flow",
-        "action": "flox",
-        "parameters": {
-          "expression" : "1+2",
-          "returns"    : {
-            "name"   : "ReturnValue",
-            "type"   : "number"
-          }
-        }
-      },
-      {
-        "id": 4,
-        "type": "flow",
-        "action": "flox",
-        "parameters": {
-          "expression" : "3+3",
-          "returns"    : {
-            "name"   : "ReturnValue",
-            "type"   : "number"
-          }
-        }
-      },
-      {
-        "id": 5,
-        "type": "flow",
-        "action": "end",
-        "parameters": {}
-      }
-    ],
-    "edges": [
-      [ 1, 2 ],
-      [ 2, 3 ],
-      [ 2, 4 ],
-      [ 3, 5 ],
-      [ 4, 5 ]
-    ],
-    "branches" : [
-      {
-        "branch" : [2,3],
-        "name"   : "MatchValue",
-        "value"  : true
-      },
-      {
-        "branch" : [2,4],
-        "name"   : "MatchValue",
-        "value"  : false
+        "type" : "number",
+        "name" : "ReturnValue"
       }
     ]
-  }
+  },
+  "variables" : [
+    {
+      "name"  : "MatchValue",
+      "type"  : "boolean",
+      "value" : true
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "flow",
+      "action": "branch",
+      "parameters": {
+        "name": "MatchValue",
+        "type": "boolean"
+      }
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "1+2",
+        "returns"    : {
+          "name"   : "ReturnValue",
+          "type"   : "number"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "3+3",
+        "returns"    : {
+          "name"   : "ReturnValue",
+          "type"   : "number"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ],
+    [ 2, 4 ],
+    [ 3, 5 ],
+    [ 4, 5 ]
+  ],
+  "branches" : [
+    {
+      "branch" : [2,3],
+      "name"   : "MatchValue",
+      "value"  : true
+    },
+    {
+      "branch" : [2,4],
+      "name"   : "MatchValue",
+      "value"  : false
+    }
+  ]
 }

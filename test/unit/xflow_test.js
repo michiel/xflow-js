@@ -4,35 +4,41 @@ import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import xFlow from '../../lib/xflow';
+import XFlow from '../../lib/xflow';
+import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
-describe('xFlow sync ', function() {
+function getXFlow(json, params) {
+  var dispatcher = new XFlowDispatcher();
+  return new XFlow(json, params, dispatcher);
+}
+
+describe('XFlow sync ', function() {
 
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).start();
+        var res = (getXFlow(json, {})).start();
         expect(res).to.deep.equal([{}]);
       });
 
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).start();
+        var res = (getXFlow(json, {})).start();
         expect(res).to.deep.equal([{ 'ReturnValue': 3 }]);
       });
 
     it('runs a flow with a branch  ', function() {
         var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).start();
+        var res = (getXFlow(json, {})).start();
         expect(res).to.deep.equal([{}]);
       });
 
     it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {
+        var res = (getXFlow(json, {
           'MatchValue' : true
         })).start();
         expect(res).to.deep.equal([{
@@ -43,7 +49,7 @@ describe('xFlow sync ', function() {
     it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {
+        var res = (getXFlow(json, {
           'MatchValue' : false
         })).start();
         expect(res).to.deep.equal([{
@@ -53,19 +59,19 @@ describe('xFlow sync ', function() {
 
   });
 
-describe('xFlow async ', function() {
+describe('XFlow async ', function() {
 
     it('loads a json flow', function() {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).startQ();
+        var res = (getXFlow(json, {})).startQ();
         expect(res).to.eventually.deep.equal([{}]);
       });
 
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).startQ();
+        var res = (getXFlow(json, {})).startQ();
         expect(res).to.eventually.deep.equal([{
             'ReturnValue' : 3
           }]);
@@ -74,14 +80,14 @@ describe('xFlow async ', function() {
     it('runs a flow with a branch  ', function() {
         var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {})).startQ();
+        var res = (getXFlow(json, {})).startQ();
         expect(res).to.eventually.deep.equal([{}]);
       });
 
     it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {
+        var res = (getXFlow(json, {
           'MatchValue' : true
         })).startQ();
         expect(res).to.eventually.deep.equal([{
@@ -92,7 +98,7 @@ describe('xFlow async ', function() {
     it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {
+        var res = (getXFlow(json, {
           'MatchValue' : false
         })).startQ();
         expect(res).to.eventually.deep.equal([{

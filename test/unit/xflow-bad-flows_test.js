@@ -4,25 +4,31 @@ import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import xFlow from '../../lib/xflow';
+import XFlow from '../../lib/xflow';
+import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
-describe('xFlow sync ', function() {
+function getXFlow(json, params) {
+  var dispatcher = new XFlowDispatcher();
+  return new XFlow(json, params, dispatcher);
+}
+
+describe('XFlow sync ', function() {
 
     it('loads a json flow with multiple entries and throws an Error ', function() {
         var data = fs.readFileSync('data/bad_flows/multiple_entry_nodes.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {}));
+        var res = (getXFlow(json, {}));
         expect(res.start).to.throw(Error);
       });
 
   });
 
-describe('xFlow async ', function() {
+describe('XFlow async ', function() {
 
     it('loads a json flow with multiple entries and rejects the Promise', function() {
         var data = fs.readFileSync('data/bad_flows/multiple_entry_nodes.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (new xFlow(json, {}));
+        var res = (getXFlow(json, {}));
         expect(res.startQ()).to.eventually.throw(Error);
       });
 

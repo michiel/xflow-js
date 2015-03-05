@@ -8,10 +8,16 @@
     "test-browser": "gulp test-browser",
     "test-make": "make test",
     "build": "gulp build",
-    "coverage": "gulp coverage"
+    "coverage": "gulp coverage",
+    "jshint": "jshint -c .jshintrc lib",
+    "jscs": "jscs -c .jscsrc lib"
   },
   "author": "Michiel Kalkman <michiel@nosuchtype.com>",
   "license": "(c) NST",
+  "pre-commit": [
+    "jshint",
+    "jscs"
+  ],
   "dependencies": {
     "q": "^1.1.2",
     "rsvp": "^3.0.17",
@@ -46,6 +52,7 @@
     "jshint-stylish": "^1.0.0",
     "mkdirp": "^0.5.0",
     "mocha": "^2.1.0",
+    "pre-commit": "^1.0.5",
     "run-sequence": "^1.0.2",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.7.0",

@@ -119,10 +119,10 @@ gulp.task('browserify', function() {
     .pipe($.livereload());
 });
 
-gulp.task('coverage', function(done) {
+gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
   require('babel/register')({ modules: 'common' });
   gulp.src(['lib/*.js'])
-    .pipe($.plumber())
+    // .pipe($.plumber())
     .pipe($.istanbul({ instrumenter: isparta.Instrumenter }))
     .pipe($.istanbul.hookRequire())
     .on('finish', function() {
@@ -134,7 +134,7 @@ gulp.task('coverage', function(done) {
 
 function test() {
   return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], {read: false})
-    .pipe($.plumber())
+    // .pipe($.plumber())
     .pipe($.mocha({reporter: 'dot', globals: config.mochaGlobals}));
 };
 

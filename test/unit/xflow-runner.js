@@ -1,6 +1,6 @@
-import chai from 'chai';
+import chai           from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import fs from 'fs';
+import fs             from 'fs';
 
 chai.use(chaiAsPromised);
 
@@ -64,6 +64,30 @@ describe('XFlowRunner sync ', function() {
       'ReturnValue' : 3
     }]);
 
+  });
+
+  it('can single step flows', function() {
+    var runner = getXFlowRunner();
+
+    var json = getJSON('data/create_object.json');
+    var id   = runner.addFlow(json);
+
+    var counter = 0;
+    while(runner.stepFlow(id)) {
+      counter++;
+    }
+
+    expect(counter).to.equal(4);
+
+    json = getJSON('data/arithmetic_addition.json');
+    id   = runner.addFlow(json);
+
+    counter = 0;
+    while(runner.stepFlow(id)) {
+      counter++;
+    }
+
+    expect(counter).to.equal(2);
   });
 
 });

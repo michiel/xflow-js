@@ -1,6 +1,7 @@
 import chai           from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import fs             from 'fs';
+import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
@@ -133,5 +134,36 @@ describe('XFlow async ', function() {
 
   });
 
+  it('can single step flows', function() {
+    var runner = getXFlowRunner();
+
+    var json = getJSON('data/create_object.json');
+    var id   = runner.addFlow(json);
+
+    var defer   = RSVP.defer();
+    var counter = 0;
+
+    function nextStep() {
+      counter++;
+      runner.stepFlowQ(id).then(
+        function(hasNext) {
+          if (hasNext) {
+            nextStep();
+          } else {
+            defer.resolve(counter);
+          }
+        },
+        function(err) {
+          console.error('nextStep test : ', err);
+          defer.reject('err');
+        }
+      );
+    }
+
+    nextStep();
+
+    expect(defer.promise).to.eventually.equal(5);
+
+  });
 });
 

@@ -74,7 +74,7 @@ describe('XFlowRunner sync ', function() {
     var id   = runner.addFlow(json);
 
     var counter = 0;
-    while(runner.stepFlow(id)) {
+    while (runner.stepFlow(id)) {
       counter++;
     }
 
@@ -84,7 +84,7 @@ describe('XFlowRunner sync ', function() {
     id   = runner.addFlow(json);
 
     counter = 0;
-    while(runner.stepFlow(id)) {
+    while (runner.stepFlow(id)) {
       counter++;
     }
 

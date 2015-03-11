@@ -179,7 +179,7 @@ describe('XFlow utils ', function() {
       var res;
       res = Util.isObject({});
       expect(res).to.equal(true);
-      res = Util.isObject({'a' : 2 });
+      res = Util.isObject({ 'a' : 2 });
       expect(res).to.equal(true);
     });
   });

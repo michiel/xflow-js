@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 import fs from 'fs';
 import tv4 from 'tv4';
 
-import xFlowValidator from '../../lib/xflow-validator';
+import XFlowValidator from '../../lib/xflow-validator';
 
 chai.use(chaiAsPromised);
 
@@ -41,7 +41,7 @@ describe('JSON data - graph validation ', function() {
     goodFlowFiles.forEach(function(file) {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
-      var res  = (new xFlowValidator(json, schemaJSON)).validate();
+      var res  = (new XFlowValidator(json, schemaJSON)).validate();
       expect(res).to.equal(true);
     });
   });
@@ -50,7 +50,7 @@ describe('JSON data - graph validation ', function() {
     badFlowFiles.forEach(function(file) {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
-      var res  = (new xFlowValidator(json, schemaJSON)).validate();
+      var res  = (new XFlowValidator(json, schemaJSON)).validate();
       expect(res).to.equal(false);
     });
   });

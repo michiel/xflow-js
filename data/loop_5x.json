@@ -38,12 +38,14 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "flow",
       "action": "flox",
+      "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
@@ -56,6 +58,7 @@
       "id": 3,
       "type": "flow",
       "action": "flox",
+      "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue>5",
         "returns"    : {
@@ -68,6 +71,7 @@
       "id": 4,
       "type": "flow",
       "action": "branch",
+      "label" : "Start",
       "parameters": {
         "name": "LoopValue",
         "type": "boolean"
@@ -77,6 +81,7 @@
       "id": 5,
       "type": "flow",
       "action": "end",
+      "label" : "Start",
       "parameters": {}
     }
   ],

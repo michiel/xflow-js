@@ -38,12 +38,14 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "flow",
       "action": "flox",
+      "label" : "Flox",
       "parameters": {
         "expression" : "1+2",
         "returns"    : {
@@ -56,6 +58,7 @@
       "id": 3,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     }
   ],

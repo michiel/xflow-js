@@ -34,12 +34,14 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "flow",
       "action": "branch",
+      "label" : "Branch",
       "parameters": {
         "name": "MatchValue",
         "type": "boolean"
@@ -49,12 +51,14 @@
       "id": 3,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     },
     {
       "id": 4,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     }
   ],

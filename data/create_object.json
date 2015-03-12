@@ -37,12 +37,14 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "object",
       "action": "create",
+      "label" : "Create User",
       "parameters": {
         "object": "User"
       }
@@ -51,6 +53,7 @@
       "id": 3,
       "type": "object",
       "action": "setattributes",
+      "label" : "Set name",
       "parameters": {
         "object": "User",
         "attributes": {
@@ -62,6 +65,7 @@
       "id": 4,
       "type": "object",
       "action": "save",
+      "label" : "Save User",
       "parameters": {
         "object": "User"
       }
@@ -70,6 +74,7 @@
       "id": 5,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     }
   ],

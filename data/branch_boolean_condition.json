@@ -34,12 +34,14 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "flow",
       "action": "flox",
+      "label" : "Flox",
       "parameters": {
         "expression" : "$CalcValueA<$CalcValueB",
         "returns"    : {
@@ -52,6 +54,7 @@
       "id": 3,
       "type": "flow",
       "action": "branch",
+      "label" : "Branch",
       "parameters": {
         "name": "ReturnValue",
         "type": "boolean"
@@ -61,12 +64,14 @@
       "id": 4,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     },
     {
       "id": 5,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     }
   ],

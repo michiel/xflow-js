@@ -20,18 +20,21 @@
       "id": 1,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
       "type": "flow",
       "action": "start",
+      "label" : "Start",
       "parameters": {}
     },
     {
       "id": 3,
       "type": "flow",
       "action": "end",
+      "label" : "End",
       "parameters": {}
     }
   ],

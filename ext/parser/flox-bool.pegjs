@@ -3,7 +3,7 @@
     return parseInt(o.join(""), 10);
   }
   function produceBoolean(left, op, right) {
-    res = false;
+    var res = false;
     switch (op) {
       case '==':
       res = (left == right);
@@ -23,11 +23,13 @@
       case '<':
       res = (left < right);
       break;
+      default:
+      throw new Error('Flox : unknown operator ' + op);
     }
     return res;
   }
   function addExpression(left, op, right) {
-    res = 0;
+    var res = 0;
     switch (op) {
       case '+':
       res = (left + right);
@@ -35,11 +37,13 @@
       case '-':
       res = (left - right);
       break;
-    }
+      default:
+      throw new Error('Flox : unknown operator ' + op);
+     }
     return res;
   }
   function multExpression(left, op, right) {
-    res = 0;
+    var res = 0;
     switch (op) {
       case '*':
       res = (left * right);
@@ -47,6 +51,8 @@
       case '/':
       res = (left / right);
       break;
+      default:
+      throw new Error('Flox : unknown operator ' + op);
     }
     return res;
   }

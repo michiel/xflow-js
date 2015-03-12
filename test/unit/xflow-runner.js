@@ -15,9 +15,11 @@ function getXFlowFactory() {
   ));
 }
 
-function getXFlowRunner() {
+function getXFlowRunner(opts) {
+  opts = opts || {};
   return (new XFlowRunner(
-    getXFlowFactory()
+    getXFlowFactory(),
+    opts
   ));
 }
 
@@ -91,6 +93,18 @@ describe('XFlowRunner sync ', function() {
     expect(counter).to.equal(2);
   });
 
+  it('aborts flows that take longer than the tickLimit', function() {
+    var runner = getXFlowRunner({
+      tickLimit : 5
+    });
+
+    var json = getJSON('data/10_steps.json');
+    var id   = runner.addFlow(json);
+    expect(function() {
+      runner.runFlow(id);
+    }).to.throw(Error);
+
+  });
 });
 
 describe('XFlow async ', function() {
@@ -165,5 +179,6 @@ describe('XFlow async ', function() {
     expect(defer.promise).to.eventually.equal(5);
 
   });
+
 });
 

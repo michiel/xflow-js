@@ -1,0 +1,102 @@
+{
+  "id": "loop",
+  "name": "loop",
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
+      {
+        "name"  : "CounterValue",
+        "type"  : "number",
+        "value" : 0
+      }
+    ],
+    "out" : [
+      {
+        "name" : "CounterValue",
+        "type" : "number"
+      }
+    ]
+  },
+  "variables" : [
+    {
+      "name": "CounterValue",
+      "type": "number"
+    },
+    {
+      "name": "LoopValue",
+      "type": "boolean",
+      "value" : false
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "$CounterValue+1",
+        "returns"    : {
+          "name"   : "CounterValue",
+          "type"   : "number"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "$CounterValue>5",
+        "returns"    : {
+          "name"   : "LoopValue",
+          "type"   : "boolean"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "flow",
+      "action": "branch",
+      "parameters": {
+        "name": "LoopValue",
+        "type": "boolean"
+      }
+    },
+    {
+      "id": 5,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ],
+    [ 3, 4 ],
+    [ 4, 2 ],
+    [ 4, 5 ]
+  ],
+  "branches" : [
+    {
+      "branch" : [4,5],
+      "name"   : "LoopValue",
+      "value"  : true
+    },
+    {
+      "branch" : [4,2],
+      "name"   : "LoopValue",
+      "value"  : false
+    }
+  ]
+}

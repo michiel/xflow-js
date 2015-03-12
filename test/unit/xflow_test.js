@@ -69,6 +69,16 @@ describe('XFlow sync ', function() {
         }]);
       });
 
+    it('runs a flow with a counter, loop and branch', function() {
+        var data = fs.readFileSync('data/loop_5x.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (getXFlow(json, {
+          'CounterValue' : 0
+        })).start();
+        expect(res).to.deep.equal([{
+          'CounterValue' : 6
+        }]);
+      });
   });
 
 describe('XFlow async ', function() {
@@ -115,6 +125,17 @@ describe('XFlow async ', function() {
         })).startQ();
         expect(res).to.eventually.deep.equal([{
           'ReturnValue' : 6
+        }]);
+      });
+
+    it('runs a flow with a counter, loop and branch', function() {
+        var data = fs.readFileSync('data/loop_5x.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (getXFlow(json, {
+          'CounterValue' : 0
+        })).startQ();
+        expect(res).to.eventually.deep.equal([{
+          'CounterValue' : 6
         }]);
       });
   });

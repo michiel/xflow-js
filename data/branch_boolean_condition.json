@@ -1,0 +1,91 @@
+{
+  "id": "branch",
+  "name": "branch",
+  "capabilities": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
+      {
+        "name"  : "CalcValueA",
+        "type"  : "number",
+        "value" : 1
+      },
+      {
+        "name"  : "CalcValueB",
+        "type"  : "number",
+        "value" : 2
+      }
+    ],
+    "out" : [
+      {
+        "type" : "number",
+        "name" : "ReturnValue"
+      }
+    ]
+  },
+  "variables" : [
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "type": "flow",
+      "action": "flox",
+      "parameters": {
+        "expression" : "$CalcValueA<$CalcValueB",
+        "returns"    : {
+          "name"   : "ReturnValue",
+          "type"   : "boolean"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "branch",
+      "parameters": {
+        "name": "ReturnValue",
+        "type": "boolean"
+      }
+    },
+    {
+      "id": 4,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    },
+    {
+      "id": 5,
+      "type": "flow",
+      "action": "end",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ],
+    [ 3, 4 ],
+    [ 3, 5 ]
+  ],
+  "branches" : [
+    {
+      "branch" : [3,4],
+      "name"   : "ReturnValue",
+      "value"  : true
+    },
+    {
+      "branch" : [3,5],
+      "name"   : "ReturnValue",
+      "value"  : false
+    }
+  ]
+}

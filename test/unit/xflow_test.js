@@ -57,6 +57,18 @@ describe('XFlow sync ', function() {
         }]);
       });
 
+    it('runs a flow with a boolean expression followed by a branch', function() {
+        var data = fs.readFileSync('data/branch_boolean_condition.json', 'utf-8');
+        var json = JSON.parse(data);
+        var res = (getXFlow(json, {
+          'CalcValueA' : 1,
+          'CalcValueB' : 2
+        })).start();
+        expect(res).to.deep.equal([{
+          'ReturnValue' : true
+        }]);
+      });
+
   });
 
 describe('XFlow async ', function() {

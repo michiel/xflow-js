@@ -4,31 +4,29 @@ import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlowFactory from '../../lib/xflow-factory';
+import XFlow           from '../../lib/xflow';
+import XFlowFactory    from '../../lib/xflow-factory';
 import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
 function getXFlowFactory() {
   return new XFlowFactory(new XFlowDispatcher());
 }
 
-describe('XFlowFactory Factory sync ', function() {
+describe('XFlowFactory Factory ', function() {
 
-  it('loads a json flow', function() {
+  it('loads a valid json flow', function() {
     var data = fs.readFileSync('data/create_object.json', 'utf-8');
     var json = JSON.parse(data);
-    var res = getXFlowFactory().run(json);
-    expect(res).to.deep.equal([{}]);
+    var res = getXFlowFactory().buildFlow(json);
+    expect(res).to.be.an.instanceof(XFlow);
   });
 
-});
-
-describe('XFlow Factory async ', function() {
-
-  it('loads a json flow', function() {
-    var data = fs.readFileSync('data/create_object.json', 'utf-8');
+  it('throws an error when loading a json flow with bad capabilities', function() {
+    var data = fs.readFileSync('data/bad_flows/bad_capabilities.json', 'utf-8');
     var json = JSON.parse(data);
-    var res = getXFlowFactory().runQ(json);
-    expect(res).to.eventually.deep.equal([{}]);
+    expect(function() {
+      getXFlowFactory().buildFlow(json);
+    }).to.throw(Error);
   });
 
 });

@@ -1,0 +1,37 @@
+{
+  "id": "bad_caps",
+  "name": "bad_Caps",
+  "capabilities": [
+    {
+      "type": "fnord",
+      "version": 3
+    }
+  ],
+  "signature" : {
+    "in" : [
+    ],
+    "out" : [
+    ]
+  },
+  "variables" : [
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "type": "flow",
+      "action": "start",
+      "label" : "Start",
+      "parameters": {}
+    },
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "end",
+      "label" : "End",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 3 ]
+  ]
+}

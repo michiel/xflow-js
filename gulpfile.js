@@ -121,7 +121,7 @@ gulp.task('browserify', function() {
 
 gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
   require('babel/register')({ modules: 'common' });
-  gulp.src(['lib/*.js'])
+  gulp.src(['lib/**/*.js'])
     // .pipe($.plumber())
     .pipe($.istanbul({ instrumenter: isparta.Instrumenter }))
     .pipe($.istanbul.hookRequire())

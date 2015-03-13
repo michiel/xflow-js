@@ -2,18 +2,18 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
-import Util from '../../lib/flow-util';
+import LangUtil from '../../../lib/util/lang';
 
-describe('XFlow utils ', function() {
+describe('Lang utils ', function() {
 
   describe('exists ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.exists();
+      res = LangUtil.exists();
       expect(res).to.equal(false);
-      res = Util.exists(null);
+      res = LangUtil.exists(null);
       expect(res).to.equal(false);
-      res = Util.exists(undefined);
+      res = LangUtil.exists(undefined);
       expect(res).to.equal(false);
     });
   });
@@ -21,27 +21,27 @@ describe('XFlow utils ', function() {
   describe('isArray ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isArray();
+      res = LangUtil.isArray();
       expect(res).to.equal(false);
-      res = Util.isArray(null);
+      res = LangUtil.isArray(null);
       expect(res).to.equal(false);
-      res = Util.isArray(undefined);
+      res = LangUtil.isArray(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Array values', function() {
       var res;
-      res = Util.isArray(Array);
+      res = LangUtil.isArray(Array);
       expect(res).to.equal(false);
-      res = Util.isArray('array');
+      res = LangUtil.isArray('array');
       expect(res).to.equal(false);
-      res = Util.isArray(false);
+      res = LangUtil.isArray(false);
       expect(res).to.equal(false);
     });
     it('should always return true for Arrays', function() {
       var res;
-      res = Util.isArray([]);
+      res = LangUtil.isArray([]);
       expect(res).to.equal(true);
-      res = Util.isArray([1,2,3]);
+      res = LangUtil.isArray([1,2,3]);
       expect(res).to.equal(true);
     });
   });
@@ -49,31 +49,31 @@ describe('XFlow utils ', function() {
   describe('isString ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isString();
+      res = LangUtil.isString();
       expect(res).to.equal(false);
-      res = Util.isString(null);
+      res = LangUtil.isString(null);
       expect(res).to.equal(false);
-      res = Util.isString(undefined);
+      res = LangUtil.isString(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-String values', function() {
       var res;
-      res = Util.isString();
+      res = LangUtil.isString();
       expect(res).to.equal(false);
-      res = Util.isString(123);
+      res = LangUtil.isString(123);
       expect(res).to.equal(false);
-      res = Util.isString([]);
+      res = LangUtil.isString([]);
       expect(res).to.equal(false);
-      res = Util.isString({});
+      res = LangUtil.isString({});
       expect(res).to.equal(false);
-      res = Util.isString([1,2,3]);
+      res = LangUtil.isString([1,2,3]);
       expect(res).to.equal(false);
     });
     it('should always return true for String values', function() {
       var res;
-      res = Util.isString('');
+      res = LangUtil.isString('');
       expect(res).to.equal(true);
-      res = Util.isString('string');
+      res = LangUtil.isString('string');
       expect(res).to.equal(true);
     });
   });
@@ -81,31 +81,31 @@ describe('XFlow utils ', function() {
   describe('isBoolean ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isBoolean();
+      res = LangUtil.isBoolean();
       expect(res).to.equal(false);
-      res = Util.isBoolean(null);
+      res = LangUtil.isBoolean(null);
       expect(res).to.equal(false);
-      res = Util.isBoolean(undefined);
+      res = LangUtil.isBoolean(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Boolean values', function() {
       var res;
-      res = Util.isBoolean();
+      res = LangUtil.isBoolean();
       expect(res).to.equal(false);
-      res = Util.isBoolean(123);
+      res = LangUtil.isBoolean(123);
       expect(res).to.equal(false);
-      res = Util.isBoolean([]);
+      res = LangUtil.isBoolean([]);
       expect(res).to.equal(false);
-      res = Util.isBoolean({});
+      res = LangUtil.isBoolean({});
       expect(res).to.equal(false);
-      res = Util.isBoolean([1,2,3]);
+      res = LangUtil.isBoolean([1,2,3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Boolean values', function() {
       var res;
-      res = Util.isBoolean(true);
+      res = LangUtil.isBoolean(true);
       expect(res).to.equal(true);
-      res = Util.isBoolean(false);
+      res = LangUtil.isBoolean(false);
       expect(res).to.equal(true);
     });
   });
@@ -113,41 +113,41 @@ describe('XFlow utils ', function() {
   describe('isNumber ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isNumber();
+      res = LangUtil.isNumber();
       expect(res).to.equal(false);
-      res = Util.isNumber(null);
+      res = LangUtil.isNumber(null);
       expect(res).to.equal(false);
-      res = Util.isNumber(undefined);
+      res = LangUtil.isNumber(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Number values', function() {
       var res;
-      res = Util.isNumber();
+      res = LangUtil.isNumber();
       expect(res).to.equal(false);
-      res = Util.isNumber(NaN);
+      res = LangUtil.isNumber(NaN);
       expect(res).to.equal(false);
-      res = Util.isNumber([]);
+      res = LangUtil.isNumber([]);
       expect(res).to.equal(false);
-      res = Util.isNumber({});
+      res = LangUtil.isNumber({});
       expect(res).to.equal(false);
-      res = Util.isNumber([1,2,3]);
+      res = LangUtil.isNumber([1,2,3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Number values', function() {
       var res;
-      res = Util.isNumber(10);
+      res = LangUtil.isNumber(10);
       expect(res).to.equal(true);
-      res = Util.isNumber(-10);
+      res = LangUtil.isNumber(-10);
       expect(res).to.equal(true);
-      res = Util.isNumber(0);
+      res = LangUtil.isNumber(0);
       expect(res).to.equal(true);
-      res = Util.isNumber(10e10);
+      res = LangUtil.isNumber(10e10);
       expect(res).to.equal(true);
-      res = Util.isNumber(0.0);
+      res = LangUtil.isNumber(0.0);
       expect(res).to.equal(true);
-      res = Util.isNumber(3.5);
+      res = LangUtil.isNumber(3.5);
       expect(res).to.equal(true);
-      res = Util.isNumber(Math.PI);
+      res = LangUtil.isNumber(Math.PI);
       expect(res).to.equal(true);
     });
   });
@@ -155,31 +155,31 @@ describe('XFlow utils ', function() {
   describe('isObject ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isObject();
+      res = LangUtil.isObject();
       expect(res).to.equal(false);
-      res = Util.isObject(null);
+      res = LangUtil.isObject(null);
       expect(res).to.equal(false);
-      res = Util.isObject(undefined);
+      res = LangUtil.isObject(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Object values', function() {
       var res;
-      res = Util.isObject([]);
+      res = LangUtil.isObject([]);
       expect(res).to.equal(false);
-      res = Util.isObject(123);
+      res = LangUtil.isObject(123);
       expect(res).to.equal(false);
-      res = Util.isObject('string');
+      res = LangUtil.isObject('string');
       expect(res).to.equal(false);
-      res = Util.isObject(NaN);
+      res = LangUtil.isObject(NaN);
       expect(res).to.equal(false);
-      res = Util.isObject([1,2,3]);
+      res = LangUtil.isObject([1,2,3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Object values', function() {
       var res;
-      res = Util.isObject({});
+      res = LangUtil.isObject({});
       expect(res).to.equal(true);
-      res = Util.isObject({ 'a' : 2 });
+      res = LangUtil.isObject({ 'a' : 2 });
       expect(res).to.equal(true);
     });
   });
@@ -187,33 +187,33 @@ describe('XFlow utils ', function() {
   describe('isDate ', function() {
     it('should always return false for various null forms', function() {
       var res;
-      res = Util.isDate();
+      res = LangUtil.isDate();
       expect(res).to.equal(false);
-      res = Util.isDate(null);
+      res = LangUtil.isDate(null);
       expect(res).to.equal(false);
-      res = Util.isDate(undefined);
+      res = LangUtil.isDate(undefined);
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Date values', function() {
       var res;
-      res = Util.isDate([]);
+      res = LangUtil.isDate([]);
       expect(res).to.equal(false);
-      res = Util.isDate(123);
+      res = LangUtil.isDate(123);
       expect(res).to.equal(false);
-      res = Util.isDate('string');
+      res = LangUtil.isDate('string');
       expect(res).to.equal(false);
-      res = Util.isDate(NaN);
+      res = LangUtil.isDate(NaN);
       expect(res).to.equal(false);
-      res = Util.isDate([1,2,3]);
+      res = LangUtil.isDate([1,2,3]);
       expect(res).to.equal(false);
-      res = Util.isDate(0);
+      res = LangUtil.isDate(0);
       expect(res).to.equal(false);
-      res = Util.isDate(1231323120);
+      res = LangUtil.isDate(1231323120);
       expect(res).to.equal(false);
     });
     it('should always return true for Date values', function() {
       var res;
-      res = Util.isDate((new Date()));
+      res = LangUtil.isDate((new Date()));
       expect(res).to.equal(true);
     });
   });

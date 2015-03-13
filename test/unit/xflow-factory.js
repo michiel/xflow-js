@@ -21,7 +21,7 @@ describe('XFlowFactory Factory ', function() {
     expect(res).to.be.an.instanceof(XFlow);
   });
 
-  it('throws an error when loading a json flow with bad capabilities', function() {
+  it('throws an error when loading a json flow with unmet capability requirements', function() {
     var data = fs.readFileSync('data/bad_flows/bad_capabilities.json', 'utf-8');
     var json = JSON.parse(data);
     expect(function() {

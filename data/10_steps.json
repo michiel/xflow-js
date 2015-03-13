@@ -2,7 +2,7 @@
 {
   "id": "steps",
   "name": "steps",
-  "capabilities": [
+  "requirements": [
     {
       "type": "flow",
       "version": 1

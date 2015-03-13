@@ -83,30 +83,30 @@ describe('XFlow sync ', function() {
 
 describe('XFlow async ', function() {
 
-    it('loads a json flow', function() {
+    it('loads a json flow', function(done) {
         var data = fs.readFileSync('data/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
-        expect(res).to.eventually.deep.equal([{}]);
+        expect(res).to.eventually.deep.equal([{}]).notify(done);
       });
 
-    it('runs a flow with an arithmetic expression ', function() {
+    it('runs a flow with an arithmetic expression ', function(done) {
         var data = fs.readFileSync('data/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
         expect(res).to.eventually.deep.equal([{
             'ReturnValue' : 3
-          }]);
+          }]).notify(done);
       });
 
-    it('runs a flow with a branch  ', function() {
+    it('runs a flow with a branch  ', function(done) {
         var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
-        expect(res).to.eventually.deep.equal([{}]);
+        expect(res).to.eventually.deep.equal([{}]).notify(done);
       });
 
-    it('runs a flow with a branch followed by an expression (1+2)', function() {
+    it('runs a flow with a branch followed by an expression (1+2)', function(done) {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
@@ -114,10 +114,10 @@ describe('XFlow async ', function() {
         })).startQ();
         expect(res).to.eventually.deep.equal([{
           'ReturnValue' : 3
-        }]);
+        }]).notify(done);
       });
 
-    it('runs a flow with a branch followed by an expression (1+2)', function() {
+    it('runs a flow with a branch followed by an expression (1+2)', function(done) {
         var data = fs.readFileSync('data/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
@@ -125,10 +125,10 @@ describe('XFlow async ', function() {
         })).startQ();
         expect(res).to.eventually.deep.equal([{
           'ReturnValue' : 6
-        }]);
+        }]).notify(done);
       });
 
-    it('runs a flow with a counter, loop and branch', function() {
+    it('runs a flow with a counter, loop and branch', function(done) {
         var data = fs.readFileSync('data/loop_5x.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
@@ -136,7 +136,7 @@ describe('XFlow async ', function() {
         })).startQ();
         expect(res).to.eventually.deep.equal([{
           'CounterValue' : 6
-        }]);
+        }]).notify(done);
       });
   });
 

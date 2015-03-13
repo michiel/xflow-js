@@ -7,12 +7,13 @@ import FlowUtil from '../../../lib/util/flow';
 
 var getEntryNode   = FlowUtil.getEntryNode;
 var getNodeType    = FlowUtil.getNodeType;
+var getNode        = FlowUtil.getNode;
 var isTerminalNode = FlowUtil.isTerminalNode;
 
-var data = fs.readFileSync('data/create_object.json', 'utf-8');
-var json = JSON.parse(data);
-
 describe('XFlow utils ', function() {
+
+  var data = fs.readFileSync('data/create_object.json', 'utf-8');
+  var json = JSON.parse(data);
 
   it('can find a single entry node', function() {
     var node = getEntryNode(json.nodes);
@@ -48,6 +49,32 @@ describe('XFlow utils ', function() {
     expect(
       getNodeType(json.nodes, null, 'end').length
     ).to.equal(1);
+  });
+
+});
+
+
+describe('XFlow utils / bad data ', function() {
+
+
+  it('can find a single entry node', function() {
+    var data = fs.readFileSync('data/bad_flows/no_entry_nodes.json', 'utf-8');
+    var json = JSON.parse(data);
+
+    expect(function() {
+      getNode(1, json.nodes);
+    }).to.throw(Error);
+
+  });
+
+  it('can find a single entry node', function() {
+    var data = fs.readFileSync('data/bad_flows/identical_id_nodes.json', 'utf-8');
+    var json = JSON.parse(data);
+
+    expect(function() {
+      getNode(1, json.nodes);
+    }).to.throw(Error);
+
   });
 
 });

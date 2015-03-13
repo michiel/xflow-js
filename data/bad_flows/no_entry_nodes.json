@@ -1,0 +1,29 @@
+{
+  "id": "no_entry",
+  "name": "no_entry",
+  "requirements": [
+    {
+      "type": "flow",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
+    ],
+    "out" : [
+    ]
+  },
+  "variables" : [
+  ],
+  "nodes": [
+    {
+      "id": 3,
+      "type": "flow",
+      "action": "end",
+      "label" : "End",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+  ]
+}

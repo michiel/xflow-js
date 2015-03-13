@@ -23,5 +23,14 @@ describe('XFlow load bad flow ', function() {
         }).to.throw(Error, /Multiple/);
       });
 
+    it('loads a json flow with no entries and throws an Error ', function() {
+        var data = fs.readFileSync('data/bad_flows/no_entry_nodes.json', 'utf-8');
+        var json = JSON.parse(data);
+        expect(function() {
+          var res = (getXFlow(json, {}));
+          res.start();
+        }).to.throw(Error, /No/);
+      });
+
   });
 

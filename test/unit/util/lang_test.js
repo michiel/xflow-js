@@ -218,6 +218,39 @@ describe('Lang utils ', function() {
     });
   });
 
+  describe('hasProperty ', function() {
+
+    var obj = {
+      nested : {
+        twodeep : {
+          numValue : 1,
+          falseValue : false
+        },
+        numValue : 1,
+        falseValue : false
+      },
+      numValue : 1,
+      falseValue : false
+    };
+
+    it('should return false for non-existant values', function() {
+
+      expect(LangUtil.hasProperty(obj, 'none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'nested.none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'nested.none.none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'nested.twodeep.none')).to.equal(false);
+
+    });
+
+    it('should return true for existant values', function() {
+
+      expect(LangUtil.hasProperty(obj, 'falseValue')).to.equal(true);
+      expect(LangUtil.hasProperty(obj, 'nested.falseValue')).to.equal(true);
+      expect(LangUtil.hasProperty(obj, 'nested.twodeep.falseValue')).to.equal(true);
+
+    });
+  });
+
 });
 
 

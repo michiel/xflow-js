@@ -239,14 +239,20 @@ describe('Lang utils ', function() {
       expect(LangUtil.hasProperty(obj, 'nested.none')).to.equal(false);
       expect(LangUtil.hasProperty(obj, 'nested.none.none')).to.equal(false);
       expect(LangUtil.hasProperty(obj, 'nested.twodeep.none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'none.none.none.none.none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'falseValue.none.none.none.none')).to.equal(false);
+      expect(LangUtil.hasProperty(obj, 'numValue.none.none.none.none')).to.equal(false);
 
     });
 
     it('should return true for existant values', function() {
 
       expect(LangUtil.hasProperty(obj, 'falseValue')).to.equal(true);
+      expect(LangUtil.hasProperty(obj, 'numValue')).to.equal(true);
       expect(LangUtil.hasProperty(obj, 'nested.falseValue')).to.equal(true);
+      expect(LangUtil.hasProperty(obj, 'nested.numValue')).to.equal(true);
       expect(LangUtil.hasProperty(obj, 'nested.twodeep.falseValue')).to.equal(true);
+      expect(LangUtil.hasProperty(obj, 'nested.twodeep.numValue')).to.equal(true);
 
     });
   });

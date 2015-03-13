@@ -109,46 +109,71 @@ describe('XFlowRunner sync ', function() {
 
 describe('XFlow async ', function() {
 
-  it('loads a json flow', function() {
-    var runner = getXFlowRunner();
+  it('runs the same flow multiple times', function(done) {
+    var runner   = getXFlowRunner();
+    var promises = [];
 
-    var json = getJSON('data/create_object.json');
-    var id     = runner.addFlow(json);
-    var res    = runner.runFlowQ(id);
+    var id;
+    var json;
 
-    expect(res).to.eventually.deep.equal([{}]);
+    json = getJSON('data/create_object.json');
+    id     = runner.addFlow(json);
+    promises.push(runner.runFlowQ(id));
 
-    json = getJSON('data/arithmetic_addition.json');
     id   = runner.addFlow(json);
-    var resX  = runner.runFlowQ(id);
+    promises.push(runner.runFlowQ(id));
 
-    expect(resX).to.eventually.deep.equal([{
-      'ReturnValue': 3
-    }]);
+    id   = runner.addFlow(json);
+    promises.push(runner.runFlowQ(id));
+
+    var res = RSVP.all(promises);
+
+    expect(res).to.eventually.deep.equal(
+      [
+        [{ }],
+        [{ }],
+        [{ }]
+      ]
+    ).notify(done);
+
   });
 
-  it('runs branching flows', function() {
-    var runner = getXFlowRunner();
+  it('runs branching flows', function(done) {
+    var runner   = getXFlowRunner();
+    var promises = [];
 
-    var json = getJSON('data/branch_boolean.json');
-    var id   = runner.addFlow(json);
-    var res  = runner.runFlowQ(id);
+    var id;
+    var json;
 
-    expect(res).to.eventually.deep.equal([{}]);
-
-    json = getJSON('data/branch_boolean_and_expressions_return.json');
+    json = getJSON('data/branch_boolean.json');
     id   = runner.addFlow(json, {
-      'MatchValue' : true
+      'ReturnValue' : 2
     });
-    var resX  = runner.runFlowQ(id);
 
-    expect(resX).to.eventually.deep.equal([{
-      'ReturnValue' : 3
-    }]);
+    promises.push(runner.runFlowQ(id));
 
+    id   = runner.addFlow(json, {
+      'ReturnValue' : 4,
+      'MatchValue'  : true
+    });
+    promises.push(runner.runFlowQ(id));
+
+    json = getJSON('data/create_object.json');
+    id     = runner.addFlow(json);
+    promises.push(runner.runFlowQ(id));
+
+    var res = RSVP.all(promises);
+
+    expect(res).to.eventually.deep.equal(
+      [
+        [ { 'ReturnValue' : 2 } ],
+        [ { 'ReturnValue' : 4 } ],
+        [ { } ]
+      ]
+    ).notify(done);
   });
 
-  it('can single step flows', function() {
+  it('can single step flows', function(done) {
     var runner = getXFlowRunner();
 
     var json = getJSON('data/create_object.json');
@@ -176,7 +201,7 @@ describe('XFlow async ', function() {
 
     nextStep();
 
-    expect(defer.promise).to.eventually.equal(5);
+    expect(defer.promise).to.eventually.equal(5).notify(done);
 
   });
 

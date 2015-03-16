@@ -95,7 +95,7 @@ gulp.task('build', ['lint-src', 'clean'], function(done) {
       }))
       .pipe(gulp.dest(destinationFolder))
       .on('end', done);
-  });
+  }).catch(done);
 });
 
 // Bundle our app for our unit tests

@@ -274,6 +274,17 @@ describe('Lang utils ', function() {
 
   describe('mergeDict ', function() {
 
+    it('should not fail with only one argument', function() {
+
+      expect(LangUtil.mergeDict(
+        { }
+      )).to.deep.equal({});
+
+    });
+  });
+
+  describe('mergeDict ', function() {
+
     it('should properly merge 2 dicts', function() {
 
       expect(LangUtil.mergeDict(
@@ -332,6 +343,26 @@ describe('Lang utils ', function() {
         { 'a' : 5, 'check' : true,  'num' : 2 },
         { 'a' : 6, 'check' : false, 'num' : 3 }
       )).to.deep.equal({ 'a' : 3, 'check' : false, 'num' : 2 });
+
+    });
+
+    it('should properly merge 5 dicts', function() {
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4 },
+        { 'a' : 5 },
+        { 'a' : 6 },
+        { 'a' : 7 }
+      )).to.deep.equal({ 'a' : 3 });
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4, 'check' : false },
+        { 'a' : 5, 'check' : true,  'num' : 2 },
+        { 'a' : 6, 'check' : false, 'num' : 3 },
+        { 'a' : 6, 'check' : false, 'obj' : {} }
+      )).to.deep.equal({ 'a' : 3, 'check' : false, 'num' : 2, 'obj' : {} });
 
     });
   });

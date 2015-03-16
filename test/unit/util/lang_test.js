@@ -257,6 +257,85 @@ describe('Lang utils ', function() {
     });
   });
 
+  describe('assertType ', function() {
+
+    it('should error on invalid types', function() {
+
+      expect(function() {
+        LangUtil.assertType('fnord', 1);
+      }).to.throw(Error);
+
+      expect(function() {
+        LangUtil.assertType('boolean', 1);
+      }).to.throw(Error);
+
+    });
+  });
+
+  describe('mergeDict ', function() {
+
+    it('should properly merge 2 dicts', function() {
+
+      expect(LangUtil.mergeDict(
+        { },
+        { }
+      )).to.deep.equal({});
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4 }
+      )).to.deep.equal({ 'a' : 3 });
+
+    });
+
+    it('should properly merge 3 dicts', function() {
+
+      expect(LangUtil.mergeDict(
+        { },
+        { },
+        { }
+      )).to.deep.equal({});
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4 },
+        { 'a' : 5 }
+      )).to.deep.equal({ 'a' : 3 });
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4, 'check' : false },
+        { 'a' : 5, 'check' : true }
+      )).to.deep.equal({ 'a' : 3, 'check' : false });
+
+    });
+
+    it('should properly merge 4 dicts', function() {
+
+      expect(LangUtil.mergeDict(
+        { },
+        { },
+        { },
+        { }
+      )).to.deep.equal({});
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4 },
+        { 'a' : 5 },
+        { 'a' : 6 }
+      )).to.deep.equal({ 'a' : 3 });
+
+      expect(LangUtil.mergeDict(
+        { 'a' : 3 },
+        { 'a' : 4, 'check' : false },
+        { 'a' : 5, 'check' : true,  'num' : 2 },
+        { 'a' : 6, 'check' : false, 'num' : 3 }
+      )).to.deep.equal({ 'a' : 3, 'check' : false, 'num' : 2 });
+
+    });
+  });
+
 });
 
 

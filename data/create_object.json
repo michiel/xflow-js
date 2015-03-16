@@ -1,6 +1,7 @@
 {
   "id": "asd",
   "name": "asd",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

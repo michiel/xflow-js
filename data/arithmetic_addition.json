@@ -1,6 +1,7 @@
 {
   "id": "add",
   "name": "add",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

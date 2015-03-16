@@ -15,6 +15,10 @@
       "minLength": 1,
       "default": "flowName"
     },
+    "name": {
+      "id": "version",
+      "type": "number"
+    },
     "requirements": {
       "id": "requirements",
       "type": "array",

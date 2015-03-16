@@ -1,6 +1,7 @@
 {
   "id": "loop",
   "name": "loop",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

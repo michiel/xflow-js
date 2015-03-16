@@ -1,6 +1,7 @@
 {
   "id": "branch",
   "name": "branch",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

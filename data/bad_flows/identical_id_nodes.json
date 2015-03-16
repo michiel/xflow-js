@@ -1,6 +1,7 @@
 {
   "id": "multiple_id",
   "name": "multiple_id",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

@@ -1,6 +1,7 @@
 {
   "id": "no_entry",
   "name": "no_entry",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

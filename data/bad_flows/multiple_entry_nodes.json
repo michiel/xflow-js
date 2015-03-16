@@ -1,6 +1,7 @@
 {
   "id": "multiple_entry",
   "name": "multiple_entry",
+  "version": 1,
   "requirements": [
     {
       "type": "flow",

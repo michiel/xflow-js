@@ -52,6 +52,17 @@ describe('flox sync substituteExpression ', function() {
         expect(res).to.equal('444444+444444+444444');
       });
 
+    it('should thow an Error when using null or undefined values in an expression', function() {
+        var expr = '$A+$A+$A';
+        expect(
+          function() {
+            substituteExpression(expr, {
+              'A' : null
+            });
+          }
+        ).to.throw(Error);
+      });
+
   });
 
 describe('flox sync substitute and parse ', function() {

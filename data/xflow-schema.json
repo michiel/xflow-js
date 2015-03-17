@@ -71,7 +71,11 @@
           }
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required" : [
+        "in",
+        "out"
+      ]
     },
     "variables": {
       "id": "variables",
@@ -106,7 +110,7 @@
       "uniqueItems": false,
       "additionalItems": true,
       "items": {
-        "type": "object",
+        "type": "array",
         "oneOf" : [
           { "$ref": "#/definitions/flowEdge" }
         ]
@@ -145,7 +149,12 @@
         },
         "value" : {
         }
-      }
+      },
+      "additionalProperties" : false,
+      "required": [
+        "name",
+        "type"
+      ]
     },
     "flowNode" : {
       "properties" : {
@@ -164,7 +173,15 @@
         "parameters" : {
           "type" : "object"
         }
-      }
+      },
+      "additionalProperties" : false,
+      "required": [
+        "id",
+        "type",
+        "action",
+        "label",
+        "parameters"
+      ]
     },
     "flowEdge" : {
       "properties" : {
@@ -176,7 +193,8 @@
         "items": {
           "type": "number"
         },
-      "additionalProperties": false
+        "additionalProperties": false
+      }
     },
     "flowBranch" : {
       "properties" : {
@@ -208,3 +226,4 @@
     "branches"
   ]
 }
+

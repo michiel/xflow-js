@@ -52,7 +52,7 @@ describe('JSON data - graph validation ', function() {
       var res  = tv4.validate(json, schemaJSON);
       expect(res).to.equal(false);
 
-      res  = (new XFlowValidator(json, schemaJSON)).validate();
+      res  = (new XFlowValidator()).validate(json);
       expect(res).to.equal(false);
 
     });
@@ -61,7 +61,7 @@ describe('JSON data - graph validation ', function() {
     goodFlowFiles.forEach(function(file) {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
-      var res  = (new XFlowValidator(json, schemaJSON)).validate();
+      var res  = (new XFlowValidator()).validate(json);
       expect(res).to.equal(true);
     });
   });
@@ -70,7 +70,7 @@ describe('JSON data - graph validation ', function() {
     badFlowFiles.forEach(function(file) {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
-      var res  = (new XFlowValidator(json, schemaJSON)).validate();
+      var res  = (new XFlowValidator()).validate(json);
       expect(res).to.equal(false);
     });
 

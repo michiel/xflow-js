@@ -15,7 +15,7 @@ function getXFlowFactory() {
 describe('XFlowFactory Factory ', function() {
 
   it('loads a valid json flow', function() {
-    var data = fs.readFileSync('data/create_object.json', 'utf-8');
+    var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
     var json = JSON.parse(data);
     var res = getXFlowFactory().buildFlow(json);
     expect(res).to.be.an.instanceof(XFlow);

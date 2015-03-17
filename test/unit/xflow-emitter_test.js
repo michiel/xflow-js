@@ -15,7 +15,7 @@ function getXFlow(json, params) {
 describe('xFlow sync emitter ', function() {
 
     it('loads a json flow', function() {
-        var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
+        var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var flow = getXFlow(json, {});
 
@@ -40,7 +40,7 @@ describe('xFlow sync emitter ', function() {
 describe('xFlow async event emission', function() {
 
     it('executes a flow and emits events', function(done) {
-        var data = fs.readFileSync('data/branch_boolean.json', 'utf-8');
+        var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var flow = getXFlow(json, {});
 

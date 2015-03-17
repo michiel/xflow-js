@@ -12,7 +12,7 @@ var isTerminalNode = FlowUtil.isTerminalNode;
 
 describe('XFlow utils ', function() {
 
-  var data = fs.readFileSync('data/create_object.json', 'utf-8');
+  var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
   var json = JSON.parse(data);
 
   it('can find a single entry node', function() {
@@ -68,7 +68,7 @@ describe('XFlow utils / bad data ', function() {
   });
 
   it('can find a single entry node', function() {
-    var data = fs.readFileSync('data/bad_flows/identical_id_nodes.json', 'utf-8');
+    var data = fs.readFileSync('data/invalid_flows/identical_id_nodes.json', 'utf-8');
     var json = JSON.parse(data);
 
     expect(function() {

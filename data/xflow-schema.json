@@ -94,7 +94,7 @@
       "id": "nodes",
       "type": "array",
       "minItems": 2,
-      "uniqueItems": false,
+      "uniqueItems": true,
       "additionalItems": true,
       "items": {
         "type": "object",
@@ -107,7 +107,7 @@
       "id": "edges",
       "type": "array",
       "minItems": 1,
-      "uniqueItems": false,
+      "uniqueItems": true,
       "additionalItems": true,
       "items": {
         "type": "array",
@@ -120,7 +120,7 @@
       "id": "branches",
       "type": "array",
       "minItems": 0,
-      "uniqueItems": false,
+      "uniqueItems": true,
       "additionalItems": true,
       "items": {
         "type": "object",
@@ -148,6 +148,12 @@
           ]
         },
         "value" : {
+          "type": "object",
+          "anyOf": [
+            { "type": "boolean" },
+            { "type": "string" },
+            { "type": "number" }
+          ]
         }
       },
       "additionalProperties" : false,
@@ -208,9 +214,20 @@
           "type" : "string"
         },
         "value" : {
-          "type" : "string"
+          "type": "object",
+          "anyOf": [
+            { "type": "boolean" },
+            { "type": "string" },
+            { "type": "number" }
+          ]
         }
-      }
+      },
+      "additionalProperties" : false,
+      "required": [
+        "branch",
+        "name",
+        "value"
+      ]
     }
   },
   "additionalProperties": false,

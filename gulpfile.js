@@ -1,3 +1,4 @@
+/* global require, __dirname */
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 const fs = require('fs');
@@ -68,7 +69,7 @@ gulp.task('lint-test', function() {
 gulp.task('build', ['lint-src', 'clean'], function(done) {
   esperanto.bundle({
     base: 'lib',
-    entry: config.entryFileName,
+    entry: config.entryFileName
   }).then(function(bundle) {
     var res = bundle.toUmd({
       sourceMap: true,
@@ -85,13 +86,13 @@ gulp.task('build', ['lint-src', 'clean'], function(done) {
       .pipe($.plumber())
       .pipe($.sourcemaps.init({ loadMaps: true }))
       .pipe($.babel({ blacklist: ['useStrict'] }))
-      .pipe($.sourcemaps.write('./', {addComment: false}))
+      .pipe($.sourcemaps.write('./', { addComment: false }))
       .pipe(gulp.dest(destinationFolder))
       .pipe($.filter(['*', '!**/*.js.map']))
       .pipe($.rename(exportFileName + '.min.js'))
       .pipe($.uglifyjs({
         outSourceMap: true,
-        inSourceMap: destinationFolder + '/' + exportFileName + '.js.map',
+        inSourceMap: destinationFolder + '/' + exportFileName + '.js.map'
       }))
       .pipe(gulp.dest(destinationFolder))
       .on('end', done);
@@ -109,7 +110,7 @@ gulp.task('browserify', function() {
   }));
   var bundleStream = bundler.bundle();
   return bundleStream
-    .on('error', function(err){
+    .on('error', function(err) {
       console.log(err.message);
       this.emit('end');
     })
@@ -133,10 +134,10 @@ gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
 });
 
 function test() {
-  return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], {read: false})
+  return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], { read: false })
     // .pipe($.plumber())
-    .pipe($.mocha({reporter: 'dot', globals: config.mochaGlobals}));
-};
+    .pipe($.mocha({ reporter: 'dot', globals: config.mochaGlobals }));
+}
 
 // Lint and run our tests
 gulp.task('test', ['lint-src', 'lint-test'], function() {
@@ -157,8 +158,13 @@ gulp.task('watch', function() {
 
 // Set up a livereload environment for our spec runner
 gulp.task('test-browser', ['build-in-sequence'], function() {
-  $.livereload.listen({port: 35729, host: 'localhost', start: true});
-  return gulp.watch(['lib/**/*.js', 'test/**/*', '.jshintrc', 'test/.jshintrc'], ['build-in-sequence']);
+  $.livereload.listen({ port: 35729, host: 'localhost', start: true });
+  return gulp.watch([
+    'lib/**/*.js',
+    'test/**/*',
+    '.jshintrc',
+    'test/.jshintrc'
+  ], ['build-in-sequence']);
 });
 
 // An alias of test

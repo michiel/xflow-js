@@ -100,14 +100,14 @@ describe('flox flow invocation ', function() {
     it('evaluates an expression without variables "1+2"', function() {
 
         var node = {
-          'id'     : 2,
-          'type'   : 'flow',
-          'action' : 'flox-arithmetic',
+          'id'       : 2,
+          'nodetype' : 'flow',
+          'action'   : 'flox-arithmetic',
           'parameters': {
             'expression' : '1+2',
             'returns'    : {
               'name'   : 'result',
-              'type'   : 'number'
+              'vtype'  : 'number'
             }
           }
         };
@@ -119,14 +119,14 @@ describe('flox flow invocation ', function() {
     it('evaluates an expression with variables "$A+$B"', function() {
 
         var node = {
-          'id'     : 2,
-          'type'   : 'flow',
-          'action' : 'flox-arithmetic',
+          'id'       : 2,
+          'nodetype' : 'flow',
+          'action'   : 'flox-arithmetic',
           'parameters': {
             'expression' : '$A+$B',
             'returns'    : {
               'name'   : 'result',
-              'type'   : 'number'
+              'vtype'  : 'number'
             }
           }
         };

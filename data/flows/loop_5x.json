@@ -4,7 +4,7 @@
   "version": 1,
   "requirements": [
     {
-      "type": "flow",
+      "xtype": "flow",
       "version": 1
     }
   ],
@@ -12,75 +12,75 @@
     "in" : [
       {
         "name"  : "CounterValue",
-        "type"  : "number",
+        "vtype"  : "number",
         "value" : 0
       }
     ],
     "out" : [
       {
         "name" : "CounterValue",
-        "type" : "number"
+        "vtype" : "number"
       }
     ]
   },
   "variables" : [
     {
       "name": "CounterValue",
-      "type": "number"
+      "vtype": "number"
     },
     {
       "name": "LoopValue",
-      "type": "boolean",
+      "vtype": "boolean",
       "value" : false
     }
   ],
   "nodes": [
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 3,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue>5",
         "returns"    : {
           "name"   : "LoopValue",
-          "type"   : "boolean"
+          "vtype"   : "boolean"
         }
       }
     },
     {
       "id": 4,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "branch",
       "label" : "Start",
       "parameters": {
         "name": "LoopValue",
-        "type": "boolean"
+        "vtype": "boolean"
       }
     },
     {
       "id": 5,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "end",
       "label" : "Start",
       "parameters": {}

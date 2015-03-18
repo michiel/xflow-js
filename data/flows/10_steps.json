@@ -5,7 +5,7 @@
   "version": 1,
   "requirements": [
     {
-      "type": "flow",
+      "xtype": "flow",
       "version": 1
     }
   ],
@@ -13,139 +13,139 @@
     "in" : [
       {
         "name": "CounterValue",
-        "type": "number",
+        "vtype": "number",
         "value": 0
       }
     ],
     "out" : [
       {
         "name": "CounterValue",
-        "type": "number"
+        "vtype": "number"
       }
     ]
   },
   "variables" : [
     {
       "name": "CounterValue",
-      "type": "number",
+      "vtype": "number",
       "value": 0
     }
   ],
   "nodes": [
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 3,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 4,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 5,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 6,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 7,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 8,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 9,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
         "returns"    : {
           "name"   : "CounterValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 10,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "end",
       "label" : "End",
       "parameters": {}

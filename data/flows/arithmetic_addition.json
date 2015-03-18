@@ -4,7 +4,7 @@
   "version": 1,
   "requirements": [
     {
-      "type": "flow",
+      "xtype": "flow",
       "version": 1
     }
   ],
@@ -12,52 +12,52 @@
     "in" : [
       {
         "name"  : "value4",
-        "type"  : "number",
+        "vtype"  : "number",
         "value" : 4
       },
       {
         "name"  : "value5",
-        "type"  : "number",
+        "vtype"  : "number",
         "value" : 5
       }
     ],
     "out" : [
       {
-        "type" : "number",
+        "vtype" : "number",
         "name" : "ReturnValue"
       }
     ]
   },
   "variables" : [
     {
-      "type" : "boolean",
+      "vtype" : "boolean",
       "name" : "ReturnValue"
     }
   ],
   "nodes": [
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "flox",
       "label" : "Flox",
       "parameters": {
         "expression" : "1+2",
         "returns"    : {
           "name"   : "ReturnValue",
-          "type"   : "number"
+          "vtype"   : "number"
         }
       }
     },
     {
       "id": 3,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "end",
       "label" : "End",
       "parameters": {}

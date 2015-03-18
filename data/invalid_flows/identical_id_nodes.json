@@ -4,7 +4,7 @@
   "version": 1,
   "requirements": [
     {
-      "type": "flow",
+      "xtype": "flow",
       "version": 1
     }
   ],
@@ -19,28 +19,28 @@
   "nodes": [
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 3,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "end",
       "label" : "End",
       "parameters": {}

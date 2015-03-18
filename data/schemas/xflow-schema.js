@@ -27,8 +27,8 @@ export default {
       "items": {
         "type": "object",
         "properties": {
-          "type": {
-            "id": "type",
+          "xtype": {
+            "id": "xtype",
             "type": "string",
             "minLength": 1
           },
@@ -137,7 +137,7 @@ export default {
           "type": "string",
           "minLength": 1
         },
-        "type" : {
+        "vtype" : {
           "type": "string",
           "minLength": 1,
           "default": "string",
@@ -159,7 +159,7 @@ export default {
       "additionalProperties" : false,
       "required": [
         "name",
-        "type"
+        "vtype"
       ]
     },
     "flowNode" : {
@@ -167,7 +167,7 @@ export default {
         "id" : {
           "type" : "number"
         },
-        "type" : {
+        "nodetype" : {
           "type" : "string"
         },
         "action" : {
@@ -183,7 +183,7 @@ export default {
       "additionalProperties" : false,
       "required": [
         "id",
-        "type",
+        "nodetype",
         "action",
         "label",
         "parameters"

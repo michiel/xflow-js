@@ -37,7 +37,7 @@ describe('JSON data ', function() {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
       var res  = tv4.validate(json, schemaJSON);
-     //  console.log('XXX', res, ' : ', file);
+      // console.log('XXX', res, ' : ', file);
       expect(res).to.equal(true);
     });
   });

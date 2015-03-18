@@ -4,11 +4,11 @@
   "version": 1,
   "requirements": [
     {
-      "type": "flow",
+      "xtype": "flow",
       "version": 1
     },
     {
-      "type": "object",
+      "xtype": "object",
       "version": 1
     }
   ],
@@ -16,34 +16,34 @@
     "in" : [
       {
         "name"  : "UserName",
-        "type"  : "string",
+        "vtype"  : "string",
         "value" : "Joe Blow"
       }
     ],
     "out" : [
       {
-        "type" : "boolean",
+        "vtype" : "boolean",
         "name" : "ReturnValue"
       }
     ]
   },
   "variables" : [
     {
-      "type" : "boolean",
+      "vtype" : "boolean",
       "name" : "ReturnValue"
     }
   ],
   "nodes": [
     {
       "id": 1,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "start",
       "label" : "Start",
       "parameters": {}
     },
     {
       "id": 2,
-      "type": "object",
+      "nodetype": "object",
       "action": "create",
       "label" : "Create User",
       "parameters": {
@@ -52,7 +52,7 @@
     },
     {
       "id": 3,
-      "type": "object",
+      "nodetype": "object",
       "action": "setattributes",
       "label" : "Set name",
       "parameters": {
@@ -64,7 +64,7 @@
     },
     {
       "id": 4,
-      "type": "object",
+      "nodetype": "object",
       "action": "save",
       "label" : "Save User",
       "parameters": {
@@ -73,7 +73,7 @@
     },
     {
       "id": 5,
-      "type": "flow",
+      "nodetype": "flow",
       "action": "end",
       "label" : "End",
       "parameters": {}

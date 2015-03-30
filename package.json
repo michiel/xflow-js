@@ -60,7 +60,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "babelBoilerplateOptions": {
-    "entryFileName": "xflow.js",
+    "entryFileName": "xflow-target-browser.js",
     "exportVarName": "XFlow",
     "mochaGlobals": [
       "stub",

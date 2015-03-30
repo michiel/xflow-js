@@ -19,8 +19,8 @@
     "jscs"
   ],
   "dependencies": {
+    "eventemitter2": "^0.4.14",
     "jsondiffpatch": "^0.1.31",
-    "q": "^1.1.2",
     "rsvp": "^3.0.17",
     "tv4": "^1.1.9"
   },

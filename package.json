@@ -25,9 +25,9 @@
     "tv4": "^1.1.9"
   },
   "devDependencies": {
-    "babel": "^4.3.0",
+    "babel": "^5.0.0",
     "babel-loader": "^4.0.0",
-    "babelify": "^5.0.3",
+    "babelify": "^6.0.0",
     "browserify": "^8.1.1",
     "chai": "^2.0.0",
     "chai-as-promised": "^4.2.0",
@@ -35,7 +35,7 @@
     "esperanto": "^0.6.7",
     "glob": "^4.3.5",
     "gulp": "^3.8.10",
-    "gulp-babel": "^4.0.0",
+    "gulp-babel": "^5.0.0",
     "gulp-file": "^0.2.0",
     "gulp-filter": "^2.0.0",
     "gulp-istanbul": "^0.6.0",

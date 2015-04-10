@@ -1,2 +1,6 @@
-rename state -> scope
+
+  - Rename state -> scope
+  - Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
+  - Fix build copying assets (schema, parser)
+
 

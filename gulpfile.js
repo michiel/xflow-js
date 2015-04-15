@@ -17,11 +17,31 @@ const manifest = require('./package.json');
 const config = manifest.babelBoilerplateOptions;
 const mainFile = manifest.main;
 const destinationFolder = path.dirname(mainFile);
+const extFileFolder = destinationFolder + '/ext';
+console.log('extF : ' + extFileFolder);
 const exportFileName = path.basename(mainFile, path.extname(mainFile));
 
 // Remove the built files
 gulp.task('clean', function(cb) {
-  del([destinationFolder], cb);
+  try {
+    del(
+      [
+        extFileFolder,
+        destinationFolder
+      ],
+      function (err, deletedFiles) {
+        if (err) {
+          console.log('Err:', err);
+        }
+        console.log('Files deleted:', deletedFiles);
+        cb(err, deletedFiles);
+      }
+    );
+  } catch(e) {
+    console.log('wtfbbq' + e);
+    cb();
+  }
+
 });
 
 // Remove our temporary files
@@ -54,6 +74,25 @@ function createLintTask(taskName, files) {
   });
 }
 
+gulp.task('copy-ext', function() {
+
+  mkdirp.sync(extFileFolder, function(e) {
+    if (e) {
+      console.log('Err mkdir ' + e);
+    }
+  });
+
+  console.log('xxx');
+
+  gulp.src('ext/parser/flox-bool.js')
+  .pipe(gulp.dest(extFileFolder));
+
+  console.log('xxx');
+  gulp.src('data/schemas/xflow-schema.json')
+  .pipe(gulp.dest(extFileFolder));
+
+  console.log('xxx!');
+});
 
 // Lint our source code
 createLintTask('lint-src', ['src/**/*.js']);
@@ -75,7 +114,8 @@ gulp.task('build', ['lint-src', 'clean'], function(done) {
     });
 
     // Write the generated sourcemap
-    mkdirp.sync(destinationFolder);
+    // mkdirp.sync(destinationFolder);
+    mkdirp.sync(extFileFolder);
     fs.writeFileSync(path.join(destinationFolder, exportFileName + '.js'), res.map.toString());
 
     $.file(exportFileName + '.js', res.code, { src: true })
@@ -162,3 +202,4 @@ gulp.task('test-browser', ['build-in-sequence'], function() {
 
 // An alias of test
 gulp.task('default', ['test']);
+gulp.task('dist', ['build', 'copy-ext']);

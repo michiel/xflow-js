@@ -19,6 +19,7 @@
     "jscs"
   ],
   "dependencies": {
+    "escodegen": "^1.6.1",
     "eventemitter2": "^0.4.14",
     "jsondiffpatch": "^0.1.31",
     "rsvp": "^3.0.17",

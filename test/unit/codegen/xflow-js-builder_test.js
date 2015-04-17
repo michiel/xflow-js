@@ -24,7 +24,7 @@ describe('XFlowJSBuilder basic', function() {
     expect(res).to.deep.equal([{}]);
 
     var builder  = new XFlowJSBuilder(json);
-    var jscode   = builder.generate();
+    var jscode   = builder.generateX();
     var vmResult = vm.runInThisContext(jscode);
     expect(vmResult).to.deep.equal(res);
     // expect(jscode).to.deep.equal(res);

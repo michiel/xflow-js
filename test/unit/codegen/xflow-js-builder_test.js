@@ -31,5 +31,20 @@ describe('XFlowJSBuilder basic', function() {
 
   });
 
+  it('loads a json flow XXX and compiles to JS', function() {
+
+    var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
+    var json = JSON.parse(data);
+    var res = (getXFlow(json, {})).start();
+    expect(res).to.deep.equal([{}]);
+
+    var builder  = new XFlowJSBuilder(json);
+    var jscode   = builder.generateX();
+    var vmResult = vm.runInThisContext(jscode);
+    expect(vmResult).to.deep.equal(res);
+    // expect(jscode).to.deep.equal(res);
+
+  });
+
 });
 

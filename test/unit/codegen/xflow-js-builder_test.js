@@ -14,34 +14,46 @@ function getXFlow(json, params) {
   return new XFlow(json, params, dispatcher);
 }
 
+function buildScript(json) {
+  var builder  = new XFlowJSBuilder(json);
+  var jscode   = builder.generateX();
+  return new vm.Script(jscode, {
+    displayErrors : true
+  });
+}
+
+function loadJson(path) {
+  var data = fs.readFileSync(path, 'utf-8');
+  return JSON.parse(data);
+}
+
 describe('XFlowJSBuilder basic', function() {
 
   it('loads a json flow and compiles to JS', function() {
 
-    var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
-    var json = JSON.parse(data);
-    var res = (getXFlow(json, {})).start();
-    expect(res).to.deep.equal([{}]);
-
-    var builder  = new XFlowJSBuilder(json);
-    var jscode   = builder.generateX();
-    var vmResult = vm.runInThisContext(jscode);
-    expect(vmResult).to.deep.equal(res);
-  });
-
-  it('loads a json flow with a boolean branch and compiles to JS', function() {
-
-    var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
-    var json = JSON.parse(data);
+    var json = loadJson('data/flows/create_object.json');
     var skope = {
       scope : {}
     };
     var res = (getXFlow(json, {})).start();
     expect(res).to.deep.equal([{}]);
 
-    var builder  = new XFlowJSBuilder(json);
-    var jscode   = builder.generateX();
-    var script   = new vm.Script(jscode);
+    var script   = buildScript(json);
+    var ctxt     = vm.createContext(skope);
+    var vmResult = script.runInNewContext(ctxt);
+    expect(vmResult).to.deep.equal(res);
+  });
+
+  it('loads a json flow with a boolean branch and compiles to JS', function() {
+
+    var json = loadJson('data/flows/branch_boolean.json');
+    var skope = {
+      scope : {}
+    };
+    var res = (getXFlow(json, {})).start();
+    expect(res).to.deep.equal([{}]);
+
+    var script   = buildScript(json);
     var ctxt     = vm.createContext(skope);
     var vmResult = script.runInNewContext(ctxt);
     expect(vmResult).to.deep.equal(res);

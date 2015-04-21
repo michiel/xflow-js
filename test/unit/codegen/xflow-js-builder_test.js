@@ -16,7 +16,7 @@ function getXFlow(json, params) {
 
 function buildScript(json) {
   var builder  = new XFlowJSBuilder(json);
-  var jscode   = builder.generateX();
+  var jscode   = builder.generate();
   console.log('JSCODE ', jscode);
   return new vm.Script(jscode, {
     displayErrors : true
@@ -64,7 +64,10 @@ describe('XFlowJSBuilder basic', function() {
 
     var json = loadJson('data/flows/loop_5x.json');
     var skope = {
-      scope : {}
+      scope : {},
+      Flox  : {
+        'evalexpr' : function() {return 5;}
+      }
     };
     var res = (getXFlow(json, {})).start();
     // expect(res).to.deep.equal([{}]);

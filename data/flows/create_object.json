@@ -10,6 +10,10 @@
     {
       "xtype": "object",
       "version": 1
+    },
+    {
+      "xtype": "flox",
+      "version": 1
     }
   ],
   "signature" : {

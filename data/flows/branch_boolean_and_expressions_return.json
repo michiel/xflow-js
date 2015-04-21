@@ -6,6 +6,10 @@
     {
       "xtype": "flow",
       "version": 1
+    },
+    {
+      "xtype": "flox",
+      "version": 1
     }
   ],
   "signature" : {
@@ -50,8 +54,8 @@
     },
     {
       "id": 3,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Flox",
       "parameters": {
         "expression" : "1+2",
@@ -63,8 +67,8 @@
     },
     {
       "id": 4,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Flox",
       "parameters": {
         "expression" : "3+3",

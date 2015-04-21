@@ -6,6 +6,10 @@
     {
       "xtype": "flow",
       "version": 1
+    },
+    {
+      "xtype": "flox",
+      "version": 1
     }
   ],
   "signature" : {
@@ -44,8 +48,8 @@
     },
     {
       "id": 2,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -57,8 +61,8 @@
     },
     {
       "id": 3,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue>5",

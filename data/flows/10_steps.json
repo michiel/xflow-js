@@ -7,6 +7,10 @@
     {
       "xtype": "flow",
       "version": 1
+    },
+    {
+      "xtype": "flox",
+      "version": 1
     }
   ],
   "signature" : {
@@ -41,8 +45,8 @@
     },
     {
       "id": 2,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -54,8 +58,8 @@
     },
     {
       "id": 3,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -67,8 +71,8 @@
     },
     {
       "id": 4,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -80,8 +84,8 @@
     },
     {
       "id": 5,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -93,8 +97,8 @@
     },
     {
       "id": 6,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -106,8 +110,8 @@
     },
     {
       "id": 7,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -119,8 +123,8 @@
     },
     {
       "id": 8,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -132,8 +136,8 @@
     },
     {
       "id": 9,
-      "nodetype": "flow",
-      "action": "flox",
+      "nodetype": "flox",
+      "action": "eval",
       "label" : "Increment",
       "parameters": {
         "expression" : "$CounterValue+1",

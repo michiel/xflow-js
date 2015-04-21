@@ -17,6 +17,7 @@ function getXFlow(json, params) {
 function buildScript(json) {
   var builder  = new XFlowJSBuilder(json);
   var jscode   = builder.generateX();
+  console.log('JSCODE ', jscode);
   return new vm.Script(jscode, {
     displayErrors : true
   });
@@ -52,6 +53,21 @@ describe('XFlowJSBuilder basic', function() {
     };
     var res = (getXFlow(json, {})).start();
     expect(res).to.deep.equal([{}]);
+
+    var script   = buildScript(json);
+    var ctxt     = vm.createContext(skope);
+    var vmResult = script.runInNewContext(ctxt);
+    expect(vmResult).to.deep.equal(res);
+  });
+
+  it('loads a json flow with a flox expression and compiles to JS', function() {
+
+    var json = loadJson('data/flows/loop_5x.json');
+    var skope = {
+      scope : {}
+    };
+    var res = (getXFlow(json, {})).start();
+    // expect(res).to.deep.equal([{}]);
 
     var script   = buildScript(json);
     var ctxt     = vm.createContext(skope);

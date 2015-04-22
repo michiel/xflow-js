@@ -18,8 +18,8 @@ Browser,
 
 Documentation
 -------------
-
-    yuidoc -t ~/src/yuidoc-theme-blue lib
+ 
+    yuidoc -C -t ~/src/yuidoc-theme-blue lib
 
 TODO
 ----

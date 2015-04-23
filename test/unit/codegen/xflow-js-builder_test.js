@@ -25,12 +25,9 @@ function buildScript(json) {
   });
 }
 
-function getEnv() {
+function getEnv(skoop) {
   return {
-    scope : {
-      CounterValue : 0,
-      LoopValue    : false
-    },
+    scope : skoop || {},
     Flox  : {
       'evalexpr' : function(exp, scope) {
         // console.log('EXP ', exp, 'SCOPE ', scope);
@@ -55,7 +52,9 @@ describe('XFlowJSBuilder basic', function() {
       scope : {}
     };
     var res = (getXFlow(json, {})).start();
-    expect(res).to.deep.equal([{}]);
+    expect(res).to.deep.equal([{
+      ReturnValue : false
+    }]);
 
     var script   = buildScript(json);
     var ctxt     = vm.createContext(skope);
@@ -81,22 +80,18 @@ describe('XFlowJSBuilder basic', function() {
   it('loads a json flow with a flox expression and compiles to JS', function() {
 
     var json = loadJson('data/flows/loop_5x.json');
-    var skope = getEnv();
-//     skope.scope = {
-//       CounterValue : 0,
-//       LoopValue    : 0
-//     };
-    // var res = (getXFlow(json, {})).start();
-    // expect(res).to.deep.equal([{}]);
+    var initScope = {
+      'CounterValue' : 0
+    };
+    var res = (getXFlow(json, initScope)).start();
+    expect(res).to.deep.equal([{
+      'CounterValue' : 6
+    }]);
 
-    var out = [{
-      CounterValue : 6,
-      LoopValue    : true
-    }];
     var script   = buildScript(json);
-    var ctxt     = vm.createContext(skope);
+    var ctxt     = vm.createContext(getEnv(initScope));
     var vmResult = script.runInNewContext(ctxt);
-    expect(vmResult).to.deep.equal(out);
+    expect([vmResult]).to.deep.equal(res);
   });
 
 });

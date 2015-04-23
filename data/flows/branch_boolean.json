@@ -22,8 +22,8 @@
     ],
     "out" : [
       {
-        "vtype" : "number",
-        "name" : "ReturnValue"
+        "name" : "ReturnValue",
+        "vtype" : "number"
       }
     ]
   },

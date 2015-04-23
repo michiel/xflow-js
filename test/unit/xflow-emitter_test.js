@@ -32,7 +32,9 @@ describe('xFlow sync emitter ', function() {
         });
 
         var res = flow.start();
-        expect(res).to.deep.equal([{}]);
+        expect(res).to.deep.equal({
+          'ReturnValue' : 0
+        });
       });
 
   });
@@ -57,7 +59,9 @@ describe('xFlow async event emission', function() {
         });
 
         var res = flow.startQ();
-        expect(res).to.eventually.deep.equal([{}]).notify(done);
+        expect(res).to.eventually.deep.equal({
+          'ReturnValue' : 0
+        }).notify(done);
       });
 
   });

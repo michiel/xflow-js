@@ -35,18 +35,22 @@ describe('XFlowRunner sync ', function() {
     var runner = getXFlowRunner();
 
     var json = getJSON('data/flows/create_object.json');
-    var id   = runner.addFlow(json);
+    var id   = runner.addFlow(json, {
+      'ReturnValue' : 2
+    });
     var res  = runner.runFlow(id);
 
-    expect(res).to.deep.equal([{}]);
+    expect(res).to.deep.equal({
+      'ReturnValue' : 2
+    });
 
     json = getJSON('data/flows/arithmetic_addition.json');
     id   = runner.addFlow(json);
     res  = runner.runFlow(id);
 
-    expect(res).to.deep.equal([{
+    expect(res).to.deep.equal({
       'ReturnValue': 3
-    }]);
+    });
   });
 
   it('runs branching flows', function() {
@@ -55,7 +59,7 @@ describe('XFlowRunner sync ', function() {
     var id   = runner.addFlow(json);
     var res  = runner.runFlow(id);
 
-    expect(res).to.deep.equal([{}]);
+    expect(res).to.deep.equal({});
 
     json = getJSON('data/flows/branch_boolean_and_expressions_return.json');
     id   = runner.addFlow(json, {
@@ -63,9 +67,9 @@ describe('XFlowRunner sync ', function() {
     });
     res  = runner.runFlow(id);
 
-    expect(res).to.deep.equal([{
+    expect(res).to.deep.equal({
       'ReturnValue' : 3
-    }]);
+    });
 
   });
 
@@ -107,7 +111,7 @@ describe('XFlowRunner sync ', function() {
   });
 });
 
-describe('XFlow async ', function() {
+describe('XFlowRunner async ', function() {
 
   it('runs the same flow multiple times', function(done) {
     var runner   = getXFlowRunner();
@@ -130,9 +134,15 @@ describe('XFlow async ', function() {
 
     expect(res).to.eventually.deep.equal(
       [
-        [{ }],
-        [{ }],
-        [{ }]
+        {
+          'ReturnValue' : false
+        },
+        {
+          'ReturnValue' : false
+        },
+        {
+          'ReturnValue' : false
+        }
       ]
     ).notify(done);
 
@@ -159,16 +169,18 @@ describe('XFlow async ', function() {
     promises.push(runner.runFlowQ(id));
 
     json = getJSON('data/flows/create_object.json');
-    id     = runner.addFlow(json);
+    id     = runner.addFlow(json, {
+      'ReturnValue' : 1
+    });
     promises.push(runner.runFlowQ(id));
 
     var res = RSVP.all(promises);
 
     expect(res).to.eventually.deep.equal(
       [
-        [ { 'ReturnValue' : 2 } ],
-        [ { 'ReturnValue' : 4 } ],
-        [ { } ]
+        { 'ReturnValue' : 2 },
+        { 'ReturnValue' : 4 },
+        { 'ReturnValue' : 1 }
       ]
     ).notify(done);
   });

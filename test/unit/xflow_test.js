@@ -29,14 +29,18 @@ describe('XFlow sync ', function() {
         var data = fs.readFileSync('data/flows/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).start();
-        expect(res).to.deep.equal({ 'ReturnValue': 3 });
+        expect(res).to.deep.equal({
+          'ReturnValue': 3
+        });
       });
 
     it('runs a flow with a branch  ', function() {
         var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).start();
-        expect(res).to.deep.equal({});
+        expect(res).to.deep.equal({
+          'ReturnValue' : 0
+        });
       });
 
     it('runs a flow with a branch followed by an expression (1+2)', function() {
@@ -111,7 +115,9 @@ describe('XFlow async ', function() {
         var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
-        expect(res).to.eventually.deep.equal({}).notify(done);
+        expect(res).to.eventually.deep.equal({
+          'ReturnValue' : 0
+        }).notify(done);
       });
 
     it('runs a flow with a branch followed by an expression (1+2)', function(done) {

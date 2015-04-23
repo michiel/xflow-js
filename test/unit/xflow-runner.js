@@ -59,11 +59,14 @@ describe('XFlowRunner sync ', function() {
     var id   = runner.addFlow(json);
     var res  = runner.runFlow(id);
 
-    expect(res).to.deep.equal({});
+    expect(res).to.deep.equal({
+      'ReturnValue' : 0
+    });
 
     json = getJSON('data/flows/branch_boolean_and_expressions_return.json');
     id   = runner.addFlow(json, {
-      'MatchValue' : true
+      'ReturnValue' : 3,
+      'MatchValue'  : true
     });
     res  = runner.runFlow(id);
 

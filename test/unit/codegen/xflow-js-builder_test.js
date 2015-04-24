@@ -48,18 +48,18 @@ describe('XFlowJSBuilder basic', function() {
   it('loads a json flow and compiles to JS', function() {
 
     var json = loadJson('data/flows/create_object.json');
-    var skope = {
-      scope : {}
-    };
-    var res = (getXFlow(json, {})).start();
-    expect(res).to.deep.equal({
-      ReturnValue : false
-    });
+//     var res = (getXFlow(json, {})).start();
+//     expect(res).to.deep.equal({
+//       ReturnValue : false
+//     });
 
     var script   = buildScript(json);
-    var ctxt     = vm.createContext(skope);
+    var ctxt     = vm.createContext(getEnv());
     var vmResult = script.runInNewContext(ctxt);
-    expect(vmResult).to.deep.equal(res);
+//     expect(vmResult).to.deep.equal(res);
+    expect(vmResult).to.deep.equal({
+      'ReturnValue' : false
+    });
   });
 
   it('loads a json flow with a boolean branch and compiles to JS', function() {

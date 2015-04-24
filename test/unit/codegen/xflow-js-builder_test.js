@@ -54,7 +54,9 @@ describe('XFlowJSBuilder basic', function() {
 //     });
 
     var script   = buildScript(json);
-    var ctxt     = vm.createContext(getEnv());
+    var ctxt     = vm.createContext(getEnv({
+      'UserName' : 'Joe Blow'
+    }));
     var vmResult = script.runInNewContext(ctxt);
 //     expect(vmResult).to.deep.equal(res);
     expect(vmResult).to.deep.equal({
@@ -65,16 +67,15 @@ describe('XFlowJSBuilder basic', function() {
   it('loads a json flow with a boolean branch and compiles to JS', function() {
 
     var json = loadJson('data/flows/branch_boolean.json');
-    var skope = {
-      scope : {}
-    };
     var res = (getXFlow(json, {})).start();
     expect(res).to.deep.equal({
       'ReturnValue' : 0
     });
 
     var script   = buildScript(json);
-    var ctxt     = vm.createContext(skope);
+    var ctxt     = vm.createContext(getEnv({
+      'MatchValue'  : false
+    }));
     var vmResult = script.runInNewContext(ctxt);
     expect(vmResult).to.deep.equal(res);
   });
@@ -95,6 +96,7 @@ describe('XFlowJSBuilder basic', function() {
     var vmResult = script.runInNewContext(ctxt);
     expect(vmResult).to.deep.equal(res);
   });
+
 
 });
 

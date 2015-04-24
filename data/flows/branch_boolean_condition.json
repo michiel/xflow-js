@@ -33,6 +33,11 @@
     ]
   },
   "variables" : [
+    {
+      "name"  : "ReturnValue",
+      "vtype"  : "number",
+      "value" : 0
+    }
   ],
   "nodes": [
     {

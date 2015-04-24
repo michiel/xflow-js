@@ -29,6 +29,11 @@
   },
   "variables" : [
     {
+      "name"  : "ReturnValue",
+      "vtype"  : "number",
+      "value" : 0
+    },
+    {
       "name"  : "MatchValue",
       "vtype"  : "boolean",
       "value" : true

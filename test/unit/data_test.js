@@ -61,7 +61,10 @@ describe('JSON data - graph validation ', function() {
     goodFlowFiles.forEach(function(file) {
       var data = fs.readFileSync(file, 'utf-8');
       var json = JSON.parse(data);
-      var res  = (new XFlowValidator()).validate(json);
+      var validator = new XFlowValidator();
+      var res  = validator.validate(json);
+      // var errs = validator.validateWithErrors(json);
+      // console.log('Errors', file, errs);
       expect(res).to.equal(true);
     });
   });

@@ -33,6 +33,7 @@
   },
   "variables" : [
     {
+      "value" : false,
       "vtype" : "boolean",
       "name" : "ReturnValue"
     }

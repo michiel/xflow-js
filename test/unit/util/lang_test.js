@@ -218,6 +218,34 @@ describe('Lang utils ', function() {
     });
   });
 
+  describe('isFunction ', function() {
+    it('should always return false for various null forms', function() {
+      var res;
+      res = LangUtil.isFunction();
+      expect(res).to.equal(false);
+      res = LangUtil.isFunction(null);
+      expect(res).to.equal(false);
+      res = LangUtil.isFunction(undefined);
+      expect(res).to.equal(false);
+    });
+    it('should always return false for various non-Function values', function() {
+      var res;
+      res = LangUtil.isFunction(1);
+      expect(res).to.equal(false);
+      res = LangUtil.isFunction('array');
+      expect(res).to.equal(false);
+      res = LangUtil.isFunction(false);
+      expect(res).to.equal(false);
+    });
+    it('should always return true for Functions', function() {
+      var res = LangUtil.isFunction(
+        function() {}
+      );
+      expect(res).to.equal(true);
+    });
+  });
+
+
   describe('hasProperty ', function() {
 
     var obj = {

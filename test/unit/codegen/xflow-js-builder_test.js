@@ -52,9 +52,9 @@ describe('XFlowJSBuilder basic', function() {
       scope : {}
     };
     var res = (getXFlow(json, {})).start();
-    expect(res).to.deep.equal([{
+    expect(res).to.deep.equal({
       ReturnValue : false
-    }]);
+    });
 
     var script   = buildScript(json);
     var ctxt     = vm.createContext(skope);
@@ -69,7 +69,9 @@ describe('XFlowJSBuilder basic', function() {
       scope : {}
     };
     var res = (getXFlow(json, {})).start();
-    expect(res).to.deep.equal([{}]);
+    expect(res).to.deep.equal({
+      'ReturnValue' : 0
+    });
 
     var script   = buildScript(json);
     var ctxt     = vm.createContext(skope);
@@ -84,14 +86,14 @@ describe('XFlowJSBuilder basic', function() {
       'CounterValue' : 0
     };
     var res = (getXFlow(json, initScope)).start();
-    expect(res).to.deep.equal([{
+    expect(res).to.deep.equal({
       'CounterValue' : 6
-    }]);
+    });
 
     var script   = buildScript(json);
     var ctxt     = vm.createContext(getEnv(initScope));
     var vmResult = script.runInNewContext(ctxt);
-    expect([vmResult]).to.deep.equal(res);
+    expect(vmResult).to.deep.equal(res);
   });
 
 });

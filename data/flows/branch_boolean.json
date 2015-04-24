@@ -29,9 +29,9 @@
   },
   "variables" : [
     {
-      "name"  : "MatchValue",
-      "vtype"  : "boolean",
-      "value" : true
+      "name"  : "ReturnValue",
+      "vtype"  : "number",
+      "value" : 0
     }
   ],
   "nodes": [

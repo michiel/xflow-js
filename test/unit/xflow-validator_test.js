@@ -61,6 +61,24 @@ describe('XFlowValidator load bad flow ', function() {
       expect(res.length).to.equal(1);
     });
 
+    it('loads a json flow with out signature that reference unavailable variables and returns validation errors ', function() {
+      var json      = getXFlowJSON('data/bad_flows/unreferenced_variables.json');
+      var validator = new XFlowValidator();
+      var res       = validator.validateWithErrors(json);
+      console.log(res);
+
+      expect(res.length).to.equal(1);
+    });
+
+    it('loads a json flow with flox expression that references unavailable variables and returns validation errors ', function() {
+      var json      = getXFlowJSON('data/bad_flows/unreferenced_variables_in_flox.json');
+      var validator = new XFlowValidator();
+      var res       = validator.validateWithErrors(json);
+      console.log(res);
+
+      expect(res.length).to.equal(1);
+    });
+
 
 });
 

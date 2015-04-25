@@ -1,0 +1,55 @@
+{
+  "id": "unreferenced_variables_in_flox",
+  "name": "unreferenced_variables",
+  "version" : 1,
+  "requirements": [
+    {
+      "xtype": "flow",
+      "version": 1
+    },
+    {
+      "xtype": "flox",
+      "version": 1
+    }
+  ],
+  "signature" : {
+    "in" : [
+    ],
+    "out" : [
+    ]
+  },
+  "variables" : [
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "nodetype": "flow",
+      "action": "start",
+      "label" : "Start",
+      "parameters": {}
+    },
+    {
+      "id": 2,
+      "nodetype": "flox",
+      "action": "eval",
+      "label" : "eval",
+      "parameters": {
+        "expression" : "$UnavailableVariable + 1",
+        "name" : "RandoVariable"
+      }
+    },
+    {
+      "id": 3,
+      "nodetype": "flow",
+      "action": "end",
+      "label" : "End",
+      "parameters": {}
+    }
+  ],
+  "edges": [
+    [ 1, 2 ],
+    [ 2, 3 ]
+  ],
+  "branches" : [
+  ]
+}

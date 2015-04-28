@@ -20,7 +20,7 @@ describe('XFlow load bad flow ', function() {
         expect(function() {
           var res = (getXFlow(json, {}));
           res.start();
-        }).to.throw(Error, /Multiple/);
+        }).to.throw(Error, /XFlowStruct/);
       });
 
     it('loads a json flow with no entries and throws an Error ', function() {
@@ -29,7 +29,7 @@ describe('XFlow load bad flow ', function() {
         expect(function() {
           var res = (getXFlow(json, {}));
           res.start();
-        }).to.throw(Error, /No/);
+        }).to.throw(Error, /XFlowStruct/);
       });
 
   });

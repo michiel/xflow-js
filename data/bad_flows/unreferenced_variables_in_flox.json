@@ -1,7 +1,7 @@
 {
-  "id": "add",
-  "name": "add",
-  "version": 1,
+  "id": "unreferenced_variables_in_flox",
+  "name": "unreferenced_variables",
+  "version" : 1,
   "requirements": [
     {
       "xtype": "flow",
@@ -14,29 +14,11 @@
   ],
   "signature" : {
     "in" : [
-      {
-        "name"  : "value4",
-        "vtype"  : "number",
-        "value" : 4
-      },
-      {
-        "name"  : "value5",
-        "vtype"  : "number",
-        "value" : 5
-      }
     ],
     "out" : [
-      {
-        "vtype" : "number",
-        "name" : "ReturnValue"
-      }
     ]
   },
   "variables" : [
-    {
-      "vtype" : "boolean",
-      "name" : "ReturnValue"
-    }
   ],
   "nodes": [
     {
@@ -50,13 +32,10 @@
       "id": 2,
       "nodetype": "flox",
       "action": "evalexpr",
-      "label" : "Flox",
+      "label" : "eval expr",
       "parameters": {
-        "expression" : "1+2",
-        "returns"    : {
-          "name"   : "ReturnValue",
-          "vtype"   : "number"
-        }
+        "expression" : "$UnavailableVariable + 1",
+        "name" : "RandoVariable"
       }
     },
     {
@@ -71,6 +50,6 @@
     [ 1, 2 ],
     [ 2, 3 ]
   ],
-  "branches" :[
+  "branches" : [
   ]
 }

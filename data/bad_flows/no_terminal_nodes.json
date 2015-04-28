@@ -36,8 +36,8 @@
     {
       "id": 3,
       "nodetype": "flox",
-      "action": "eval",
-      "label" : "Eval expression",
+      "action": "evalexpr",
+      "label" : "eval expression",
       "parameters": {
         "name" : "ReturnValue",
         "expression" : "1 + 1"

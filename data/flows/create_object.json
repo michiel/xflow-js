@@ -20,8 +20,7 @@
     "in" : [
       {
         "name"  : "UserName",
-        "vtype"  : "string",
-        "value" : "Joe Blow"
+        "vtype"  : "string"
       }
     ],
     "out" : [

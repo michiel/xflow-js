@@ -60,7 +60,7 @@
     {
       "id": 3,
       "nodetype": "flox",
-      "action": "eval",
+      "action": "evalexpr",
       "label" : "Flox",
       "parameters": {
         "expression" : "1+2",
@@ -73,7 +73,7 @@
     {
       "id": 4,
       "nodetype": "flox",
-      "action": "eval",
+      "action": "evalexpr",
       "label" : "Flox",
       "parameters": {
         "expression" : "3+3",

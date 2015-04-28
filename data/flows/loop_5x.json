@@ -49,7 +49,7 @@
     {
       "id": 2,
       "nodetype": "flox",
-      "action": "eval",
+      "action": "evalexpr",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue+1",
@@ -62,7 +62,7 @@
     {
       "id": 3,
       "nodetype": "flox",
-      "action": "eval",
+      "action": "evalexpr",
       "label" : "Start",
       "parameters": {
         "expression" : "$CounterValue>5",

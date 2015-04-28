@@ -50,7 +50,7 @@
     {
       "id": 2,
       "nodetype": "flox",
-      "action": "eval",
+      "action": "evalexpr",
       "label" : "Flox",
       "parameters": {
         "expression" : "$CalcValueA<$CalcValueB",

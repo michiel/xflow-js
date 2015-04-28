@@ -18,7 +18,7 @@ const config = manifest.babelBoilerplateOptions;
 const mainFile = manifest.main;
 const destinationFolder = path.dirname(mainFile);
 const extFileFolder = destinationFolder + '/ext';
-console.log('extF : ' + extFileFolder);
+// console.log('extF : ' + extFileFolder);
 const exportFileName = path.basename(mainFile, path.extname(mainFile));
 
 // Remove the built files

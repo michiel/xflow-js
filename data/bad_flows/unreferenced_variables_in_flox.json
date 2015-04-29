@@ -12,14 +12,14 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
     ],
     "out" : [
+    ],
+    "local" : [
     ]
   },
-  "variables" : [
-  ],
   "nodes": [
     {
       "id": 1,

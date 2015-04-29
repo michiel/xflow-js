@@ -12,7 +12,7 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
       {
         "name"  : "MatchValue",
@@ -25,15 +25,15 @@
         "name" : "ReturnValue",
         "vtype" : "number"
       }
+    ],
+    "local" : [
+      {
+        "name"  : "ReturnValue",
+        "vtype"  : "number",
+        "value" : 0
+      }
     ]
   },
-  "variables" : [
-    {
-      "name"  : "ReturnValue",
-      "vtype"  : "number",
-      "value" : 0
-    }
-  ],
   "nodes": [
     {
       "id": 1,

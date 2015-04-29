@@ -8,6 +8,11 @@ import XFlowValidator  from '../../lib/xflow-validator';
 
 function getXFlowJSON(path) {
   var data = fs.readFileSync(path, 'utf-8');
+//   try {
+//     JSON.parse(data);
+//   } catch(e) {
+//     console.log('The offending file is : ', path);
+//   }
   return JSON.parse(data);
 }
 

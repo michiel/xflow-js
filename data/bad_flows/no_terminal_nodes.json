@@ -12,19 +12,19 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
     ],
     "out" : [
+    ],
+    "local" : [
+      {
+        "name" : "ReturnValue",
+        "vtype" : "boolean",
+        "value" : false
+      }
     ]
   },
-  "variables" : [
-    {
-      "name" : "ReturnValue",
-      "vtype" : "boolean",
-      "value" : false
-    }
-  ],
   "nodes": [
     {
       "id": 1,

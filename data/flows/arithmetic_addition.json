@@ -12,7 +12,7 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
       {
         "name"  : "value4",
@@ -30,14 +30,14 @@
         "vtype" : "number",
         "name" : "ReturnValue"
       }
+    ],
+    "local" : [
+      {
+        "vtype" : "boolean",
+        "name" : "ReturnValue"
+      }
     ]
   },
-  "variables" : [
-    {
-      "vtype" : "boolean",
-      "name" : "ReturnValue"
-    }
-  ],
   "nodes": [
     {
       "id": 1,

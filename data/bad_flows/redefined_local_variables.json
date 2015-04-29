@@ -8,7 +8,7 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
       {
         "name" : "ReturnValue",
@@ -20,15 +20,15 @@
         "name" : "ReturnValue",
         "vtype" : "boolean"
       }
+    ],
+    "local" : [
+      {
+        "name" : "ReturnValue",
+        "vtype" : "boolean",
+        "value" : false
+      }
     ]
   },
-  "variables" : [
-    {
-      "name" : "ReturnValue",
-      "vtype" : "boolean",
-      "value" : false
-    }
-  ],
   "nodes": [
     {
       "id": 1,

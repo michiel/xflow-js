@@ -12,7 +12,7 @@
       "version": 1
     }
   ],
-  "signature" : {
+  "variables" : {
     "in" : [
       {
         "name"  : "CounterValue",
@@ -25,15 +25,15 @@
         "name" : "CounterValue",
         "vtype" : "number"
       }
+    ],
+    "local" : [
+      {
+        "name": "LoopValue",
+        "vtype": "boolean",
+        "value" : false
+      }
     ]
   },
-  "variables" : [
-    {
-      "name": "LoopValue",
-      "vtype": "boolean",
-      "value" : false
-    }
-  ],
   "nodes": [
     {
       "id": 1,

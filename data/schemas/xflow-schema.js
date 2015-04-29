@@ -42,8 +42,8 @@ export default {
         "additionalProperties": false
       }
     },
-    "signature": {
-      "id": "signature",
+    "variables": {
+      "id": "variables",
       "type": "object",
       "properties": {
         "in": {
@@ -69,26 +69,27 @@ export default {
               { "$ref": "#/definitions/scopeVariable" }
             ]
           }
+        },
+        "local": {
+          "id": "local",
+          "type": "array",
+          "minItems": 0,
+          "uniqueItems": true,
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "oneOf" : [
+              { "$ref": "#/definitions/scopeVariable" }
+            ]
+          }
         }
       },
       "additionalProperties": false,
       "required" : [
         "in",
-        "out"
+        "out",
+        "local"
       ]
-    },
-    "variables": {
-      "id": "variables",
-      "type": "array",
-      "minItems": 0,
-      "uniqueItems": true,
-      "additionalItems": true,
-      "items": {
-        "type": "object",
-        "oneOf" : [
-          { "$ref": "#/definitions/scopeVariable" }
-        ]
-      }
     },
     "nodes": {
       "id": "nodes",
@@ -236,7 +237,6 @@ export default {
     "name",
     "version",
     "requirements",
-    "signature",
     "variables",
     "nodes",
     "edges",

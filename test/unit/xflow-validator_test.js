@@ -77,6 +77,14 @@ describe('XFlowValidator loads bad flows ', function() {
       expect(res.length).to.equal(1);
     });
 
+    it('with input variable redefined in local variables and returns  validation errors ', function() {
+      var json      = getXFlowJSON('data/bad_flows/redefined_local_variables.json');
+      var validator = new XFlowValidator();
+      var res       = validator.validateWithErrors(json);
+
+      expect(res.length).to.equal(1);
+    });
+
 });
 
 describe('XFlowValidator gets called with bad arguments ', function() {

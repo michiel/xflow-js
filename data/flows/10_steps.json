@@ -29,11 +29,6 @@
     ]
   },
   "variables" : [
-    {
-      "name": "CounterValue",
-      "vtype": "number",
-      "value": 0
-    }
   ],
   "nodes": [
     {

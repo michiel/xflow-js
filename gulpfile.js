@@ -137,7 +137,10 @@ gulp.task('build', ['lint-src', 'clean'], function(done) {
 
 // Bundle our app for our unit tests
 gulp.task('browserify', function() {
-  var testFiles = glob.sync('./test/unit/**/*');
+  var testFiles = glob.sync([
+    './test/unit/**/*',
+    './test/integration/**/*'
+  ]);
   var allFiles = ['./test/setup/browserify.js'].concat(testFiles);
   var bundler = browserify(allFiles);
   bundler.transform(babelify.configure({
@@ -158,19 +161,27 @@ gulp.task('browserify', function() {
 
 gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
   require('babel/register')({ modules: 'common' });
-  gulp.src(['lib/**/*.js'])
-    // .pipe($.plumber())
-    .pipe($.istanbul({ instrumenter: isparta.Instrumenter }))
-    .pipe($.istanbul.hookRequire())
-    .on('finish', function() {
-      return test()
-      .pipe($.istanbul.writeReports())
-      .on('end', done);
-    });
+  gulp.src(['lib/**/*.js']).pipe(
+    $.istanbul({
+      instrumenter: isparta.Instrumenter
+    })
+  ).pipe(
+    $.istanbul.hookRequire()
+  ).on('finish',
+    function() {
+      return test().pipe(
+        $.istanbul.writeReports()
+      ).on('end', done);
+    }
+  );
 });
 
 function test() {
-  return gulp.src(['test/setup/node.js', 'test/unit/**/*.js'], { read: false })
+  return gulp.src([
+    'test/setup/node.js',
+    'test/unit/**/*.js',
+    'test/integration/**/*.js'
+  ], { read: false })
     // .pipe($.plumber())
     .pipe($.mocha({ reporter: 'dot', globals: config.mochaGlobals }));
 }

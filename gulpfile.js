@@ -198,7 +198,7 @@ gulp.task('build-in-sequence', function(callback) {
   runSequence(['lint-src', 'lint-test'], 'browserify', callback);
 });
 
-const watchFiles = ['src/**/*', 'test/**/*', 'package.json', '**/.jshintrc', '.jscsrc'];
+const watchFiles = ['lib/**/*', 'test/**/*', 'package.json', '**/.jshintrc', '.jscsrc'];
 
 // Run the headless unit tests as you make changes.
 gulp.task('watch', function() {

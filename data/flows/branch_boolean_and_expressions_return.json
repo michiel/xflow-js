@@ -16,8 +16,7 @@
     "in" : [
       {
         "name"  : "MatchValue",
-        "vtype"  : "boolean",
-        "value" : true
+        "vtype"  : "boolean"
       }
     ],
     "out" : [
@@ -32,11 +31,6 @@
       "name"  : "ReturnValue",
       "vtype"  : "number",
       "value" : 0
-    },
-    {
-      "name"  : "MatchValue",
-      "vtype"  : "boolean",
-      "value" : true
     }
   ],
   "nodes": [

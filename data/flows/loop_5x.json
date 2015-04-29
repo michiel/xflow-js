@@ -29,10 +29,6 @@
   },
   "variables" : [
     {
-      "name": "CounterValue",
-      "vtype": "number"
-    },
-    {
       "name": "LoopValue",
       "vtype": "boolean",
       "value" : false

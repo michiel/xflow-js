@@ -23,6 +23,7 @@ const exportFileName = path.basename(mainFile, path.extname(mainFile));
 
 // Remove the built files
 gulp.task('clean', function(cb) {
+  console.log('trying clean');
   try {
     del(
       [
@@ -46,6 +47,7 @@ gulp.task('clean', function(cb) {
 
 // Remove our temporary files
 gulp.task('clean-tmp', function(cb) {
+  console.log('task clean-tmp');
   del(['tmp'], cb);
 });
 
@@ -63,6 +65,7 @@ function jscsNotify(file) {
 
 function createLintTask(taskName, files) {
   gulp.task(taskName, function() {
+  console.log('task ', taskName);
     return gulp.src(files)
       .pipe($.plumber())
       .pipe($.jshint())
@@ -75,6 +78,7 @@ function createLintTask(taskName, files) {
 }
 
 gulp.task('copy-ext', function() {
+  console.log('task copy-ext');
 
   mkdirp.sync(extFileFolder, function(e) {
     if (e) {
@@ -102,6 +106,7 @@ createLintTask('lint-test', ['test/**/*.js']);
 
 // Build two versions of the library
 gulp.task('build', ['lint-src', 'clean'], function(done) {
+  console.log('task build');
   esperanto.bundle({
     base: 'lib',
     entry: config.entryFileName
@@ -137,6 +142,7 @@ gulp.task('build', ['lint-src', 'clean'], function(done) {
 
 // Bundle our app for our unit tests
 gulp.task('browserify', function() {
+  console.log('task browserify');
   var testFiles = glob.sync([
     './test/unit/**/*',
     './test/integration/**/*'
@@ -160,6 +166,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('coverage', ['lint-src', 'lint-test'], function(done) {
+  console.log('task coverage');
   require('babel/register')({ modules: 'common' });
   gulp.src(['lib/**/*.js']).pipe(
     $.istanbul({
@@ -188,6 +195,7 @@ function test() {
 
 // Lint and run our tests
 gulp.task('test', ['lint-src', 'lint-test'], function() {
+  console.log('task test');
   require('babel/register')({ modules: 'common' });
   return test();
 });
@@ -195,6 +203,7 @@ gulp.task('test', ['lint-src', 'lint-test'], function() {
 // Ensure that linting occurs before browserify runs. This prevents
 // the build from breaking due to poorly formatted code.
 gulp.task('build-in-sequence', function(callback) {
+  console.log('build-in-sequence');
   runSequence(['lint-src', 'lint-test'], 'browserify', callback);
 });
 
@@ -202,6 +211,7 @@ const watchFiles = ['lib/**/*', 'test/**/*', 'package.json', '**/.jshintrc', '.j
 
 // Run the headless unit tests as you make changes.
 gulp.task('watch', function() {
+  console.log('watch');
   gulp.watch(watchFiles, ['test']);
 });
 

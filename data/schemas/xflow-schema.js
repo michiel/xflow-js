@@ -242,5 +242,6 @@ export default {
     "edges",
     "branches"
   ]
-};
+}
+
 

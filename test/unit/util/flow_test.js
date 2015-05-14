@@ -10,6 +10,8 @@ var getNodeType    = FlowUtil.getNodeType;
 var getNode        = FlowUtil.getNode;
 var isTerminalNode = FlowUtil.isTerminalNode;
 
+var nextId         = FlowUtil.nextId;
+
 describe('XFlow utils ', function() {
 
   var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
@@ -79,6 +81,32 @@ describe('XFlow utils / bad data ', function() {
 
 });
 
+describe('XFlow utils nextId ', function() {
+  it('returns the next ID', function() {
+    var list = [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      }
+    ];
 
+    expect(nextId(list)).to.equal(3);
+  });
 
+  it('returns the next ID with a different key name', function() {
+    var list = [
+      {
+        foo: 1
+      },
+      {
+        foo: 2
+      }
+    ];
+
+    expect(nextId(list, 'foo')).to.equal(3);
+
+  });
+});
 

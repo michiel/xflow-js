@@ -108,6 +108,34 @@ describe('XFlowMutableStruct ', function() {
     expect(xf.getBranches().length).to.equal(0);
   });
 
+  it('can remove a node and all its references', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    var nodes = xf.getNodes();
+    var id    = nodes[0].id;
+    xf.removeNodeAndReferences(nodes[0]);
+
+    var branches = xf.getBranches().filter(function(branch) {
+      return (
+        (branch.edge[0] === id) ||
+          (branch.edge[1] === id)
+      );
+    });
+
+    expect(branches.length).to.equal(0);
+
+    var edges = xf.getEdges().filter(function(edge) {
+      return (
+        (edge[0] === id) ||
+          (edge[1] === id)
+      );
+    });
+
+    expect(edges.length).to.equal(0);
+
+  });
+
 
 });
 

@@ -205,10 +205,10 @@
     },
     "flowBranch" : {
       "properties" : {
-        "branch" : {
+        "edge" : {
           "type": "object",
           "oneOf" : [
-            { "$ref": "#/definitions/flowBranch" }
+            { "$ref": "#/definitions/flowEdge" }
           ]
         },
         "name" : {
@@ -225,7 +225,7 @@
       },
       "additionalProperties" : false,
       "required": [
-        "branch",
+        "edge",
         "name",
         "value"
       ]

@@ -79,8 +79,8 @@ describe('XFlowMutableStruct ', function() {
 
     var branch = xf.newBranch();
     var nodes = xf.getNodes();
-    branch.branch[0] = nodes[1].id;
-    branch.branch[1] = nodes[0].id;
+    branch.edge[0] = nodes[1].id;
+    branch.edge[1] = nodes[0].id;
     branch.name  = 'SomeBranchValue';
     branch.value = 1;
     xf.addBranch(branch);
@@ -95,8 +95,8 @@ describe('XFlowMutableStruct ', function() {
 
     var branch = xf.newBranch();
     var nodes = xf.getNodes();
-    branch.branch[0] = nodes[1].id;
-    branch.branch[1] = nodes[0].id;
+    branch.edge[0] = nodes[1].id;
+    branch.edge[1] = nodes[0].id;
     branch.name  = 'SomeBranchValue';
     branch.value = 1;
     xf.addBranch(branch);

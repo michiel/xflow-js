@@ -93,12 +93,12 @@
   ],
   "branches" : [
     {
-      "branch" : [3,4],
+      "edge"   : [3,4],
       "name"   : "ReturnValue",
       "value"  : true
     },
     {
-      "branch" : [3,5],
+      "edge"   : [3,5],
       "name"   : "ReturnValue",
       "value"  : false
     }

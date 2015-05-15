@@ -95,12 +95,12 @@
   ],
   "branches" : [
     {
-      "branch" : [4,5],
+      "edge"   : [4,5],
       "name"   : "LoopValue",
       "value"  : true
     },
     {
-      "branch" : [4,2],
+      "edge"   : [4,2],
       "name"   : "LoopValue",
       "value"  : false
     }

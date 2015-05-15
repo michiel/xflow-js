@@ -94,12 +94,12 @@
   ],
   "branches" : [
     {
-      "branch" : [2,3],
+      "edge" : [2,3],
       "name"   : "MatchValue",
       "value"  : true
     },
     {
-      "branch" : [2,4],
+      "edge" : [2,4],
       "name"   : "MatchValue",
       "value"  : false
     }

@@ -99,6 +99,32 @@ describe('XFlowstruct ', function() {
     }).to.not.throw(Error);
   });
 
+  it('can check if a node is an entry node', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowStruct(json);
+    var nodes     = xf.getNodes();
+
+    expect(
+      xf.isEntryNode(nodes[0])
+    ).to.equal(true);
+
+    expect(
+      xf.isEntryNode(nodes[1])
+    ).to.equal(false);
+
+  });
+
+  it('can find the in edges for a node', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowStruct(json);
+    var nodes     = xf.getNodes();
+
+    expect(xf.getInEdges(nodes[0]).length).to.equal(0);
+    expect(xf.getInEdges(nodes[1]).length).to.equal(1);
+    expect(xf.getInEdges(nodes[nodes.length - 1]).length).to.equal(1);
+
+  });
+
 
 });
 

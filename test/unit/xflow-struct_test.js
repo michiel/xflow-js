@@ -90,6 +90,16 @@ describe('XFlowstruct ', function() {
     ]);
   });
 
+  it('can get JSON string of the flow ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowStruct(json);
+
+    expect(function() {
+      xf.toString();
+    }).to.not.throw(Error);
+  });
+
+
 });
 
 

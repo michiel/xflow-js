@@ -136,6 +136,121 @@ describe('XFlowMutableStruct ', function() {
 
   });
 
+  it('can add variables (in) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    expect(xf.getVariables().in.length).to.equal(1);
+
+    xf.addVariable('in', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().in.length).to.equal(2);
+  });
+
+  it('can remove variables (in) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    expect(xf.getVariables().in.length).to.equal(1);
+
+    xf.addVariable('in', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().in.length).to.equal(2);
+
+    xf.removeVariable('in', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().in.length).to.equal(1);
+  });
+
+  it('can add variables (out) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+    xf.addVariable('out', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+  });
+
+  it('can remove variables (out) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    expect(xf.getVariables().out.length).to.equal(1);
+
+    xf.addVariable('out', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().out.length).to.equal(2);
+
+    xf.removeVariable('out', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().out.length).to.equal(1);
+  });
+
+  it('can add variables (local) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+    xf.addVariable('local', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+  });
+
+  it('can remove variables (local) ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    expect(xf.getVariables().local.length).to.equal(0);
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().local.length).to.equal(1);
+
+    xf.removeVariable('local', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().local.length).to.equal(0);
+  });
+
+
+  it('throws errors when called incorrectly ', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    expect(function() {
+      xf.addVariable('foo', {});
+    }).to.throw(Error);
+
+    expect(function() {
+      xf.addVariable('in', {});
+    }).to.throw(Error);
+
+    expect(function() {
+      xf.addVariable('in', {
+        name: 'Foo'
+      });
+    }).to.throw(Error);
+
+  });
 
 });
 

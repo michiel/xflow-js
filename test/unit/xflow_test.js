@@ -154,3 +154,34 @@ describe('XFlow async ', function() {
       });
   });
 
+describe('XFlow initialization', function() {
+
+  it('throws an error if intialized without flow data', function() {
+    expect(function() {
+      var xf = new XFlow();
+      xf.getNodes(); // satisfy jshint with null op
+    }).to.throw(Error);
+  });
+
+  it('throws an error if intialized without a dispatcher', function() {
+    expect(function() {
+      var xf = new XFlow({});
+      xf.getNodes(); // satisfy jshint with null op
+    }).to.throw(Error);
+  });
+
+  it('throws an error if activeNode is set to same node', function() {
+    var data = fs.readFileSync('data/flows/branch_boolean_and_expressions_return.json', 'utf-8');
+    var json = JSON.parse(data);
+    var xf = getXFlow(json, {
+      'MatchValue' : false
+    });
+    var nodes = xf.flow.getNodes();
+    expect(function() {
+      xf.setActiveNode(nodes[0]);
+    }).to.throw(Error);
+
+  });
+
+});
+

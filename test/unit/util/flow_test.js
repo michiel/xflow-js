@@ -9,6 +9,7 @@ var getEntryNode   = FlowUtil.getEntryNode;
 var getNodeType    = FlowUtil.getNodeType;
 var getNode        = FlowUtil.getNode;
 var isTerminalNode = FlowUtil.isTerminalNode;
+var isSameNode     = FlowUtil.isSameNode;
 
 var nextId         = FlowUtil.nextId;
 
@@ -51,6 +52,20 @@ describe('XFlow utils ', function() {
     expect(
       getNodeType(json.nodes, null, 'end').length
     ).to.equal(1);
+  });
+
+  describe('isSameNode', function() {
+    it('correctly identifies identical nodes', function() {
+      expect(
+        isSameNode(json.nodes[0], json.nodes[0])
+      ).to.equal(true);
+    });
+
+    it('correctly identifies non-identical nodes', function() {
+      expect(
+        isSameNode(json.nodes[0], json.nodes[1])
+      ).to.equal(false);
+    });
   });
 
 });
@@ -109,4 +124,5 @@ describe('XFlow utils nextId ', function() {
 
   });
 });
+
 

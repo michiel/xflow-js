@@ -1,0 +1,12 @@
+{
+    "name": "XFlow-JS",
+    "url": "nosuchtype.com",
+    "version": "0.1.0",
+    "options": {
+        "paths": "lib/",
+        "outdir": "out",
+        "exclude": "lib,docs,build",
+        "themedir": "/home/moondust/src/yuidoc-bootstrap-theme",
+        "helpers": ["/home/moondust/src/yuidoc-bootstrap-theme/helpers/helpers.js"]
+    }
+}

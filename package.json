@@ -21,8 +21,8 @@
   "dependencies": {
     "escodegen": "^1.6.1",
     "eventemitter2": "^0.4.14",
+    "fast-json-patch": "^0.5.2",
     "json-pointer": "^0.3.0",
-    "jsondiffpatch": "^0.1.31",
     "rsvp": "^3.0.17",
     "tv4": "^1.1.9"
   },

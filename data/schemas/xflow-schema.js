@@ -1,4 +1,4 @@
-FlowV1Schema = {
+export default {
   '$schema': 'http://nosuchtype.com/xflow/v1/schema#',
   'id': '/',
   'type': 'object',

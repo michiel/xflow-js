@@ -15,7 +15,7 @@ function getXFlow(json, params) {
 describe('XFlow load bad flow ', function() {
 
     it('loads a json flow with multiple entries and throws an Error ', function() {
-        var data = fs.readFileSync('data/bad_flows/multiple_entry_nodes.json', 'utf-8');
+        var data = fs.readFileSync('data/invalid_flows/identical_id_nodes.json', 'utf-8');
         var json = JSON.parse(data);
         expect(function() {
           var res = (getXFlow(json, {}));
@@ -24,7 +24,7 @@ describe('XFlow load bad flow ', function() {
       });
 
     it('loads a json flow with no entries and throws an Error ', function() {
-        var data = fs.readFileSync('data/bad_flows/no_entry_nodes.json', 'utf-8');
+        var data = fs.readFileSync('data/invalid_flows/bad_structure.json', 'utf-8');
         var json = JSON.parse(data);
         expect(function() {
           var res = (getXFlow(json, {}));

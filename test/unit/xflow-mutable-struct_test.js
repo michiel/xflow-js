@@ -114,7 +114,14 @@ describe('XFlowMutableStruct ', function() {
 
     var nodes = xf.getNodes();
     var id    = nodes[0].id;
+
+    var initialEdgesLength    = xf.getEdges().length;
+    var initialBranchesLength = xf.getBranches().length;
+
     xf.removeNodeAndReferences(nodes[0]);
+
+    expect(xf.getEdges().length).to.equal(initialEdgesLength - 1);
+    expect(xf.getBranches().length).to.equal(initialBranchesLength);
 
     var branches = xf.getBranches().filter(function(branch) {
       return (

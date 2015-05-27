@@ -17,13 +17,13 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
       {
         "name"  : "UserName",
         "vtype"  : "string"
       }
     ],
-    "out" : [
+    "output" : [
       {
         "vtype" : "boolean",
         "name" : "ReturnValue"

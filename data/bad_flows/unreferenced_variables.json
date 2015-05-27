@@ -9,9 +9,9 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
     ],
-    "out" : [
+    "output" : [
       {
         "name" : "ReturnValue",
         "vtype" : "boolean"

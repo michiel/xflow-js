@@ -13,7 +13,7 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
       {
         "name"  : "value4",
         "vtype"  : "number",
@@ -25,7 +25,7 @@
         "value" : 5
       }
     ],
-    "out" : [
+    "output" : [
       {
         "vtype" : "number",
         "name" : "ReturnValue"

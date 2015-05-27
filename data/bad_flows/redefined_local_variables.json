@@ -9,13 +9,13 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
       {
         "name" : "ReturnValue",
         "vtype" : "boolean"
       }
     ],
-    "out" : [
+    "output" : [
       {
         "name" : "ReturnValue",
         "vtype" : "boolean"

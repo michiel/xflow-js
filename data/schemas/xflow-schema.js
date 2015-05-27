@@ -46,7 +46,7 @@ export default {
       'id': 'variables',
       'type': 'object',
       'properties': {
-        'in': {
+        'input': {
           'type': 'array',
           'minItems': 0,
           'uniqueItems': true,
@@ -58,7 +58,7 @@ export default {
             ]
           }
         },
-        'out': {
+        'output': {
           'type': 'array',
           'minItems': 0,
           'uniqueItems': false,
@@ -86,8 +86,8 @@ export default {
       },
       'additionalProperties': false,
       'required' : [
-        'in',
-        'out',
+        'input',
+        'output',
         'local'
       ]
     },

@@ -24,12 +24,12 @@ describe('XFlowstruct ', function() {
 
     var xvars = xf.getVariables();
 
-    expect(xvars.in.length).to.equal(1);
-    expect(xvars.out.length).to.equal(1);
+    expect(xvars.input.length).to.equal(1);
+    expect(xvars.output.length).to.equal(1);
     expect(xvars.local.length).to.equal(0);
   });
 
-  it('can get in variables ', function() {
+  it('can get input variables ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowStruct(json);
 
@@ -37,7 +37,7 @@ describe('XFlowstruct ', function() {
     expect(xvars.length).to.equal(1);
   });
 
-  it('can get out variables ', function() {
+  it('can get output variables ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowStruct(json);
 

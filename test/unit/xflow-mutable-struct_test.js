@@ -143,69 +143,69 @@ describe('XFlowMutableStruct ', function() {
 
   });
 
-  it('can add variables (in) ', function() {
+  it('can add variables (input) ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().in.length).to.equal(1);
+    expect(xf.getVariables().input.length).to.equal(1);
 
-    xf.addVariable('in', {
+    xf.addVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().in.length).to.equal(2);
+    expect(xf.getVariables().input.length).to.equal(2);
   });
 
-  it('can remove variables (in) ', function() {
+  it('can remove variables (input) ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().in.length).to.equal(1);
+    expect(xf.getVariables().input.length).to.equal(1);
 
-    xf.addVariable('in', {
+    xf.addVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().in.length).to.equal(2);
+    expect(xf.getVariables().input.length).to.equal(2);
 
-    xf.removeVariable('in', {
+    xf.removeVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().in.length).to.equal(1);
+    expect(xf.getVariables().input.length).to.equal(1);
   });
 
-  it('can add variables (out) ', function() {
+  it('can add variables (output) ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
-    xf.addVariable('out', {
+    xf.addVariable('output', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
   });
 
-  it('can remove variables (out) ', function() {
+  it('can remove variables (output) ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().out.length).to.equal(1);
+    expect(xf.getVariables().output.length).to.equal(1);
 
-    xf.addVariable('out', {
+    xf.addVariable('output', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().out.length).to.equal(2);
+    expect(xf.getVariables().output.length).to.equal(2);
 
-    xf.removeVariable('out', {
+    xf.removeVariable('output', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().out.length).to.equal(1);
+    expect(xf.getVariables().output.length).to.equal(1);
   });
 
   it('can add variables (local) ', function() {

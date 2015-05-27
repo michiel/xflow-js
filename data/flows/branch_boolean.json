@@ -13,14 +13,14 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
       {
         "name"  : "MatchValue",
         "vtype"  : "boolean",
         "value" : true
       }
     ],
-    "out" : [
+    "output" : [
       {
         "name" : "ReturnValue",
         "vtype" : "number"

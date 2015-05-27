@@ -13,9 +13,9 @@
     }
   ],
   "variables" : {
-    "in" : [
+    "input" : [
     ],
-    "out" : [
+    "output" : [
     ],
     "local" : [
       {

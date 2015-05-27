@@ -46,7 +46,7 @@
       "id": "variables",
       "type": "object",
       "properties": {
-        "in": {
+        "input": {
           "type": "array",
           "minItems": 0,
           "uniqueItems": true,
@@ -58,7 +58,7 @@
             ]
           }
         },
-        "out": {
+        "output": {
           "type": "array",
           "minItems": 0,
           "uniqueItems": false,
@@ -86,8 +86,8 @@
       },
       "additionalProperties": false,
       "required" : [
-        "in",
-        "out",
+        "input",
+        "output",
         "local"
       ]
     },

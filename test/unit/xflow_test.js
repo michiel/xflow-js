@@ -185,3 +185,43 @@ describe('XFlow initialization', function() {
 
 });
 
+describe('XFlow save/restore', function() {
+
+  it('it can save a state', function() {
+    var data = fs.readFileSync('data/flows/loop_5x.json', 'utf-8');
+    var json = JSON.parse(data);
+    var xflow = (getXFlow(json, {
+      'CounterValue' : 0
+    }));
+    xflow.nextStep();
+    var savedState = xflow.save();
+    xflow.nextStep();
+    expect(xflow.save()).to.not.deep.equal(savedState);
+  });
+
+  it('it can save and restore a state', function() {
+    var data = fs.readFileSync('data/flows/loop_5x.json', 'utf-8');
+    var json = JSON.parse(data);
+    var xflow = (getXFlow(json, {
+      'CounterValue' : 0
+    }));
+    xflow.nextStep();
+    xflow.nextStep();
+
+    var savedState = xflow.save();
+
+    xflow.nextStep();
+
+    var nextSavedState = xflow.save();
+
+    xflow.nextStep();
+
+    xflow.restore(savedState);
+
+    xflow.nextStep();
+
+    expect(xflow.save()).to.deep.equal(nextSavedState);
+  });
+
+});
+

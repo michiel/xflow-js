@@ -16,7 +16,13 @@ function getXFlowJSON(path) {
   return JSON.parse(data);
 }
 
+function clone(json) {
+  return JSON.parse(JSON.stringify(json));
+}
+
 describe('XFlowMutableStruct ', function() {
+
+  /* jshint maxstatements:150 */
 
   it('can add nodes ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
@@ -257,6 +263,78 @@ describe('XFlowMutableStruct ', function() {
       });
     }).to.throw(Error);
 
+  });
+
+  it('can undo', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    var originalJson = clone(json);
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar2',
+      vtype : 'number'
+    });
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar3',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().local.length).to.equal(3);
+    expect(xf.json).to.not.deep.equal(originalJson);
+
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(false);
+
+    expect(xf.json).to.deep.equal(originalJson);
+  });
+
+  it('can undo a variety of changes', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    var originalJson = clone(json);
+
+    var node = xf.newNode();
+    xf.addNode(node);
+
+    expect(xf.getNodes().length).to.equal(11);
+    xf.undo();
+    expect(xf.getNodes().length).to.equal(10);
+
+    var node2 = xf.newNode();
+    xf.addNode(node2);
+
+    expect(xf.getNodes().length).to.equal(11);
+    xf.undo();
+    expect(xf.getNodes().length).to.equal(10);
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar3',
+      vtype : 'number'
+    });
+
+    xf.addVariable('local', {
+      name  : 'SomeNewVar',
+      vtype : 'number'
+    });
+
+    expect(xf.getVariables().local.length).to.equal(2);
+    expect(xf.json).to.not.deep.equal(originalJson);
+
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(false);
+
+    expect(xf.json).to.deep.equal(originalJson);
   });
 
 });

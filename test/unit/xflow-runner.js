@@ -112,6 +112,20 @@ describe('XFlowRunner sync ', function() {
     }).to.throw(Error);
 
   });
+
+  it('aborts infinite flows after the tickLimit', function() {
+    var runner = getXFlowRunner({
+    });
+
+    var json = getJSON('data/flows/loop_infinite.json');
+    var id   = runner.addFlow(json);
+    expect(function() {
+      runner.runFlow(id);
+    }).to.throw(Error);
+
+  });
+
+
 });
 
 describe('XFlowRunner async ', function() {

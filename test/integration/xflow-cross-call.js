@@ -145,3 +145,47 @@ describe('Cross-flow, call other xflow', function() {
   });
 
 });
+
+describe('Cross-flow, call other xflow [async]', function() {
+
+  it('can call another xflow', function() {
+    var instances = getInstances();
+
+    var json1 = loadJson('data/capability_flows/add_1.json');
+    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+
+    instances.runner.addFlow(json1);
+    instances.runner.addFlow(json2);
+
+    var callXFlowActions = new CallXFlowActions({
+      runner: instances.runner
+    });
+
+    instances.dispatcher.addDispatcher(
+      'callxflow', callXFlowActions.getDispatcher()
+    );
+
+    var res;
+
+    //
+    // XXX: TODO: Inspect results, passing correctly?
+    //
+
+    res = instances.runner.runQ(json2.id, {
+    });
+
+    expect(res).to.eventually.deep.equal({
+      'CounterValue' : 1
+    });
+
+    res = instances.runner.runQ(json2.id, {
+      'CounterValue' : 1
+    });
+
+    expect(res).to.eventually.deep.equal({
+      'CounterValue' : 2
+    });
+
+  });
+
+});

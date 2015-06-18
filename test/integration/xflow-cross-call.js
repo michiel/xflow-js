@@ -12,6 +12,8 @@ import FlowActions   from '../../lib/actions/flow_actions';
 import FloxActions   from '../../lib/actions/flox_actions';
 import ObjectActions from '../../lib/actions/object_actions';
 
+import CallXFlowActions from '../../lib/actions/callxflow_actions';
+
 var stdDispatcherDefs = {
   'flox' : {
     'name'      : 'flox',
@@ -57,7 +59,7 @@ function loadJson(path) {
 describe('Cross-flow, basic dynamic dispatch invocations', function() {
 
   it('can call an xflow I', function() {
-    var json = loadJson('data/flows/create_object.json', 'utf-8');
+    var json = loadJson('data/flows/create_object.json');
     var instances = getInstances();
 
     instances.runner.addFlow(json);
@@ -72,7 +74,7 @@ describe('Cross-flow, basic dynamic dispatch invocations', function() {
   });
 
   it('can call an xflow II', function() {
-    var json = loadJson('data/flows/loop_5x.json', 'utf-8');
+    var json = loadJson('data/flows/loop_5x.json');
     var instances = getInstances();
 
     instances.runner.addFlow(json);
@@ -87,7 +89,7 @@ describe('Cross-flow, basic dynamic dispatch invocations', function() {
   });
 
   it('can call an xflow III', function() {
-    var json = loadJson('data/flows/branch_boolean_condition.json', 'utf-8');
+    var json = loadJson('data/flows/branch_boolean_condition.json');
     var instances = getInstances();
 
     instances.runner.addFlow(json);
@@ -104,3 +106,42 @@ describe('Cross-flow, basic dynamic dispatch invocations', function() {
 
 });
 
+describe('Cross-flow, call other xflow', function() {
+
+  it('can call another xflow', function() {
+    var instances = getInstances();
+
+    var json1 = loadJson('data/capability_flows/add_1.json');
+    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+
+    instances.runner.addFlow(json1);
+    instances.runner.addFlow(json2);
+
+    var callXFlowActions = new CallXFlowActions({
+      runner: instances.runner
+    });
+
+    instances.dispatcher.addDispatcher(
+      'callxflow', callXFlowActions.getDispatcher()
+    );
+
+    var res;
+
+    res = instances.runner.run(json2.id, {
+    });
+
+    expect(res).to.deep.equal({
+      'CounterValue' : 1
+    });
+
+    res = instances.runner.run(json2.id, {
+      'CounterValue' : 1
+    });
+
+    expect(res).to.deep.equal({
+      'CounterValue' : 2
+    });
+
+  });
+
+});

@@ -91,66 +91,66 @@ describe('XFlow sync ', function() {
 
 describe('XFlow async ', function() {
 
-    it('loads a json flow', function(done) {
+    it('loads a json flow', function() {
         var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
           'ReturnValue' : 2
         })).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'ReturnValue' : 2
-        }).notify(done);
+        });
       });
 
-    it('runs a flow with an arithmetic expression ', function(done) {
+    it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/flows/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
             'ReturnValue' : 3
-          }).notify(done);
+          });
       });
 
-    it('runs a flow with a branch  ', function(done) {
+    it('runs a flow with a branch  ', function() {
         var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {})).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'ReturnValue' : 0
-        }).notify(done);
+        });
       });
 
-    it('runs a flow with a branch followed by an expression (1+2)', function(done) {
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/flows/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
           'MatchValue' : true
         })).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'ReturnValue' : 3
-        }).notify(done);
+        });
       });
 
-    it('runs a flow with a branch followed by an expression (1+2)', function(done) {
+    it('runs a flow with a branch followed by an expression (1+2)', function() {
         var data = fs.readFileSync('data/flows/branch_boolean_and_expressions_return.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
           'MatchValue' : false
         })).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'ReturnValue' : 6
-        }).notify(done);
+        });
       });
 
-    it('runs a flow with a counter, loop and branch', function(done) {
+    it('runs a flow with a counter, loop and branch', function() {
         var data = fs.readFileSync('data/flows/loop_5x.json', 'utf-8');
         var json = JSON.parse(data);
         var res = (getXFlow(json, {
           'CounterValue' : 0
         })).startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'CounterValue' : 6
-        }).notify(done);
+        });
       });
   });
 

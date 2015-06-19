@@ -130,7 +130,7 @@ describe('XFlowRunner sync ', function() {
 
 describe('XFlowRunner async ', function() {
 
-  it('runs the same flow multiple times', function(done) {
+  it('runs the same flow multiple times', function() {
     var runner   = getXFlowRunner();
     var promises = [];
 
@@ -149,7 +149,7 @@ describe('XFlowRunner async ', function() {
 
     var res = RSVP.all(promises);
 
-    expect(res).to.eventually.deep.equal(
+    return expect(res).to.eventually.deep.equal(
       [
         {
           'ReturnValue' : false
@@ -161,11 +161,11 @@ describe('XFlowRunner async ', function() {
           'ReturnValue' : false
         }
       ]
-    ).notify(done);
+    );
 
   });
 
-  it('runs branching flows', function(done) {
+  it('runs branching flows', function() {
     var runner   = getXFlowRunner();
     var promises = [];
 
@@ -193,16 +193,16 @@ describe('XFlowRunner async ', function() {
 
     var res = RSVP.all(promises);
 
-    expect(res).to.eventually.deep.equal(
+    return expect(res).to.eventually.deep.equal(
       [
         { 'ReturnValue' : 2 },
         { 'ReturnValue' : 4 },
         { 'ReturnValue' : 1 }
       ]
-    ).notify(done);
+    );
   });
 
-  it('can single step flows', function(done) {
+  it('can single step flows', function() {
     var runner = getXFlowRunner();
 
     var json = getJSON('data/flows/create_object.json');
@@ -230,7 +230,7 @@ describe('XFlowRunner async ', function() {
 
     nextStep();
 
-    expect(defer.promise).to.eventually.equal(5).notify(done);
+    return expect(defer.promise).to.eventually.equal(5);
 
   });
 

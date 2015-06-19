@@ -1,6 +1,7 @@
 import chai           from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import fs             from 'fs';
+import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
@@ -56,7 +57,7 @@ function loadJson(path) {
   return JSON.parse(data);
 }
 
-describe('Cross-flow, basic dynamic dispatch invocations', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
 
   it('can call an xflow I', function() {
     var json = loadJson('data/flows/create_object.json');
@@ -106,7 +107,57 @@ describe('Cross-flow, basic dynamic dispatch invocations', function() {
 
 });
 
-describe('Cross-flow, call other xflow', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
+
+  it('can call an xflow I', function() {
+    var json = loadJson('data/flows/create_object.json');
+    var instances = getInstances();
+
+    instances.runner.addFlow(json);
+
+    var res = instances.runner.runQ(json.id, {
+      'ReturnValue' : true
+    });
+
+    return expect(res).to.eventually.deep.equal({
+      'ReturnValue' : true
+    });
+  });
+
+  it('can call an xflow II', function() {
+    var json = loadJson('data/flows/loop_5x.json');
+    var instances = getInstances();
+
+    instances.runner.addFlow(json);
+
+    var res = instances.runner.runQ(json.id, {
+      'CounterValue' : 0
+    });
+
+    return expect(res).to.eventually.deep.equal({
+      'CounterValue' : 6
+    });
+  });
+
+  it('can call an xflow III', function() {
+    var json = loadJson('data/flows/branch_boolean_condition.json');
+    var instances = getInstances();
+
+    instances.runner.addFlow(json);
+
+    var res = instances.runner.runQ(json.id, {
+      'CalcValueA' : 1,
+      'CalcValueB' : 2
+    });
+
+    return expect(res).to.eventually.deep.equal({
+      'ReturnValue' : true
+    });
+  });
+
+});
+
+describe('Cross-flow, call other xflow [sync]', function() {
 
   it('can call another xflow', function() {
     var instances = getInstances();
@@ -165,26 +216,26 @@ describe('Cross-flow, call other xflow [async]', function() {
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res;
-
     //
     // XXX: TODO: Inspect results, passing correctly?
     //
 
-    res = instances.runner.runQ(json2.id, {
+    var res1 = instances.runner.runQ(json2.id, {
+      'CounterValue' : 0
     });
 
-    expect(res).to.eventually.deep.equal({
+    var res2 = instances.runner.runQ(json2.id, {
       'CounterValue' : 1
     });
 
-    res = instances.runner.runQ(json2.id, {
-      'CounterValue' : 1
-    });
-
-    expect(res).to.eventually.deep.equal({
-      'CounterValue' : 2
-    });
+    return RSVP.all([
+      expect(res1).to.eventually.deep.equal({
+        'CounterValue' : 1
+      }),
+      expect(res2).to.eventually.deep.equal({
+        'CounterValue' : 2
+      })
+    ]);
 
   });
 

@@ -41,7 +41,7 @@ describe('xFlow sync emitter ', function() {
 
 describe('xFlow async event emission', function() {
 
-    it('executes a flow and emits events', function(done) {
+    it('executes a flow and emits events', function() {
         var data = fs.readFileSync('data/flows/branch_boolean.json', 'utf-8');
         var json = JSON.parse(data);
         var flow = getXFlow(json, {});
@@ -59,9 +59,9 @@ describe('xFlow async event emission', function() {
         });
 
         var res = flow.startQ();
-        expect(res).to.eventually.deep.equal({
+        return expect(res).to.eventually.deep.equal({
           'ReturnValue' : 0
-        }).notify(done);
+        });
       });
 
   });

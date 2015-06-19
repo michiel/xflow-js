@@ -6,7 +6,7 @@ import RSVP           from 'rsvp';
 chai.use(chaiAsPromised);
 
 import XFlowFactory           from '../../lib/xflow-factory';
-import XFlowQRunner           from '../../lib/xflow-qrunner';
+import XFlowRunner            from '../../lib/xflow-runner';
 import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
 
 import FlowActions   from '../../lib/actions/flow_actions';
@@ -39,7 +39,7 @@ var stdDispatcherDefs = {
 function getInstances() {
   var dispatcher = new XFlowDispatcherDynamic();
   var factory    = new XFlowFactory(dispatcher);
-  var runner     = new XFlowQRunner({
+  var runner     = new XFlowRunner({
     factory   : factory
   });
 

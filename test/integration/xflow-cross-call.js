@@ -195,6 +195,42 @@ describe('Cross-flow, call other xflow [sync]', function() {
 
   });
 
+  it('can call another xflow multiple times', function() {
+    var instances = getInstances();
+
+    var json1 = loadJson('data/capability_flows/add_1.json');
+    var json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+
+    instances.runner.addFlow(json1);
+    instances.runner.addFlow(json2);
+
+    var callXFlowActions = new CallXFlowActions({
+      runner: instances.runner
+    });
+
+    instances.dispatcher.addDispatcher(
+      'callxflow', callXFlowActions.getDispatcher()
+    );
+
+    var res;
+
+    res = instances.runner.run(json2.id, {
+    });
+
+    expect(res).to.deep.equal({
+      'CounterValue' : 3
+    });
+
+    res = instances.runner.run(json2.id, {
+      'CounterValue' : 3
+    });
+
+    expect(res).to.deep.equal({
+      'CounterValue' : 6
+    });
+
+  });
+
 });
 
 describe('Cross-flow, call other xflow [async]', function() {
@@ -216,10 +252,6 @@ describe('Cross-flow, call other xflow [async]', function() {
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    //
-    // XXX: TODO: Inspect results, passing correctly?
-    //
-
     var res1 = instances.runner.runQ(json2.id, {
       'CounterValue' : 0
     });
@@ -234,6 +266,42 @@ describe('Cross-flow, call other xflow [async]', function() {
       }),
       expect(res2).to.eventually.deep.equal({
         'CounterValue' : 2
+      })
+    ]);
+
+  });
+
+  it('can call another xflow multiple times', function() {
+    var instances = getInstances();
+
+    var json1 = loadJson('data/capability_flows/add_1.json');
+    var json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+
+    instances.runner.addFlow(json1);
+    instances.runner.addFlow(json2);
+
+    var callXFlowActions = new CallXFlowActions({
+      runner: instances.runner
+    });
+
+    instances.dispatcher.addDispatcher(
+      'callxflow', callXFlowActions.getDispatcher()
+    );
+
+    var res1 = instances.runner.runQ(json2.id, {
+      'CounterValue' : 0
+    });
+
+    var res2 = instances.runner.runQ(json2.id, {
+      'CounterValue' : 3
+    });
+
+    return RSVP.all([
+      expect(res1).to.eventually.deep.equal({
+        'CounterValue' : 3
+      }),
+      expect(res2).to.eventually.deep.equal({
+        'CounterValue' : 6
       })
     ]);
 

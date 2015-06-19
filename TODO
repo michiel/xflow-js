@@ -1,6 +1,13 @@
+General
+=======
 
   - Rename state -> scope
-  - Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
+  X Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
   - Fix build copying assets (schema, parser)
 
+Codegen
+=======
+
+  - Now only sync, generate async code / Promises
+  - Call cross-xflow
 

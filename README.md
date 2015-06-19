@@ -18,13 +18,36 @@ Browser,
 
 Documentation
 -------------
- 
+
     yuidoc -C -t ~/src/yuidoc-theme-blue lib
+
+Codegen
+-------
+
+    var escodegen = require('escodegen');
+    var parse     = require("esprima").parse;
+    var fs        = require("fs");
+
+    var src = fs.readFileSync(
+      "test.js",
+      "utf-8"
+    );
+
+    var ast = parse(src);
 
 TODO
 ----
 
-See TODO
+* General
+
+  - Rename state -> scope
+  X Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
+  - Fix build copying assets (schema, parser)
+
+* Codegen
+
+  - Now only sync, generate async code / Promises
+  - Call cross-xflow
 
 
 

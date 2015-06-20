@@ -11,6 +11,8 @@ import XFlowJSBuilder  from '../../../lib/codegen/xflow-js-builder';
 
 import Flox            from '../../../lib/flox';
 
+import FloxGenerator   from '../../../lib/codegen/actions/flox_generator';
+
 function getXFlow(json, params) {
   var dispatcher = new XFlowDispatcher();
   return new XFlow(json, params, dispatcher);
@@ -18,6 +20,8 @@ function getXFlow(json, params) {
 
 function buildScript(json) {
   var builder  = new XFlowJSBuilder(json);
+  builder.addGenerator('flox', new FloxGenerator());
+
   var jscode   = builder.generate();
   // console.log('JSCODE ', jscode);
   return new vm.Script(jscode, {

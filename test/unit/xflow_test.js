@@ -28,7 +28,10 @@ describe('XFlow sync ', function() {
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/flows/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (getXFlow(json, {})).start();
+        var res = (getXFlow(json, {
+          'ValueA' : 1,
+          'ValueB' : 2
+        })).start();
         expect(res).to.deep.equal({
           'ReturnValue': 3
         });
@@ -105,9 +108,12 @@ describe('XFlow async ', function() {
     it('runs a flow with an arithmetic expression ', function() {
         var data = fs.readFileSync('data/flows/arithmetic_addition.json', 'utf-8');
         var json = JSON.parse(data);
-        var res = (getXFlow(json, {})).startQ();
+        var res = (getXFlow(json, {
+          'ValueA' : 4,
+          'ValueB' : 5
+        })).startQ();
         return expect(res).to.eventually.deep.equal({
-            'ReturnValue' : 3
+            'ReturnValue' : 9
           });
       });
 

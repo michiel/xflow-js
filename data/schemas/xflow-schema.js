@@ -61,7 +61,7 @@ export default {
         'output': {
           'type': 'array',
           'minItems': 0,
-          'uniqueItems': false,
+          'uniqueItems': true,
           'additionalItems': true,
           'items': {
             'type': 'object',

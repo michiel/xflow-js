@@ -90,6 +90,14 @@ describe('XFlowValidator loads bad flows ', function() {
       expect(res.length).to.equal(1);
     });
 
+    it('with double defined variables in local, input and output it returns validation errors ', function() {
+      var json      = getXFlowJSON('data/bad_flows/double_variables_per_scope.json');
+      var validator = new XFlowValidator();
+      var res       = validator.validateWithErrors(json);
+
+      expect(res.length).to.equal(3);
+    });
+
 });
 
 describe('XFlowValidator gets called with bad arguments ', function() {

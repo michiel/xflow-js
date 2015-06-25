@@ -92,5 +92,67 @@ describe('Emittable mixin', function() {
 
   });
 
+  it('should add and remove listeners to specific events', function() {
+
+    class Main {
+      constructor() {
+        this.initEmittable();
+      }
+    }
+
+    mixin(Main, emittableMixin);
+    const mainInst = new Main();
+    const listenFn = function() {};
+
+    const eventName = 'xx';
+
+    expect(
+      mainInst.emitter.listeners(eventName).length
+    ).to.equal(0);
+
+    mainInst.on(eventName,listenFn);
+
+    expect(
+      mainInst.emitter.listeners(eventName).length
+    ).to.equal(1);
+
+    mainInst.off(eventName,listenFn);
+
+    expect(
+      mainInst.emitter.listeners(eventName).length
+    ).to.equal(0);
+
+  });
+
+  it('should add and remove listeners to wildcard events', function() {
+
+    class Main {
+      constructor() {
+        this.initEmittable();
+      }
+    }
+
+    mixin(Main, emittableMixin);
+    const mainInst = new Main();
+    const listenFn = function() {};
+
+    expect(
+      mainInst.emitter.listenersAny().length
+    ).to.equal(0);
+
+    mainInst.onAny(listenFn);
+
+    expect(
+      mainInst.emitter.listenersAny().length
+    ).to.equal(1);
+
+    mainInst.offAny(listenFn);
+
+    expect(
+      mainInst.emitter.listenersAny().length
+    ).to.equal(0);
+
+  });
+
 });
 

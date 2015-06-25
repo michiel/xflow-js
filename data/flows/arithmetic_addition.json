@@ -15,12 +15,12 @@
   "variables" : {
     "input" : [
       {
-        "name"  : "value4",
+        "name"  : "ValueA",
         "vtype"  : "number",
         "value" : 4
       },
       {
-        "name"  : "value5",
+        "name"  : "ValueB",
         "vtype"  : "number",
         "value" : 5
       }
@@ -34,7 +34,8 @@
     "local" : [
       {
         "vtype" : "boolean",
-        "name" : "ReturnValue"
+        "name" : "ReturnValue",
+        "value" : false
       }
     ]
   },
@@ -52,7 +53,7 @@
       "action": "evalexpr",
       "label" : "Flox",
       "parameters": {
-        "expression" : "1+2",
+        "expression" : "$ValueA+$ValueB",
         "returns"    : {
           "name"   : "ReturnValue",
           "vtype"   : "number"

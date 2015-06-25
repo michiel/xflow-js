@@ -1,6 +1,7 @@
 import chai           from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import fs             from 'fs';
+import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
@@ -339,4 +340,25 @@ describe('XFlowMutableStruct ', function() {
 
 });
 
+describe('XFlowMutableStruct emissions', function() {
+
+  it('can emit events', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+    var defer     = RSVP.defer();
+
+    xf.on('change', function(evtName, delta) {
+      expect(delta.op).to.equal('add');
+      expect(delta.path).to.equal('/nodes/10');
+      defer.resolve();
+    });
+
+    var node = xf.newNode();
+    xf.addNode(node);
+
+    return defer.promise;
+
+  });
+
+});
 

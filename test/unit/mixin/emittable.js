@@ -81,8 +81,8 @@ describe('Emittable mixin', function() {
 
     const defer = RSVP.defer();
 
-    mainInst.on('xx', function(arg1, arg2) {
-      expect(arg2).to.equal(1);
+    mainInst.on('xx', function(arg1) {
+      expect(arg1).to.equal(1);
       defer.resolve();
     });
 

@@ -347,9 +347,9 @@ describe('XFlowMutableStruct emissions', function() {
     var xf        = new XFlowMutableStruct(json);
     var defer     = RSVP.defer();
 
-    xf.on('change', function(evtName, delta) {
-      expect(delta.op).to.equal('add');
-      expect(delta.path).to.equal('/nodes/10');
+    xf.on('change', function(deltas) {
+      expect(deltas[0].op).to.equal('add');
+      expect(deltas[0].path).to.equal('/nodes/10');
       defer.resolve();
     });
 

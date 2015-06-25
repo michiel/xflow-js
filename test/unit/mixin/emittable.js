@@ -92,6 +92,32 @@ describe('Emittable mixin', function() {
 
   });
 
+  it('should emit events with multiple arguments', function() {
+
+    class Main {
+      constructor() {
+        this.initEmittable();
+      }
+    }
+
+    mixin(Main, emittableMixin);
+    const mainInst = new Main();
+
+    const defer = RSVP.defer();
+
+    mainInst.on('xx', function(arg1, arg2, arg3) {
+      expect(arg1).to.equal(1);
+      expect(arg2).to.equal(2);
+      expect(arg3).to.equal(3);
+      defer.resolve();
+    });
+
+    mainInst.emit('xx', 1, 2, 3);
+
+    return defer.promise;
+
+  });
+
   it('should add and remove listeners to specific events', function() {
 
     class Main {
@@ -151,6 +177,32 @@ describe('Emittable mixin', function() {
     expect(
       mainInst.emitter.listenersAny().length
     ).to.equal(0);
+
+  });
+
+  it('should trigger callbacks with multiple arguments for wildcard events', function() {
+
+    class Main {
+      constructor() {
+        this.initEmittable();
+      }
+    }
+
+    mixin(Main, emittableMixin);
+    const mainInst = new Main();
+
+    const defer = RSVP.defer();
+
+    mainInst.onAny(function(arg1, arg2, arg3) {
+      expect(arg1).to.equal(1);
+      expect(arg2).to.equal(2);
+      expect(arg3).to.equal(3);
+      defer.resolve();
+    });
+
+    mainInst.emit('xx', 1, 2, 3);
+
+    return defer.promise;
 
   });
 

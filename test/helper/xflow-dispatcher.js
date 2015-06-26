@@ -1,11 +1,11 @@
-import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
+import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
 import FlowActions   from '../../lib/actions/flow_actions';
 import FloxActions   from '../../lib/actions/flox_actions';
 import ObjectActions from '../../lib/actions/object_actions';
 
 function getXFlowDispatcherBasic() {
-  return new XFlowDispatcherDynamic({
+  return new XFlowDispatcher({
     'flox' : {
       'name'      : 'flox',
       'version'   : 1,
@@ -53,7 +53,7 @@ function getXFlowDispatcherExt(args={}) {
     setup[name] = args[name];
   }
 
-  return new XFlowDispatcherDynamic(setup);
+  return new XFlowDispatcher(setup);
 }
 
 export default {

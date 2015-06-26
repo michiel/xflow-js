@@ -4,8 +4,8 @@ import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlow                  from '../../lib/xflow';
-import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
+import XFlow           from '../../lib/xflow';
+import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
 import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 
@@ -14,7 +14,7 @@ function getXFlow(json, params) {
   return new XFlow(json, params, dispatcher);
 }
 
-describe('XFlowDispatcherDynamic [sync]', function() {
+describe('XFlowDispatcher [sync]', function() {
 
   it('loads and executes a flow', function() {
     var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
@@ -41,7 +41,7 @@ describe('XFlowDispatcherDynamic [sync]', function() {
 
 });
 
-describe('XFlowDispatcherDynamic [async]', function() {
+describe('XFlowDispatcher [async]', function() {
 
   it('loads and executes a flow', function() {
     var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
@@ -69,35 +69,35 @@ describe('XFlowDispatcherDynamic [async]', function() {
 });
 
 
-describe('XFlowDispatcherDynamic invalid dispatchers', function() {
+describe('XFlowDispatcher invalid dispatchers', function() {
 
   it('should error on invalid dispatchers', function() {
     var dispatcher;
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher(null);
     }).to.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', null);
     }).to.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', {
       });
     }).to.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', {
         dispatch : function() {}
       });
     }).to.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', {
         dispatchQ : function() {},
@@ -105,7 +105,7 @@ describe('XFlowDispatcherDynamic invalid dispatchers', function() {
       });
     }).to.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', {
         version   : 1,
@@ -114,7 +114,7 @@ describe('XFlowDispatcherDynamic invalid dispatchers', function() {
       });
     }).to.not.throw(Error);
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
     expect(function() {
       dispatcher.addDispatcher('test', {
         version   : 1,
@@ -132,12 +132,12 @@ describe('XFlowDispatcherDynamic invalid dispatchers', function() {
 });
 
 
-describe('XFlowDispatcherDynamic request for unavailable dispatcher', function() {
+describe('XFlowDispatcher request for unavailable dispatcher', function() {
 
   it('should error on unavailable dispatchers', function() {
     var dispatcher;
 
-    dispatcher = new XFlowDispatcherDynamic({});
+    dispatcher = new XFlowDispatcher({});
 
     expect(function() {
       dispatcher.processNode({

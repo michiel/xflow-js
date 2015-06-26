@@ -5,9 +5,9 @@ import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlowFactory           from '../../lib/xflow-factory';
-import XFlowRunner            from '../../lib/xflow-runner';
-import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
+import XFlowFactory    from '../../lib/xflow-factory';
+import XFlowRunner     from '../../lib/xflow-runner';
+import XFlowDispatcher from '../../lib/xflow-dispatcher';
 
 import FlowActions   from '../../lib/actions/flow_actions';
 import FloxActions   from '../../lib/actions/flox_actions';
@@ -37,7 +37,7 @@ var stdDispatcherDefs = {
 };
 
 function getInstances() {
-  var dispatcher = new XFlowDispatcherDynamic();
+  var dispatcher = new XFlowDispatcher();
   var factory    = new XFlowFactory(dispatcher);
   var runner     = new XFlowRunner({
     factory   : factory

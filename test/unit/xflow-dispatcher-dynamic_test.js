@@ -7,35 +7,10 @@ chai.use(chaiAsPromised);
 import XFlow                  from '../../lib/xflow';
 import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
 
-import FlowActions   from '../../lib/actions/flow_actions';
-import FloxActions   from '../../lib/actions/flox_actions';
-import ObjectActions from '../../lib/actions/object_actions';
-
-function getXFlowDispatcher() {
-  return new XFlowDispatcherDynamic({
-    'flox' : {
-      'name'      : 'flox',
-      'version'   : 1,
-      'dispatch'  : FloxActions.Dispatch,
-      'dispatchQ' : FloxActions.DispatchQ
-    },
-    'object' : {
-      'name'      : 'object',
-      'version'   : 1,
-      'dispatch'  : ObjectActions.Dispatch,
-      'dispatchQ' : ObjectActions.DispatchQ
-    },
-    'flow' : {
-      'name'      : 'flow',
-      'version'   : 1,
-      'dispatch'  : FlowActions.Dispatch,
-      'dispatchQ' : FlowActions.DispatchQ
-    }
-  });
-}
+import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 
 function getXFlow(json, params) {
-  var dispatcher = getXFlowDispatcher();
+  var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
   return new XFlow(json, params, dispatcher);
 }
 

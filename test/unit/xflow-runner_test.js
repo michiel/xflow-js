@@ -5,33 +5,12 @@ import fs from 'fs';
 chai.use(chaiAsPromised);
 
 import XFlow                  from '../../lib/xflow';
-import XFlowDispatcherDynamic from '../../lib/xflow-dispatcher-dynamic';
+import CallXFlowActions       from '../../lib/actions/callxflow_actions';
 
-import FlowActions      from '../../lib/actions/flow_actions';
-import FloxActions      from '../../lib/actions/flox_actions';
-import ObjectActions    from '../../lib/actions/object_actions';
-import CallXFlowActions from '../../lib/actions/callxflow_actions';
+import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 
 function getXFlowDispatcher(args={}) {
-  return new XFlowDispatcherDynamic({
-    'flox' : {
-      'name'      : 'flox',
-      'version'   : 1,
-      'dispatch'  : FloxActions.Dispatch,
-      'dispatchQ' : FloxActions.DispatchQ
-    },
-    'object' : {
-      'name'      : 'object',
-      'version'   : 1,
-      'dispatch'  : ObjectActions.Dispatch,
-      'dispatchQ' : ObjectActions.DispatchQ
-    },
-    'flow' : {
-      'name'      : 'flow',
-      'version'   : 1,
-      'dispatch'  : FlowActions.Dispatch,
-      'dispatchQ' : FlowActions.DispatchQ
-    },
+  return XFlowDispatcherHelper.getXFlowDispatcherExt({
     'callxflow'   : new CallXFlowActions({
       runner : args.runner
     }).getDispatcher()

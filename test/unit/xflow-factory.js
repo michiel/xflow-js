@@ -6,10 +6,11 @@ chai.use(chaiAsPromised);
 
 import XFlow           from '../../lib/xflow';
 import XFlowFactory    from '../../lib/xflow-factory';
-import XFlowDispatcher from '../../lib/xflow-dispatcher';
+
+import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 
 function getXFlowFactory() {
-  return new XFlowFactory(new XFlowDispatcher());
+  return new XFlowFactory(XFlowDispatcherHelper.getXFlowDispatcherBasic());
 }
 
 describe('XFlowFactory Factory ', function() {

@@ -5,10 +5,11 @@ import fs from 'fs';
 chai.use(chaiAsPromised);
 
 import XFlow from '../../lib/xflow';
-import XFlowDispatcher from '../../lib/xflow-dispatcher';
+
+import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 
 function getXFlow(json, params) {
-  var dispatcher = new XFlowDispatcher();
+  var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
   return new XFlow(json, params, dispatcher);
 }
 

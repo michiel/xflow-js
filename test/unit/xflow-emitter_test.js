@@ -5,13 +5,10 @@ import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlow from '../../lib/xflow';
-
-import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
+import XFlowHelper            from '../helper/xflow';
 
 function getXFlow(json, params) {
-  var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
-  return new XFlow(json, params, dispatcher);
+  return XFlowHelper.getXFlowBasic(json, params);
 }
 
 describe('xFlow sync emitter ', function() {

@@ -4,13 +4,10 @@ import fs             from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlow from '../../lib/xflow';
-
-import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
+import XFlowHelper    from '../helper/xflow';
 
 function getXFlow(json, params) {
-  var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
-  return new XFlow(json, params, dispatcher);
+  return XFlowHelper.getXFlowBasic(json, params);
 }
 
 describe('XFlow load bad flow ', function() {

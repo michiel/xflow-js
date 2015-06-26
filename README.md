@@ -43,6 +43,7 @@ TODO
   - Rename state -> scope
   X Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
   - Fix build copying assets (schema, parser)
+  X Add cyclomatic complexity reporter
 
 * Codegen
 

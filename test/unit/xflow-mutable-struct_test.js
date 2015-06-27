@@ -337,6 +337,28 @@ describe('XFlowMutableStruct ', function() {
     expect(xf.json).to.deep.equal(originalJson);
   });
 
+  it('can undo multiple changes', function() {
+    var json      = getXFlowJSON('data/flows/10_steps.json');
+    var xf        = new XFlowMutableStruct(json);
+
+    var originalJson = clone(json);
+
+    var node1 = xf.getNode(1);
+    var node2 = xf.getNode(2);
+
+    xf.removeNode(node1);
+    xf.removeNode(node2);
+
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(true);
+    expect(xf.undo()).to.equal(false);
+
+    expect(xf.json).to.deep.equal(originalJson);
+  });
+
 });
+
+
+
 
 

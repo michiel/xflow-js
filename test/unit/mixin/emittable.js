@@ -81,8 +81,8 @@ describe('Emittable mixin', function() {
 
     const defer = RSVP.defer();
 
-    mainInst.on('xx', function(arg1) {
-      expect(arg1).to.equal(1);
+    mainInst.on('xx', function(event, args) {
+      expect(args).to.equal(1);
       defer.resolve();
     });
 
@@ -105,7 +105,7 @@ describe('Emittable mixin', function() {
 
     const defer = RSVP.defer();
 
-    mainInst.on('xx', function(arg1, arg2, arg3) {
+    mainInst.on('xx', function(event, arg1, arg2, arg3) {
       expect(arg1).to.equal(1);
       expect(arg2).to.equal(2);
       expect(arg3).to.equal(3);
@@ -193,7 +193,7 @@ describe('Emittable mixin', function() {
 
     const defer = RSVP.defer();
 
-    mainInst.onAny(function(arg1, arg2, arg3) {
+    mainInst.onAny(function(event, arg1, arg2, arg3) {
       expect(arg1).to.equal(1);
       expect(arg2).to.equal(2);
       expect(arg3).to.equal(3);

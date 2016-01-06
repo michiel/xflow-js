@@ -153,35 +153,35 @@ describe('XFlowMutableStruct ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().input.length).to.equal(1);
+    expect(xf.getInVariables().length).to.equal(1);
 
     xf.addVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().input.length).to.equal(2);
+    expect(xf.getInVariables().length).to.equal(2);
   });
 
   it('can remove variables (input) ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().input.length).to.equal(1);
+    expect(xf.getInVariables().length).to.equal(1);
 
     xf.addVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().input.length).to.equal(2);
+    expect(xf.getInVariables().length).to.equal(2);
 
     xf.removeVariable('input', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().input.length).to.equal(1);
+    expect(xf.getInVariables().length).to.equal(1);
   });
 
   it('can add variables (output) ', function() {
@@ -197,21 +197,21 @@ describe('XFlowMutableStruct ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().output.length).to.equal(1);
+    expect(xf.getOutVariables().length).to.equal(1);
 
     xf.addVariable('output', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().output.length).to.equal(2);
+    expect(xf.getOutVariables().length).to.equal(2);
 
     xf.removeVariable('output', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().output.length).to.equal(1);
+    expect(xf.getOutVariables().length).to.equal(1);
   });
 
   it('can add variables (local) ', function() {
@@ -227,21 +227,21 @@ describe('XFlowMutableStruct ', function() {
     var json      = getXFlowJSON('data/flows/10_steps.json');
     var xf        = new XFlowMutableStruct(json);
 
-    expect(xf.getVariables().local.length).to.equal(0);
+    expect(xf.getLocalVariables().length).to.equal(0);
 
     xf.addVariable('local', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().local.length).to.equal(1);
+    expect(xf.getLocalVariables().length).to.equal(1);
 
     xf.removeVariable('local', {
       name  : 'SomeNewVar',
       vtype : 'number'
     });
 
-    expect(xf.getVariables().local.length).to.equal(0);
+    expect(xf.getLocalVariables().length).to.equal(0);
   });
 
 
@@ -286,7 +286,7 @@ describe('XFlowMutableStruct ', function() {
       vtype : 'number'
     });
 
-    expect(xf.getVariables().local.length).to.equal(3);
+    expect(xf.getLocalVariables().length).to.equal(3);
     expect(xf.json).to.not.deep.equal(originalJson);
 
     expect(xf.undo()).to.equal(true);
@@ -327,7 +327,7 @@ describe('XFlowMutableStruct ', function() {
       vtype : 'number'
     });
 
-    expect(xf.getVariables().local.length).to.equal(2);
+    expect(xf.getLocalVariables().length).to.equal(2);
     expect(xf.json).to.not.deep.equal(originalJson);
 
     expect(xf.undo()).to.equal(true);

@@ -1,14 +1,14 @@
-XFlow JS
-========
+# XFlow JS
 
-Test
-----
+[![Build Status](https://travis-ci.org/michiel/xflow-js.svg?branch=master)](https://travis-ci.org/michiel/xflow-js)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/michiel/xflow-js/master/LICENSE)
+
+## Test
 
     gulp test
     gulp coverage
 
-Build
-----
+## Build
 
     gulp build
 
@@ -16,13 +16,11 @@ Browser,
 
     webpack --module-bind "js=babel-loader" lib/xflow-target-browser.js xfb.js
 
-Documentation
--------------
+## Documentation
 
     yuidoc -C -t ~/src/yuidoc-theme-blue lib
 
-Codegen
--------
+## Codegen
 
     var escodegen = require('escodegen');
     var parse     = require("esprima").parse;
@@ -35,8 +33,7 @@ Codegen
 
     var ast = parse(src);
 
-TODO
-----
+## TODO
 
 * General
 

@@ -15,7 +15,7 @@
     "watch": "gulp watch"
   },
   "author": "Michiel Kalkman <michiel@nosuchtype.com>",
-  "license": "(c) NST",
+  "license": "MIT",
   "pre-commit": [
     "jshint",
     "jscs"

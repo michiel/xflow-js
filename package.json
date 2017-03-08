@@ -1,6 +1,6 @@
 {
   "name": "xflow-js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "xflow",
   "main": "dist/xflow-dist.js",
   "scripts": {

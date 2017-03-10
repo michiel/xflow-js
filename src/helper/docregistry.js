@@ -1,7 +1,7 @@
 import LangUtil from '../util/lang';
 
 const exists = LangUtil.exists;
-const clone  = LangUtil.clone;
+const clone = LangUtil.clone;
 
 /**
  * DocRegistry

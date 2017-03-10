@@ -10,7 +10,7 @@ const exists = LangUtil.exists;
 const isObject = LangUtil.isObject;
 const isString = LangUtil.isString;
 const isNumber = LangUtil.isNumber;
-const isArray  = LangUtil.isArray;
+const isArray = LangUtil.isArray;
 
 /**
  * @method isSameNode
@@ -224,7 +224,6 @@ export function assertIsBranch(branch) {
   }
 }
 
-
 /**
  * @method assertIsValidParamScope
  * @param {String} p The scope name (input, output, local)
@@ -263,28 +262,28 @@ export function assertIsXvar(xvar) {
  * @param {String} key (optional) Default 'id'
  * @return {Number}
  */
-export function nextId(range, key='id') {
+export function nextId(range, key = 'id') {
   return range.reduce((prev, el)=> {
     return (el[key] > prev) ? el[key] : prev;
   }, 0) + 1;
 }
 
 export default {
-  isSameEdge              : isSameEdge,
-  isSameBranch            : isSameBranch,
-  isBranchNode            : isBranchNode,
-  isSameNode              : isSameNode,
-  isSameVariable          : isSameVariable,
-  isEntryNode             : isEntryNode,
-  isTerminalNode          : isTerminalNode,
-  getEntryNode            : getEntryNode,
-  getNodeType             : getNodeType,
-  getNode                 : getNode,
-  nextId                  : nextId,
-  assertIsNode            : assertIsNode,
-  assertIsEdge            : assertIsEdge,
-  assertIsBranch          : assertIsBranch,
-  assertIsXvar            : assertIsXvar,
-  assertIsValidParamScope : assertIsValidParamScope
+  isSameEdge: isSameEdge,
+  isSameBranch: isSameBranch,
+  isBranchNode: isBranchNode,
+  isSameNode: isSameNode,
+  isSameVariable: isSameVariable,
+  isEntryNode: isEntryNode,
+  isTerminalNode: isTerminalNode,
+  getEntryNode: getEntryNode,
+  getNodeType: getNodeType,
+  getNode: getNode,
+  nextId: nextId,
+  assertIsNode: assertIsNode,
+  assertIsEdge: assertIsEdge,
+  assertIsBranch: assertIsBranch,
+  assertIsXvar: assertIsXvar,
+  assertIsValidParamScope: assertIsValidParamScope,
 };
 

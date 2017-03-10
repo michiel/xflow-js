@@ -1,14 +1,14 @@
-import LangUtil       from '../util/lang';
-import ASTBuilder     from './ast-builder';
+import LangUtil from '../util/lang';
+import ASTBuilder from './ast-builder';
 
-const ast    = ASTBuilder;
+const ast = ASTBuilder;
 const exists = LangUtil.exists;
 
 const nodeName = (id)=> {
   return `node${id}`;
-}
+};
 
-const Program = (body=[], paramChecks=[], localvars=[], retvals=[])=> {
+const Program = (body = [], paramChecks = [], localvars = [], retvals = [])=> {
   return ast.Program([
     ast.FunctionDeclaration(
       'main',    // id
@@ -23,7 +23,7 @@ const Program = (body=[], paramChecks=[], localvars=[], retvals=[])=> {
             ast.ExpressionStatement(
               ObjectExpression(retvals)
             )
-          )
+          ),
         ]
       )
     ),
@@ -31,11 +31,11 @@ const Program = (body=[], paramChecks=[], localvars=[], retvals=[])=> {
       ast.CallExpression(
         Identifier('main'),
         ScopeObject()
-      ))
+      )),
   ]);
-}
+};
 
-const FlowNode = (id, body=[])=> {
+const FlowNode = (id, body = [])=> {
 
   if (body.length === 0) {
     body.push(ast.EmptyStatement());
@@ -46,7 +46,7 @@ const FlowNode = (id, body=[])=> {
     [],           // params
     body
   );
-}
+};
 
 const CallNode = (id)=> {
   return ast.ExpressionStatement(
@@ -56,7 +56,7 @@ const CallNode = (id)=> {
       )
     )
   );
-}
+};
 
 const TestBoolean = (a, op, b)=> {
   return ast.BinaryExpression(
@@ -64,11 +64,11 @@ const TestBoolean = (a, op, b)=> {
     a,
     b
   );
-}
+};
 
-const BlockStatement = (body=[])=> {
+const BlockStatement = (body = [])=> {
   return ast.BlockStatement(body);
-}
+};
 
 const Branch = (expr, idT, idF)=> {
   return ast.IfStatement(
@@ -76,27 +76,27 @@ const Branch = (expr, idT, idF)=> {
     CallNode(idT),
     CallNode(idF)
   );
-}
+};
 
-const ObjectExpression = (props=[])=> {
+const ObjectExpression = (props = [])=> {
   return ast.ObjectExpression(props);
-}
+};
 
 const ScopeObject = ()=> {
   return Identifier('scope');
-}
+};
 
 const ScopeVariable = (name)=> {
   return Member('scope', name);
-}
+};
 
 const Value = (val)=> {
   return ast.Literal(val);
-}
+};
 
 const Identifier = (name)=> {
   return ast.Identifier(name);
-}
+};
 
 const ThrowIfUndefined = (ident, err)=> {
   return ast.IfStatement(
@@ -112,19 +112,19 @@ const ThrowIfUndefined = (ident, err)=> {
       )
     )
   );
-}
+};
 
 const Property = (key, value)=> {
   return ast.Property(key, value);
-}
+};
 
 const Member = (obj, prop)=> {
   return ast.MemberExpression(obj, prop);
-}
+};
 
-const CallExpression = (fn, args=[])=> {
+const CallExpression = (fn, args = [])=> {
   return ast.CallExpression(fn, args);
-}
+};
 
 const Assignment = (a, b)=> {
   return ast.ExpressionStatement(
@@ -134,29 +134,29 @@ const Assignment = (a, b)=> {
       b
     )
   );
-}
+};
 
 const VariableDeclaration = (varname, varinit)=> {
   return ast.VariableDeclarator(varname, varinit);
-}
+};
 
 export default {
-  Assignment          : Assignment,
-  BlockStatement      : BlockStatement,
-  Branch              : Branch,
-  CallNode            : CallNode,
-  CallExpression      : CallExpression,
-  FlowNode            : FlowNode,
-  Identifier          : Identifier,
-  Member              : Member,
-  ObjectExpression    : ObjectExpression,
-  Program             : Program,
-  Property            : Property,
-  ScopeVariable       : ScopeVariable,
-  ScopeObject         : ScopeObject,
-  TestBoolean         : TestBoolean,
-  ThrowIfUndefined    : ThrowIfUndefined,
-  Value               : Value,
-  VariableDeclaration : VariableDeclaration
+  Assignment: Assignment,
+  BlockStatement: BlockStatement,
+  Branch: Branch,
+  CallNode: CallNode,
+  CallExpression: CallExpression,
+  FlowNode: FlowNode,
+  Identifier: Identifier,
+  Member: Member,
+  ObjectExpression: ObjectExpression,
+  Program: Program,
+  Property: Property,
+  ScopeVariable: ScopeVariable,
+  ScopeObject: ScopeObject,
+  TestBoolean: TestBoolean,
+  ThrowIfUndefined: ThrowIfUndefined,
+  Value: Value,
+  VariableDeclaration: VariableDeclaration,
 };
 

@@ -2,22 +2,22 @@ import { exists } from './lang';
 
 export function mixin(klass, tomix) {
 
-  const ptype  = klass.prototype;
+  const ptype = klass.prototype;
   const source = tomix;
 
-  for (var name in source) {
+  for (const name in source) {
 
-      if (name === 'constructor') {
-        throw new Error('Mixin : attempting to mixin a constructor method, aborting!');
-      }
+    if (name === 'constructor') {
+      throw new Error('Mixin : attempting to mixin a constructor method, aborting!');
+    }
 
-      if (exists(ptype[name])) {
-           throw new Error(
+    if (exists(ptype[name])) {
+      throw new Error(
              `Mixin : attempting to mixin a property '${name}' that already exists, aborting!`
            );
-         }
+    }
 
-         ptype[name] = source[name];
+    ptype[name] = source[name];
   }
 
 }

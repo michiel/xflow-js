@@ -1,6 +1,6 @@
-import Assert            from '../util/assert';
+import Assert from '../util/assert';
 import { exists, clone } from '../util/lang';
-import patcher           from '../ext/jsonpatcher';
+import patcher from '../ext/jsonpatcher';
 
 const diffPatcher = patcher.create({});
 
@@ -17,7 +17,7 @@ const editable = {
    *
    * @method initEditable
    */
-  initEditable(prop='json') {
+  initEditable(prop = 'json') {
     this._editableProperty = prop;
     this._rdiffs = [];
   },
@@ -28,7 +28,7 @@ const editable = {
    * @method _assertEditableInitialized
    * @private
    */
-  _assertEditableInitialized(method='') {
+  _assertEditableInitialized(method = '') {
     if (!exists(this._rdiffs)) {
       throw new Error(
         `${this.name}.${method} : No editable stack found, check if initEditable() has been called`
@@ -90,7 +90,7 @@ const editable = {
     const old = clone(this.json);
     fn();
     this.makeChange(old, clone(this.json));
-  }
+  },
 
 };
 

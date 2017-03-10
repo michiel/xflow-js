@@ -138,12 +138,12 @@ export function hasProperty(obj, prop) {
 }
 
 const validationMap = {
-  'boolean' : isBoolean,
-  'number'  : isNumber,
-  'date'    : isDate,
-  'object'  : isObject,
-  'array'   : isArray,
-  'string'  : isString
+  'boolean': isBoolean,
+  'number': isNumber,
+  'date': isDate,
+  'object': isObject,
+  'array': isArray,
+  'string': isString,
 };
 
 //
@@ -176,8 +176,8 @@ export function assertType(type, val) {
  * @return {Array}
  */
 export function arrFromArguments(args) {
-  var retA = [];
-  for (var i = 0; i < args.length; i++) {
+  const retA = [];
+  for (let i = 0; i < args.length; i++) {
     retA.push(args[i]);
   }
   return retA;
@@ -189,8 +189,8 @@ export function arrFromArguments(args) {
  * @param {Object} b Seconday object to merge
  * @return {Object}
  */
-export function mergeDict(a, b={}) {
-  for (let keyB in b) {
+export function mergeDict(a, b = {}) {
+  for (const keyB in b) {
     if (!exists(a[keyB])) {
       a[keyB] = b[keyB];
     }
@@ -203,7 +203,7 @@ export function mergeDict(a, b={}) {
   //  - using Array.prototype.slice.call(arguments) is a performance no-no
   //
 
-  var args = arrFromArguments(arguments);
+  const args = arrFromArguments(arguments);
 
   if (args.length > 2) {
     return mergeDict.apply(
@@ -218,16 +218,16 @@ export function mergeDict(a, b={}) {
 }
 
 export default {
-  exists         : exists,
-  clone          : clone,
-  hasProperty    : hasProperty,
-  mergeDict      : mergeDict,
-  isArray        : isArray,
-  isString       : isString,
-  isBoolean      : isBoolean,
-  isNumber       : isNumber,
-  isObject       : isObject,
-  isDate         : isDate,
-  isFunction     : isFunction,
-  assertType     : assertType
+  exists: exists,
+  clone: clone,
+  hasProperty: hasProperty,
+  mergeDict: mergeDict,
+  isArray: isArray,
+  isString: isString,
+  isBoolean: isBoolean,
+  isNumber: isNumber,
+  isObject: isObject,
+  isDate: isDate,
+  isFunction: isFunction,
+  assertType: assertType,
 };

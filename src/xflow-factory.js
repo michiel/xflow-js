@@ -1,12 +1,12 @@
-import mixin          from './util/mixin';
+import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 
-import XFlow          from './xflow';
+import XFlow from './xflow';
 import XFlowValidator from './xflow-validator';
 
 const logEmission = (...args)=> {
   // console.log('FACTORY LOG EMISSION ', this.event, ...args);
-}
+};
 
 /**
  * XFlowFactory - instantiates new executable flows with a dispatcher
@@ -22,7 +22,7 @@ class XFlowFactory {
    * @param {XFlowDispatcher} disp
    */
   constructor(disp) {
-    this.dispatcher     = disp;
+    this.dispatcher = disp;
     this.xflowvalidator = new XFlowValidator();
 
     this.initEmittable();
@@ -41,7 +41,7 @@ class XFlowFactory {
   }
 
   checkCapabilities(flow) {
-    const caps          = this.dispatcher.capabilities;
+    const caps = this.dispatcher.capabilities;
     const unmatchedReqs = flow.requirements.filter(
       (req) => {
         return !(

@@ -14,7 +14,7 @@ import LangUtil from '../util/lang';
 export function exists(o) {
   if (!LangUtil.exists(o)) {
     throw new Error(
-      `assert.exists : value does not exist`
+      'assert.exists : value does not exist'
     );
   }
 }
@@ -162,15 +162,15 @@ export function equal(a, b) {
 }
 
 export default {
-  exists      : exists,
-  isArray     : isArray,
-  isString    : isString,
-  isBoolean   : isBoolean,
-  isObject    : isObject,
-  isNumber    : isNumber,
-  isDate      : isDate,
-  isFunction  : isFunction,
-  length      : length,
-  hasProperty : hasProperty,
-  equal       : equal
+  exists: exists,
+  isArray: isArray,
+  isString: isString,
+  isBoolean: isBoolean,
+  isObject: isObject,
+  isNumber: isNumber,
+  isDate: isDate,
+  isFunction: isFunction,
+  length: length,
+  hasProperty: hasProperty,
+  equal: equal,
 };

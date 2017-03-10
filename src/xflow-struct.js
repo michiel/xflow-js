@@ -1,13 +1,13 @@
 import XFlowValidator from './xflow-validator';
 
-const validator      = new XFlowValidator();
+const validator = new XFlowValidator();
 
 import FlowUtil from './util/flow';
 import LangUtil from './util/lang';
 
-const exists         = LangUtil.exists;
-const clone          = LangUtil.clone;
-const mergeDict      = LangUtil.mergeDict;
+const exists = LangUtil.exists;
+const clone = LangUtil.clone;
+const mergeDict = LangUtil.mergeDict;
 
 /**
  * XFlowStruct class
@@ -82,7 +82,6 @@ class XFlowStruct {
   getNode(id) {
     return FlowUtil.getNode(id, this.json.nodes);
   }
-
 
   /**
    * Get the next node for a non-branch, non-terminal node
@@ -185,10 +184,10 @@ class XFlowStruct {
    */
   getVariables() {
     return {
-      input  : this.getInVariables(),
-      output : this.getOutVariables(),
-      local  : this.getLocalVariables()
-    }
+      input: this.getInVariables(),
+      output: this.getOutVariables(),
+      local: this.getLocalVariables(),
+    };
   }
 
   /**

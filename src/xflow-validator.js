@@ -1,35 +1,35 @@
 import RSVP from 'rsvp';
-import tv4  from 'tv4';
+import tv4 from 'tv4';
 
 import FlowUtil from './util/flow';
 import LangUtil from './util/lang';
-import Flox     from './flox';
+import Flox from './flox';
 
 import FlowV1Schema from '../data/schemas/xflow-schema';
 
-const exists       = LangUtil.exists;
-const mergeDict    = LangUtil.mergeDict;
-const isArray      = LangUtil.isArray;
+const exists = LangUtil.exists;
+const mergeDict = LangUtil.mergeDict;
+const isArray = LangUtil.isArray;
 const getEntryNode = FlowUtil.getEntryNode;
-const getNodeType  = FlowUtil.getNodeType;
+const getNodeType = FlowUtil.getNodeType;
 
 const expressionRE = Flox.expressionRE;
 const whitespaceRE = Flox.whitespaceRE;
 
 const nodeDesc = (node)=> {
   return `node-${node.id}:[${node.label || 'unlabeled'}]`;
-}
+};
 
-const validationError = (code, message, path=[])=> {
+const validationError = (code, message, path = [])=> {
   return {
-    code    : code,
-    message : message,
-    paths   : isArray(path) ? path : [path]
+    code: code,
+    message: message,
+    paths: isArray(path) ? path : [path],
   };
-}
+};
 
 const allEdgesHaveNodes = (flow)=> {
-  let errors     = [];
+  const errors = [];
 
   flow.edges.forEach(
     (edge) => {
@@ -49,10 +49,10 @@ const allEdgesHaveNodes = (flow)=> {
     }
   );
   return errors;
-}
+};
 
 const allNodesHaveAtLeastOneEdge = (flow)=> {
-  let errors = [];
+  const errors = [];
 
   flow.nodes.forEach(
     (node)=> {
@@ -76,22 +76,22 @@ const allNodesHaveAtLeastOneEdge = (flow)=> {
   );
 
   return errors;
-}
+};
 
 const hasOneEntryNode = (flow)=> {
-  let res    = true;
-  let errors = [];
+  const res = true;
+  const errors = [];
   const entryNodes = getNodeType(flow.nodes, 'flow', 'start');
   if (entryNodes.length === 0) {
     errors.push(validationError(
       0,
-      `Flow has no entry node`,
-      `/nodes`
+      'Flow has no entry node',
+      '/nodes'
     ));
   } else if (entryNodes.length > 1) {
     errors.push(validationError(
       0,
-      `Flow has multiple entry nodes`,
+      'Flow has multiple entry nodes',
       entryNodes.map(
         (node)=>
           `/nodes/${node.id}`
@@ -100,24 +100,24 @@ const hasOneEntryNode = (flow)=> {
   }
 
   return errors;
-}
+};
 
 const hasTerminalNodes = (flow)=> {
   const termNodes = getNodeType(flow.nodes, 'flow', 'end');
-  let   errors    = [];
+  const errors = [];
   if (termNodes.length === 0) {
     errors.push(validationError(
       0,
-      `Flow has no terminal node`,
-      `/nodes`
+      'Flow has no terminal node',
+      '/nodes'
     ));
   }
   return errors;
-}
+};
 
 const expressionsReferenceKnownVariables = (flow)=> {
-  let errors        = [];
-  let flowVars      = {};
+  const errors = [];
+  const flowVars = {};
 
   const getVar = (el)=> { flowVars[el.name] = false; };
 
@@ -148,10 +148,10 @@ const expressionsReferenceKnownVariables = (flow)=> {
   );
 
   return errors;
-}
+};
 
 const allNodeActionsHaveMatchingRequirements = (flow)=> {
-  let errors = [];
+  const errors = [];
   flow.nodes.forEach(
     (node)=> {
       const res = flow.requirements.filter(
@@ -169,7 +169,7 @@ const allNodeActionsHaveMatchingRequirements = (flow)=> {
     }
   );
   return errors;
-}
+};
 
 const isSchemaValid = (flow, schema)=> {
   const res = tv4.validate(flow, schema);
@@ -177,14 +177,14 @@ const isSchemaValid = (flow, schema)=> {
 //     console.log('XFlowValidator.isSchemaValid validation error ', tv4.error);
 //   }
   return res;
-}
+};
 
 const allReturnValuesExist = (flow)=> {
-  let errors = [];
+  const errors = [];
 
   const getName = (el) => el.name;
   const retvars = flow.variables.output.map(getName);
-  const ovars   = flow.variables.input.map(getName).concat(
+  const ovars = flow.variables.input.map(getName).concat(
     flow.variables.local.map(getName)
   );
 
@@ -201,13 +201,13 @@ const allReturnValuesExist = (flow)=> {
   );
 
   return errors;
-}
+};
 
 const variablesAreDefinedOnlyOnce = (flow)=> {
-  let errors = [];
+  const errors = [];
 
-  const getName   = (el) => el.name;
-  const inVars    = flow.variables.input.map(getName);
+  const getName = (el) => el.name;
+  const inVars = flow.variables.input.map(getName);
   const localVars = flow.variables.local.map(getName);
 
   inVars.forEach((inV)=> {
@@ -221,20 +221,20 @@ const variablesAreDefinedOnlyOnce = (flow)=> {
   });
 
   return errors;
-}
+};
 
 //
 // XXX: Variables should be unique per scope is a schema requirement
 //
 
 const variablesAreUniquePerScope = (flow)=> {
-  let errors = [];
+  const errors = [];
 
-  const getName   = (el) => el.name;
+  const getName = (el) => el.name;
   ['input', 'output', 'local'].forEach(
     (scope)=> {
       const varCount = {};
-      const scVars   = flow.variables[scope].map(getName);
+      const scVars = flow.variables[scope].map(getName);
       scVars.forEach(
         (name)=> {
           if (!exists(varCount[name])) {
@@ -244,7 +244,7 @@ const variablesAreUniquePerScope = (flow)=> {
           }
         }
       );
-      for (let name in varCount) {
+      for (const name in varCount) {
         if (varCount[name] > 1) {
           errors.push(validationError(
             0,
@@ -256,7 +256,7 @@ const variablesAreUniquePerScope = (flow)=> {
     }
   );
   return errors;
-}
+};
 
 /**
  * XFlowValidator - validates flow structure and content
@@ -324,7 +324,7 @@ class XFlowValidator {
         allReturnValuesExist(flow).length === 0,
         variablesAreDefinedOnlyOnce(flow).length === 0,
         // variablesAreUniquePerScope(flow).length === 0,
-        allNodesHaveAtLeastOneEdge(flow).length === 0
+        allNodesHaveAtLeastOneEdge(flow).length === 0,
       ];
 
       return (res.filter((x)=> !x)).length === 0;

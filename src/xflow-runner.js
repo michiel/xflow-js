@@ -1,22 +1,22 @@
-import RSVP           from 'rsvp';
+import RSVP from 'rsvp';
 
-import XFlowHarness   from './xflow-harness';
-import DocRegistry    from './helper/docregistry';
+import XFlowHarness from './xflow-harness';
+import DocRegistry from './helper/docregistry';
 
 import { exists } from './util/lang';
 
 class XFlowRunner {
 
   constructor(opts) {
-    this.name       = 'XFlowRunner';
-    this.xfmap      = new DocRegistry();
-    this.factory    = opts.factory;
-    this.tickLimit  = opts.tickLimit || 4096;
+    this.name = 'XFlowRunner';
+    this.xfmap = new DocRegistry();
+    this.factory = opts.factory;
+    this.tickLimit = opts.tickLimit || 4096;
   }
 
   _makeHarness(xflow) {
     return new XFlowHarness(xflow, {
-      tickLimit : this.tickLimit
+      tickLimit: this.tickLimit,
     });
   }
 

@@ -1,9 +1,9 @@
-import RSVP          from 'rsvp';
+import RSVP from 'rsvp';
 
-import mixin          from './util/mixin';
+import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 
-import XFlow    from './xflow';
+import XFlow from './xflow';
 
 import { exists } from './util/lang';
 
@@ -26,9 +26,9 @@ class XFlowHarness {
    * @param {XFlow} xflow
    * @param {Object} opts (optional) Parameter hash
    */
-  constructor(xflow, opts={}) {
-    this.xflow     = xflow;
-    this.ticks     = 0;
+  constructor(xflow, opts = {}) {
+    this.xflow = xflow;
+    this.ticks = 0;
     this.tickLimit = opts.tickLimit || 4096;
 
     this.initEmittable();
@@ -73,7 +73,7 @@ class XFlowHarness {
    *     var res = runner.runFlow(flowJson); // {Promise}
    */
   runFlowQ() {
-    const flow  = this.xflow;
+    const flow = this.xflow;
     const defer = RSVP.defer();
 
     const nextStep = (()=> {
@@ -91,7 +91,7 @@ class XFlowHarness {
           defer.reject('XFlowHarness.runFlowQ : error ' + err);
         }
       );
-    }).bind(this);
+    });
 
     nextStep();
 

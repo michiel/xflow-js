@@ -1,7 +1,7 @@
 import RSVP from 'rsvp';
 import LangUtil from './util/lang';
 
-const exists           = LangUtil.exists;
+const exists = LangUtil.exists;
 
 const assertValidDispatcher = (name, dispatcher)=> {
   if (!LangUtil.isFunction(
@@ -25,15 +25,15 @@ const assertValidDispatcher = (name, dispatcher)=> {
       `assertValidDispatcher : Dispatcher ${name} does not have a version method`
     );
   }
-}
+};
 
 const buildCapabilities = (dispatchers)=> {
-  let ret = {};
-  for (let key in dispatchers) {
+  const ret = {};
+  for (const key in dispatchers) {
     ret[key] = dispatchers[key].version;
   }
   return ret;
-}
+};
 
 /**
  * Default dispatcher for XFlow event processing
@@ -50,9 +50,9 @@ class XFlowDispatcher {
    * @param {Object} dispatchers
    * @throws {Error} On invalid dispatchers
    */
-  constructor(dispatchers={}) {
-    this.name         = 'XFlowDispatcher';
-    this.dispatchers  = {};
+  constructor(dispatchers = {}) {
+    this.name = 'XFlowDispatcher';
+    this.dispatchers = {};
 
     this.addDispatchers(dispatchers);
   }
@@ -68,8 +68,8 @@ class XFlowDispatcher {
     this.capabilities = buildCapabilities(this.dispatchers);
   }
 
-  addDispatchers(dispatchers={}) {
-    for (let key in dispatchers) {
+  addDispatchers(dispatchers = {}) {
+    for (const key in dispatchers) {
       this.addDispatcher(key, dispatchers[key]);
     }
   }

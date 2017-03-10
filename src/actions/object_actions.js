@@ -13,52 +13,52 @@ const ObjectNDProxy = {
     // console.log('ObjectNDProxy.fetchObject');
     return state;
   },
-  createObject : (node, state)=> {
+  createObject: (node, state)=> {
     // console.log('ObjectNDProxy.createObject');
     return state;
   },
-  saveObject : (node, state)=> {
+  saveObject: (node, state)=> {
     // console.log('ObjectNDProxy.saveObject');
     return state;
   },
-  setAttributes : (node, state)=> {
+  setAttributes: (node, state)=> {
     // console.log('ObjectNDProxy.setAttributes');
     return state;
-  }
+  },
 };
 
 const ObjectNDProxyQ = {
-  fetchObject : (node, state)=> {
+  fetchObject: (node, state)=> {
     // console.log('ObjectNDProxyQ.fetchObject');
     const defer = RSVP.defer();
     defer.resolve(state);
     return defer.promise;
   },
-  createObject : (node, state)=> {
+  createObject: (node, state)=> {
     // console.log('ObjectNDProxyQ.createObject');
     const defer = RSVP.defer();
     defer.resolve(state);
     return defer.promise;
   },
-  saveObject : (node, state)=> {
+  saveObject: (node, state)=> {
     // console.log('ObjectNDProxyQ.saveObject');
     const defer = RSVP.defer();
     defer.resolve(state);
     return defer.promise;
   },
-  setAttributes : (node, state)=> {
+  setAttributes: (node, state)=> {
     // console.log('ObjectNDProxyQ.setAttributes');
     const defer = RSVP.defer();
     defer.resolve(state);
     return defer.promise;
-  }
+  },
 };
 
 const objectNodeActions = {
-  'retrieve'      : 'fetchObject',
-  'create'        : 'createObject',
-  'save'          : 'saveObject',
-  'setattributes' : 'setAttributes'
+  'retrieve': 'fetchObject',
+  'create': 'createObject',
+  'save': 'saveObject',
+  'setattributes': 'setAttributes',
 };
 
 const Dispatch = (node, state)=> {
@@ -69,10 +69,10 @@ const Dispatch = (node, state)=> {
   }
 
   return ObjectNDProxy[method](node, state);
-}
+};
 
 const DispatchQ = (node, state)=> {
-  const defer  = RSVP.defer();
+  const defer = RSVP.defer();
   const method = objectNodeActions[node.action];
 
   if (!exists(method)) {
@@ -89,9 +89,9 @@ const DispatchQ = (node, state)=> {
   );
 
   return defer.promise;
-}
+};
 
 export default {
-  Dispatch    : Dispatch,
-  DispatchQ   : DispatchQ
+  Dispatch: Dispatch,
+  DispatchQ: DispatchQ,
 };

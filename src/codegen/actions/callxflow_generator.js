@@ -1,7 +1,7 @@
-import xfnode      from '../xflow-js-node-builder';
-import LangUtil    from '../../util/lang';
-import FlowUtil    from '../../util/flow';
-import Assert      from '../../util/assert';
+import xfnode from '../xflow-js-node-builder';
+import LangUtil from '../../util/lang';
+import FlowUtil from '../../util/flow';
+import Assert from '../../util/assert';
 
 import BaseGenerator from './base_generator';
 
@@ -31,7 +31,7 @@ class CallXFlowGenerator extends BaseGenerator {
 
     assertCallXFlowNode(node);
 
-    var body = [];
+    const body = [];
 
     //
     // Copy all the relevant variables into a new Object for passing to the called XFlow
@@ -72,7 +72,7 @@ class CallXFlowGenerator extends BaseGenerator {
           xfnode.Identifier('CallXFlow'),
           [
             xfnode.Value(node.parameters.xflowid),
-            xfnode.Identifier('inputvars')
+            xfnode.Identifier('inputvars'),
           ]
         )
       )

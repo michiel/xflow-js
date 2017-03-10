@@ -1,17 +1,17 @@
-import patcher       from './ext/jsonpatcher';
+import patcher from './ext/jsonpatcher';
 
 const diffPatcher = patcher.create({});
 
-import mixin          from './util/mixin';
+import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
-import editableMixin  from './mixin/editable';
+import editableMixin from './mixin/editable';
 
 import XFlowStruct from './xflow-struct';
-import FlowUtil    from './util/flow';
-import LangUtil    from './util/lang';
+import FlowUtil from './util/flow';
+import LangUtil from './util/lang';
 
 const exists = LangUtil.exists;
-const clone  = LangUtil.clone;
+const clone = LangUtil.clone;
 
 /**
  * XFlowMutableStruct class
@@ -59,11 +59,11 @@ class XFlowMutableStruct extends XFlowStruct {
    */
   newNode() {
     return {
-      id         : this.nextNodeId(),
-      nodetype   : '',
-      action     : '',
-      label      : '',
-      parameters : {}
+      id: this.nextNodeId(),
+      nodetype: '',
+      action: '',
+      label: '',
+      parameters: {},
     };
   }
 
@@ -160,9 +160,9 @@ class XFlowMutableStruct extends XFlowStruct {
    */
   newBranch() {
     return {
-      edge  : [null, null],
-      name  : '',
-      value : null
+      edge: [null, null],
+      name: '',
+      value: null,
     };
   }
 

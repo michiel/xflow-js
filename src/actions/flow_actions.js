@@ -39,7 +39,7 @@ const checkBranchingConditions = (node, state)=> {
 
   return true;
 
-}
+};
 
 const FlowNDProxyQ = {
 //   start : (node, state)=> {
@@ -48,23 +48,23 @@ const FlowNDProxyQ = {
 //     defer.resolve(state);
 //     return defer.promise;
 //   },
-  end : (node, state)=> {
+  end: (node, state)=> {
     // console.log('FlowNDProxyQ.end');
     const defer = RSVP.defer();
     defer.resolve(state);
     return defer.promise;
   },
-  branch : (node, state)=> {
+  branch: (node, state)=> {
     // console.log('FlowNDProxyQ.branch');
     const defer = RSVP.defer();
     try {
       checkBranchingConditions(node, state);
-    } catch(e) {
+    } catch (e) {
       defer.reject(e.message);
     }
     defer.resolve(state);
     return defer.promise;
-  }
+  },
 };
 
 const FlowNDProxy = {
@@ -72,21 +72,21 @@ const FlowNDProxy = {
 //     // console.log('FlowNDProxy.start');
 //     return state;
 //   },
-  end : (node, state)=> {
+  end: (node, state)=> {
     // console.log('FlowNDProxy.end');
     return state;
   },
-  branch : (node, state)=> {
+  branch: (node, state)=> {
     // console.log('FlowNDProxy.branch');
     checkBranchingConditions(node, state);
     return state;
-  }
+  },
 };
 
 const flowNodeActions = {
   // 'start'  : 'start',
-  'end'    : 'end',
-  'branch' : 'branch'
+  'end': 'end',
+  'branch': 'branch',
 };
 
 const Dispatch = (node, state)=> {
@@ -96,10 +96,10 @@ const Dispatch = (node, state)=> {
     throw new Error('No flow/action dispatch for ' + node.action);
   }
   return FlowNDProxy[flowNodeActions[node.action]](node, state);
-}
+};
 
 const DispatchQ = (node, state)=> {
-  const defer  = RSVP.defer();
+  const defer = RSVP.defer();
   const method = flowNodeActions[node.action];
 
   if (!exists(method)) {
@@ -116,10 +116,10 @@ const DispatchQ = (node, state)=> {
   );
 
   return defer.promise;
-}
+};
 
 export default {
-  Dispatch  : Dispatch,
-  DispatchQ : DispatchQ
+  Dispatch: Dispatch,
+  DispatchQ: DispatchQ,
 };
 

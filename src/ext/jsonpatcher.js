@@ -2,7 +2,7 @@ import jsonpatch from 'fast-json-patch';
 
 class Patcher {
 
-  constructor(args={}) {
+  constructor(args = {}) {
   }
 
   diff(a, b) {
@@ -12,7 +12,7 @@ class Patcher {
   bidiff(a, b) {
     return [
       jsonpatch.compare(a, b), // forward
-      jsonpatch.compare(b, a)  // reverse/undo
+      jsonpatch.compare(b, a),  // reverse/undo
     ];
   }
 
@@ -23,7 +23,7 @@ class Patcher {
 }
 
 export default {
-  create: function(args={}) {
+  create: function(args = {}) {
     return new Patcher(args);
-  }
+  },
 };

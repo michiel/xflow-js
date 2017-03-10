@@ -9,7 +9,7 @@ const isValidNode = (node)=> {
       LangUtil.hasProperty(node, 'parameters.xflowid') &&
       LangUtil.isString(node.parameters.xflowid)
   );
-}
+};
 
 const assertIsValidNode = (node)=> {
   if (!isValidNode(node)) {
@@ -17,14 +17,14 @@ const assertIsValidNode = (node)=> {
       `CallXFlowDispatcher.assertIsValidNode : invalid node ${node}`
     );
   }
-}
+};
 
 class CallXFlowDispatcher {
 
-  constructor(args={}) {
+  constructor(args = {}) {
     this.version = 1;
-    this.name    = 'callxflow';
-    this.runner  = args.runner;
+    this.name = 'callxflow';
+    this.runner = args.runner;
   }
 
   dispatch(node, state) {
@@ -35,7 +35,7 @@ class CallXFlowDispatcher {
 
   dispatchQ(node, state) {
     // console.log(`${this.name}.dispatchQ`);
-    const defer  = RSVP.defer();
+    const defer = RSVP.defer();
 
     if (!isValidNode(node)) {
       defer.reject(
@@ -61,10 +61,10 @@ class CallXFlowDispatcher {
 
   getDispatcher() {
     return {
-      version   : this.version,
-      name      : this.name,
-      dispatch  : this.dispatch.bind(this),
-      dispatchQ : this.dispatchQ.bind(this)
+      version: this.version,
+      name: this.name,
+      dispatch: this.dispatch.bind(this),
+      dispatchQ: this.dispatchQ.bind(this),
 
     };
   }

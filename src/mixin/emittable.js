@@ -1,6 +1,6 @@
-import eventemitter  from '../ext/eventemitter';
+import eventemitter from '../ext/eventemitter';
 
-import Assert     from '../util/assert';
+import Assert from '../util/assert';
 import { exists } from '../util/lang';
 
 /**
@@ -22,7 +22,7 @@ const emittable = {
      * @property emitter
      */
     this.emitter = eventemitter.create({
-      wildcard : true
+      wildcard: true,
     });
   },
 
@@ -32,7 +32,7 @@ const emittable = {
    * @method _assertEmitterExists
    * @private
    */
-  _assertEmitterExists(method='') {
+  _assertEmitterExists(method = '') {
     if (!exists(this.emitter)) {
       throw new Error(
         `${this.name}.${method} : No emitter found, check if initEmittable() has been called`
@@ -50,7 +50,7 @@ const emittable = {
   emit(name) {
     Assert.isString(name);
 
-    let args = [];
+    const args = [];
     for (let i = 1; i < arguments.length; i++) {
       args.push(arguments[i]);
     }
@@ -58,7 +58,7 @@ const emittable = {
     this._assertEmitterExists('emit');
     const arglist = [
       name,
-      { eventName : name }
+      { eventName: name },
     ].concat(args);
 
     this.emitter.emit.apply(
@@ -124,7 +124,7 @@ const emittable = {
   once() {
     this._assertEmitterExists('once');
     this.emitter.once.apply(this.emitter, arguments);
-  }
+  },
 
 };
 

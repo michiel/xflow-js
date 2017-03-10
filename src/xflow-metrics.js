@@ -1,10 +1,10 @@
 import XFlowStruct from './xflow-struct';
 
-import FlowUtil    from './util/flow';
+import FlowUtil from './util/flow';
 
 function cyclomaticCC(xflow) {
-  const edges         = xflow.getEdges();
-  const nodes         = xflow.getNodes();
+  const edges = xflow.getEdges();
+  const nodes = xflow.getNodes();
   const terminalNodes = FlowUtil.getNodeType(nodes, 'flow', 'end');
 
   return edges.length - nodes.length + terminalNodes.length;
@@ -24,7 +24,7 @@ class XFlowMetrics {
     }
 
     return {
-      ccc : cyclomaticCC(xflow)
+      ccc: cyclomaticCC(xflow),
     };
 
   }

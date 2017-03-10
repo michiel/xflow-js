@@ -1,6 +1,6 @@
-import xfnode      from '../xflow-js-node-builder';
-import FlowUtil    from '../../util/flow';
-import Assert      from '../../util/assert';
+import xfnode from '../xflow-js-node-builder';
+import FlowUtil from '../../util/flow';
+import Assert from '../../util/assert';
 
 import BaseGenerator from './base_generator';
 
@@ -22,7 +22,7 @@ class FloxGenerator extends BaseGenerator {
         xfnode.Member('Flox', 'evalexpr'),
         [
           xfnode.Value(node.parameters.expression),
-          xfnode.ScopeObject()
+          xfnode.ScopeObject(),
         ]
       )
     );

@@ -1,12 +1,12 @@
-import RSVP       from 'rsvp';
+import RSVP from 'rsvp';
 import FloxParser from './flox-parser.js';
-import langUtil   from './util/lang';
+import langUtil from './util/lang';
 
-const parse      = FloxParser.parse;
+const parse = FloxParser.parse;
 const assertType = langUtil.assertType;
-const exists     = langUtil.exists;
+const exists = langUtil.exists;
 
-const wsRE  = /[\t\s]*/g;
+const wsRE = /[\t\s]*/g;
 const expRE = /(\$[\w\.]*)/g;
 
 const noMatchErrorString = (match, state)=> {
@@ -14,7 +14,7 @@ const noMatchErrorString = (match, state)=> {
   return (
     `flox.substituteExpression : No match found for value ${match} in ${stateString}`
   );
-}
+};
 
 const substituteExpression = (expr, state)=> {
 
@@ -50,7 +50,7 @@ const substituteExpression = (expr, state)=> {
     }
   );
 
-}
+};
 
 const isValidExprNode = (node)=> {
   if (
@@ -62,7 +62,7 @@ const isValidExprNode = (node)=> {
   ) {
     throw new Error('flox.evaluateExpression : Invalid node parameter, aborting');
   }
-}
+};
 
 const evaluateExpression = (node, state)=> {
   isValidExprNode(node);
@@ -72,11 +72,11 @@ const evaluateExpression = (node, state)=> {
   }
 
   const params = node.parameters;
-  const expr   = params.expression;
+  const expr = params.expression;
 
   const subbedExpr = substituteExpression(expr, state);
   // console.log('SUBBED ' + subbedExpr);
-  const subRes     = parse(subbedExpr);
+  const subRes = parse(subbedExpr);
   // console.log('PARSED ' + subRes);
 
   assertType(params.returns.vtype, subRes);
@@ -84,7 +84,7 @@ const evaluateExpression = (node, state)=> {
 
   return state;
 
-}
+};
 
 //
 // async wrappers
@@ -100,7 +100,7 @@ const parseQ = (expr)=> {
   defer.resolve(parse(expr));
 
   return defer.promise;
-}
+};
 
 const substituteExpressionQ = (expr, state)=> {
   const defer = RSVP.defer();
@@ -112,7 +112,7 @@ const substituteExpressionQ = (expr, state)=> {
   defer.resolve(substituteExpression(expr, state));
 
   return defer.promise;
-}
+};
 
 const evaluateExpressionQ = (node, state)=> {
   const defer = RSVP.defer();
@@ -124,19 +124,19 @@ const evaluateExpressionQ = (node, state)=> {
   defer.resolve(evaluateExpression(node, state));
 
   return defer.promise;
-}
+};
 
 //
 // parse and substituteExpression are primarily exposed for testing
 //
 
 export default {
-  parse                 : parse,
-  evaluateExpression    : evaluateExpression,
-  substituteExpression  : substituteExpression,
-  parseQ                : parseQ,
-  substituteExpressionQ : substituteExpressionQ,
-  evaluateExpressionQ   : evaluateExpressionQ,
-  whitespaceRE          : wsRE,
-  expressionRE          : expRE
+  parse: parse,
+  evaluateExpression: evaluateExpression,
+  substituteExpression: substituteExpression,
+  parseQ: parseQ,
+  substituteExpressionQ: substituteExpressionQ,
+  evaluateExpressionQ: evaluateExpressionQ,
+  whitespaceRE: wsRE,
+  expressionRE: expRE,
 };

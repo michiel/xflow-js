@@ -21,12 +21,12 @@ const ListNDProxyQ = {
     defer.resolve(state);
     return defer.promise;
   },
-  deleteQuery : (node, state)=> {
+  deleteQuery: (node, state)=> {
     const defer = RSVP.defer();
     console.log('ListNDProxyQ.deleteQueryQ');
     defer.resolve(state);
     return defer.promise;
-  }
+  },
 };
 
 const ListNDProxy = {
@@ -38,20 +38,20 @@ const ListNDProxy = {
     console.log('ListNDProxy.updateQuery');
     return state;
   },
-  deleteQuery : (node, state)=> {
+  deleteQuery: (node, state)=> {
     console.log('ListNDProxy.deleteQuery');
     return state;
-  }
+  },
 };
 
 const listNodeActions = {
-  'retrieve' : 'fetchQuery',
-  'update'   : 'updateQuery',
-  'delete'   : 'deleteQuery'
+  'retrieve': 'fetchQuery',
+  'update': 'updateQuery',
+  'delete': 'deleteQuery',
 };
 
 const DispatchQ = (node, state)=> {
-  const defer  = RSVP.defer();
+  const defer = RSVP.defer();
   const method = node.action;
 
   if (!exists(method)) {
@@ -68,7 +68,7 @@ const DispatchQ = (node, state)=> {
   );
 
   return defer.promise;
-}
+};
 const Dispatch = (node, state)=> {
   const method = node.action;
 
@@ -77,10 +77,10 @@ const Dispatch = (node, state)=> {
   }
 
   return ListNDProxy[method](node, state);
-}
+};
 
 export default {
-  Dispatch  : Dispatch,
-  DispatchQ : DispatchQ
+  Dispatch: Dispatch,
+  DispatchQ: DispatchQ,
 };
 

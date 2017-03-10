@@ -1,41 +1,41 @@
-import RSVP          from 'rsvp';
-import patcher       from './ext/jsonpatcher';
+import RSVP from 'rsvp';
+import patcher from './ext/jsonpatcher';
 
 const diffPatcher = patcher.create({});
 
-import mixin          from './util/mixin';
+import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 
 import XFlowStruct from './xflow-struct';
-import FlowUtil    from './util/flow';
-import LangUtil    from './util/lang';
+import FlowUtil from './util/flow';
+import LangUtil from './util/lang';
 
-const exists         = LangUtil.exists;
-const mergeDict      = LangUtil.mergeDict;
-const clone          = LangUtil.clone;
+const exists = LangUtil.exists;
+const mergeDict = LangUtil.mergeDict;
+const clone = LangUtil.clone;
 
-const isSameEdge     = FlowUtil.isSameEdge;
+const isSameEdge = FlowUtil.isSameEdge;
 const isTerminalNode = FlowUtil.isTerminalNode;
-const getEntryNode   = FlowUtil.getEntryNode;
-const getNode        = FlowUtil.getNode;
+const getEntryNode = FlowUtil.getEntryNode;
+const getNode = FlowUtil.getNode;
 
 const initVariables = (vars) => {
-  let dict = {};
+  const dict = {};
   vars.forEach(
     (obj) => {
       let val;
       switch (obj.vtype) {
-        case 'number':
-          val = obj.value || 0;
+      case 'number':
+        val = obj.value || 0;
         break;
-        case 'boolean':
-          val = obj.value || false;
+      case 'boolean':
+        val = obj.value || false;
         break;
-        case 'string':
-          val = obj.value || '';
+      case 'string':
+        val = obj.value || '';
         break;
-        default:
-          throw new Error(
+      default:
+        throw new Error(
             `xflow.initVariables : Unhandled type ${obj.vtype}`
           );
       }
@@ -50,15 +50,15 @@ const initVariables = (vars) => {
     });
   return dict;
 
-}
+};
 
 const initState = (params) => {
-  let state = {};
-  for (let key in params) {
+  const state = {};
+  for (const key in params) {
     state[key] = params[key];
   }
   return state;
-}
+};
 
 const getSelectedEdge = (node, flow, state) => {
 
@@ -86,7 +86,7 @@ const getSelectedEdge = (node, flow, state) => {
   }
 
   return resEdges[0];
-}
+};
 
 const getNextNode = (node, flow, state) => {
   // console.log('getNextNode ', JSON.stringify(node));
@@ -112,14 +112,14 @@ const getNextNode = (node, flow, state) => {
     return null;
   }
 
-}
+};
 
 const getReturnValue = (retVals, state) => {
   if (!exists(state)) {
     throw new Error('getReturnValue : NO STATE');
   }
 
-  let retObj = {};
+  const retObj = {};
   retVals.forEach(
     (obj) => {
       if (exists(state[obj.name])) {
@@ -133,7 +133,7 @@ const getReturnValue = (retVals, state) => {
     }
   );
   return retObj;
-}
+};
 
 /**
  * XFlow
@@ -174,25 +174,25 @@ class XFlow {
      * @property id
      * @type {Number}
      */
-    this.id          = id || +(new Date());
+    this.id = id || +(new Date());
 
     /**
      * Flow data
      * @property flow
      * @type {XFlowStruct}
      */
-    this.flow        = new XFlowStruct(flowJson);
+    this.flow = new XFlowStruct(flowJson);
 
     /**
      * Flow version
      * @property version
      */
-    this.version     = flowJson.version;
-    this.dispatcher  = dispatcher;
-    this.stateDiffs  = [];
+    this.version = flowJson.version;
+    this.dispatcher = dispatcher;
+    this.stateDiffs = [];
     this.transitions = [];
 
-    this.state      = mergeDict(
+    this.state = mergeDict(
       initState(params),
       initVariables(this.flow.getLocalVariables()),
       initVariables(this.flow.getInVariables())
@@ -420,11 +420,11 @@ class XFlow {
    */
   save() {
     return clone({
-      id           : this.id,
-      stateDiffs   : this.stateDiffs,
-      transitions  : this.transitions,
-      state        : this.state,
-      activeNodeId : this.activeNode.id
+      id: this.id,
+      stateDiffs: this.stateDiffs,
+      transitions: this.transitions,
+      state: this.state,
+      activeNodeId: this.activeNode.id,
     });
   }
 
@@ -437,11 +437,11 @@ class XFlow {
    *     xflow.restore(savedState);
    */
   restore(stt) {
-    this.id          = stt.id;
-    this.stateDiffs  = stt.stateDiffs;
+    this.id = stt.id;
+    this.stateDiffs = stt.stateDiffs;
     this.transitions = stt.transitions;
-    this.state       = stt.state;
-    this.activeNode  = this.flow.getNode(stt.activeNodeId);
+    this.state = stt.state;
+    this.activeNode = this.flow.getNode(stt.activeNodeId);
   }
 
 }

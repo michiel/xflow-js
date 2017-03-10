@@ -1,12 +1,12 @@
-import escodegen      from 'escodegen';
+import escodegen from 'escodegen';
 
-import xfnode      from './xflow-js-node-builder';
+import xfnode from './xflow-js-node-builder';
 import XFlowStruct from '../xflow-struct';
-import LangUtil    from '../util/lang';
-import Assert      from '../util/assert';
+import LangUtil from '../util/lang';
+import Assert from '../util/assert';
 
 const assertExists = Assert.exists;
-const exists       = LangUtil.exists;
+const exists = LangUtil.exists;
 
 const assertValidGenerator = (name, generator)=> {
   if (!LangUtil.isFunction(
@@ -16,12 +16,12 @@ const assertValidGenerator = (name, generator)=> {
       `assertValidGenerator : Generator ${name} does not implement 'generateFrom' method`
     );
   }
-}
+};
 class XFlowJSBuilder {
 
   constructor(json) {
-    this.name       = 'XFlowJSBuilder';
-    this.xflow      = new XFlowStruct(json);
+    this.name = 'XFlowJSBuilder';
+    this.xflow = new XFlowStruct(json);
     this.generators = {};
   }
 
@@ -37,7 +37,7 @@ class XFlowJSBuilder {
 
   generateFlowNode(node) {
 
-    let body = [];
+    const body = [];
 
     //
     // Add logic to node
@@ -100,7 +100,7 @@ class XFlowJSBuilder {
       [
         xfnode.CallNode(
           this.xflow.getEntryNode().id
-        )
+        ),
       ]
     );
 
@@ -142,11 +142,11 @@ class XFlowJSBuilder {
     // console.log('AST', JSON.stringify(ret, null, '  '));
     // console.log('AST2CODE :\n ' + escodegen.generate(ret));
 
-    var code;
+    let code;
 
     try {
       code = escodegen.generate(ret);
-    } catch(e) {
+    } catch (e) {
       console.error('XFlowJSBuilder.generator : error generating code : ', e);
       throw new Error('XFlowJSBuilder.generator : error generating code ' + e.message);
     }

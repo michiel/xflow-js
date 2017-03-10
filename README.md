@@ -6,12 +6,12 @@
 
 ## Test
 
-    gulp test
-    gulp coverage
+    npm run test
+    npm run coverage
 
 ## Build
 
-    gulp build
+    npm run build
 
 Browser,
 
@@ -39,9 +39,7 @@ Browser,
 * General
 
   - Rename state -> scope
-  X Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
   - Fix build copying assets (schema, parser)
-  X Add cyclomatic complexity reporter
 
 * Codegen
 

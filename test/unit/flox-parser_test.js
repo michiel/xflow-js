@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
-import FloxParser from '../../lib/flox-parser';
+import FloxParser from '../../src/flox-parser';
 
 const parse = FloxParser.parse;
 

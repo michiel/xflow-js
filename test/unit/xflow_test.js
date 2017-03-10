@@ -4,7 +4,7 @@ import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlow from '../../lib/xflow';
+import XFlow from '../../src/xflow';
 
 import XFlowDispatcherHelper  from '../helper/xflow-dispatcher';
 

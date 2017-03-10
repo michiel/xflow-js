@@ -1,8 +1,8 @@
-import XFlowDispatcher from '../../lib/xflow-dispatcher';
+import XFlowDispatcher from '../../src/xflow-dispatcher';
 
-import FlowActions   from '../../lib/actions/flow_actions';
-import FloxActions   from '../../lib/actions/flox_actions';
-import ObjectActions from '../../lib/actions/object_actions';
+import FlowActions   from '../../src/actions/flow_actions';
+import FloxActions   from '../../src/actions/flox_actions';
+import ObjectActions from '../../src/actions/object_actions';
 
 function getXFlowDispatcherBasic() {
   return new XFlowDispatcher({

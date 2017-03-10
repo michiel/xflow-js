@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 
 chai.use(chaiAsPromised);
 
-import DocRegistry from '../../../lib/helper/docregistry';
+import DocRegistry from '../../../src/helper/docregistry';
 
 describe('DocRegistry ', function() {
 

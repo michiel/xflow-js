@@ -5,14 +5,14 @@ import vm             from 'vm';
 
 chai.use(chaiAsPromised);
 
-// import XFlow           from '../../../../lib/xflow';
+// import XFlow           from '../../../../src/xflow';
 // import XFlowDispatcherHelper  from '../../../helper/xflow-dispatcher';
-import XFlowJSBuilder  from '../../../../lib/codegen/xflow-js-builder';
+import XFlowJSBuilder  from '../../../../src/codegen/xflow-js-builder';
 
-// import Flox                 from '../../../lib/flox';
+// import Flox                 from '../../../src/flox';
 
-import FloxGenerator        from '../../../../lib/codegen/actions/flox_generator';
-import CallXFlowGenerator   from '../../../../lib/codegen/actions/callxflow_generator';
+import FloxGenerator        from '../../../../src/codegen/actions/flox_generator';
+import CallXFlowGenerator   from '../../../../src/codegen/actions/callxflow_generator';
 
 // function getXFlow(json, params) {
 //   var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();

@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 import fs from 'fs';
 
-import FlowUtil from '../../../lib/util/flow';
+import FlowUtil from '../../../src/util/flow';
 
 var getEntryNode   = FlowUtil.getEntryNode;
 var getNodeType    = FlowUtil.getNodeType;

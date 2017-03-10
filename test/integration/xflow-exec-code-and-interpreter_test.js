@@ -5,10 +5,10 @@ import vm             from 'vm';
 
 chai.use(chaiAsPromised);
 
-import XFlowJSBuilder  from '../../lib/codegen/xflow-js-builder';
+import XFlowJSBuilder  from '../../src/codegen/xflow-js-builder';
 
-import Flox            from '../../lib/flox';
-import FloxGenerator   from '../../lib/codegen/actions/flox_generator';
+import Flox            from '../../src/flox';
+import FloxGenerator   from '../../src/codegen/actions/flox_generator';
 
 import XFlowHelper     from '../helper/xflow';
 

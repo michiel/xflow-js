@@ -3,8 +3,8 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 import RSVP from 'rsvp';
 
-import mixin          from '../../../lib/util/mixin';
-import emittableMixin from '../../../lib/mixin/emittable';
+import mixin          from '../../../src/util/mixin';
+import emittableMixin from '../../../src/mixin/emittable';
 
 describe('Emittable mixin', function() {
 

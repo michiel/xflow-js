@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 
 chai.use(chaiAsPromised);
 
-import Flox  from '../../lib/flox';
+import Flox  from '../../src/flox';
 
 var parse                = Flox.parse;
 var evaluateExpression   = Flox.evaluateExpression;

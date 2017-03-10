@@ -5,15 +5,15 @@ import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlowFactory    from '../../lib/xflow-factory';
-import XFlowRunner     from '../../lib/xflow-runner';
-import XFlowDispatcher from '../../lib/xflow-dispatcher';
+import XFlowFactory    from '../../src/xflow-factory';
+import XFlowRunner     from '../../src/xflow-runner';
+import XFlowDispatcher from '../../src/xflow-dispatcher';
 
-import FlowActions   from '../../lib/actions/flow_actions';
-import FloxActions   from '../../lib/actions/flox_actions';
-import ObjectActions from '../../lib/actions/object_actions';
+import FlowActions   from '../../src/actions/flow_actions';
+import FloxActions   from '../../src/actions/flox_actions';
+import ObjectActions from '../../src/actions/object_actions';
 
-import CallXFlowActions from '../../lib/actions/callxflow_actions';
+import CallXFlowActions from '../../src/actions/callxflow_actions';
 
 var stdDispatcherDefs = {
   'flox' : {

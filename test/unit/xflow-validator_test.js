@@ -4,7 +4,7 @@ import fs             from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlowValidator  from '../../lib/xflow-validator';
+import XFlowValidator  from '../../src/xflow-validator';
 
 function getXFlowJSON(path) {
   var data = fs.readFileSync(path, 'utf-8');

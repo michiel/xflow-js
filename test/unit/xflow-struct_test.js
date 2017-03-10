@@ -4,7 +4,7 @@ import fs             from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlowStruct  from '../../lib/xflow-struct';
+import XFlowStruct  from '../../src/xflow-struct';
 
 function getXFlowJSON(path) {
   var data = fs.readFileSync(path, 'utf-8');

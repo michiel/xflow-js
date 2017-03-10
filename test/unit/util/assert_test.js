@@ -1,5 +1,5 @@
 
-import AssertUtil from '../../../lib/util/assert';
+import AssertUtil from '../../../src/util/assert';
 
 describe('Assertion utils ', function() {
 

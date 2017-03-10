@@ -1,4 +1,4 @@
-import XFlow from '../../lib/xflow';
+import XFlow from '../../src/xflow';
 
 import XFlowDispatcherHelper from './xflow-dispatcher';
 

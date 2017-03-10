@@ -5,7 +5,7 @@ import RSVP           from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlowMutableStruct  from '../../lib/xflow-mutable-struct';
+import XFlowMutableStruct  from '../../src/xflow-mutable-struct';
 
 function getJSON(path) {
   var data = fs.readFileSync(path, 'utf-8');

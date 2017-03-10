@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
-import LangUtil from '../../../lib/util/lang';
+import LangUtil from '../../../src/util/lang';
 
 describe('Lang utils ', function() {
 

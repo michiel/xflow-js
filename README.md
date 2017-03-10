@@ -2,15 +2,16 @@
 
 [![Build Status](https://travis-ci.org/michiel/xflow-js.svg?branch=master)](https://travis-ci.org/michiel/xflow-js)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/michiel/xflow-js/master/LICENSE)
+[![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg)](https://lima.codeclimate.com/github/michiel/xflow-js)
 
 ## Test
 
-    gulp test
-    gulp coverage
+    npm run test
+    npm run coverage
 
 ## Build
 
-    gulp build
+    npm run build
 
 Browser,
 
@@ -38,9 +39,7 @@ Browser,
 * General
 
   - Rename state -> scope
-  X Fix EventEmitter2 / EventEmitter2.EventEmitter2 reference
   - Fix build copying assets (schema, parser)
-  X Add cyclomatic complexity reporter
 
 * Codegen
 

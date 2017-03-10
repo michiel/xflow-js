@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 import fs from 'fs';
 import tv4 from 'tv4';
 
-import XFlowValidator from '../../lib/xflow-validator';
+import XFlowValidator from '../../src/xflow-validator';
 
 chai.use(chaiAsPromised);
 

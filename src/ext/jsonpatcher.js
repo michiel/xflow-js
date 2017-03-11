@@ -24,7 +24,7 @@ class Patcher {
 
 const create = (args = {})=> {
   return new Patcher(args);
-}
+};
 
 export default {
   create,

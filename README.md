@@ -1,9 +1,10 @@
 # XFlow JS
 
 [![Build Status](https://travis-ci.org/michiel/xflow-js.svg?branch=master)](https://travis-ci.org/michiel/xflow-js)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/michiel/xflow-js/master/LICENSE)
-[![Code Climate](https://img.shields.io/codeclimate/github/kabisaict/flow.svg)](https://lima.codeclimate.com/github/michiel/xflow-js)
+[![Code Climate](https://lima.codeclimate.com/github/michiel/xflow-js/badges/gpa.svg)](https://lima.codeclimate.com/github/michiel/xflow-js)
+[![Test Coverage](https://lima.codeclimate.com/github/michiel/xflow-js/badges/coverage.svg)](https://lima.codeclimate.com/github/michiel/xflow-js/coverage)
 [![Known Vulnerabilities](https://snyk.io/test/github/michiel/xflow-js/badge.svg)](https://snyk.io/test/github/michiel/xflow-js)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/michiel/xflow-js/master/LICENSE)
 
 
 ## Test

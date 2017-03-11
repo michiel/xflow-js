@@ -1,5 +1,4 @@
 import xfnode from '../xflow-js-node-builder';
-import LangUtil from '../../util/lang';
 import FlowUtil from '../../util/flow';
 import Assert from '../../util/assert';
 

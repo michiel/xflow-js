@@ -9,67 +9,67 @@ const parse = FloxParser.parse;
 const arithmeticTests = [
   {
     expr: '1+2',
-    res : 3
+    res: 3,
   },
   {
     expr: '1+2+3',
-    res : 6
+    res: 6,
   },
   {
     expr: '1*2',
-    res : 2
+    res: 2,
   },
   {
     expr: '11+255',
-    res : 266
+    res: 266,
   },
   {
     expr: '2-1',
-    res : 1
+    res: 1,
   },
   {
     expr: '22*2',
-    res : 44
+    res: 44,
   },
   {
     expr: '4/2',
-    res : 2
+    res: 2,
   },
   {
     expr: '22*2/2',
-    res : 22
+    res: 22,
   },
   {
     expr: '1',
-    res : 1
-  }
+    res: 1,
+  },
 ];
 
 const comparisonTests = [
   {
     expr: '2>1',
-    res : true
+    res: true,
   },
   {
     expr: '1>2',
-    res : false
+    res: false,
   },
   {
     expr: '2==1',
-    res : false
+    res: false,
   },
   {
     expr: '2!=1',
-    res : true
+    res: true,
   },
   {
     expr: '2>=1',
-    res : true
+    res: true,
   },
   {
     expr: '2<=1',
-    res : false
-  }
+    res: false,
+  },
 ];
 
 describe('FloxParser ', function() {
@@ -91,6 +91,4 @@ describe('FloxParser ', function() {
   });
 
 });
-
-
 

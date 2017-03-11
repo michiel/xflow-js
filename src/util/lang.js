@@ -4,20 +4,20 @@
 
 /**
  * @method exists
- * @param {Any} o value to check
- * @return {Boolean}
+ * @param {Any} val value to check
+ * @return {Boolean} Returns true if `val` exists
  */
 export function exists(val) {
   return (
     (val !== null) &&
-    (val !== undefined)
+    (typeof(val) !== 'undefined')
   );
 }
 
 /**
  * @method clone
- * @param {Object} JSON object
- * @return {JSON}
+ * @param {Object} json JSON object
+ * @return {JSON} Returns clone of `json` object
  */
 export function clone(json) {
   return JSON.parse(JSON.stringify(json));
@@ -26,7 +26,7 @@ export function clone(json) {
 /**
  * @method isArray
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` is `val` is an array
  */
 export function isArray(val) {
   return (
@@ -38,7 +38,7 @@ export function isArray(val) {
 /**
  * @method isString
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `val` is a string
  */
 export function isString(val) {
   return (
@@ -50,7 +50,7 @@ export function isString(val) {
 /**
  * @method isBoolean
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` is `val` is a boolean
  */
 export function isBoolean(val) {
   return (
@@ -62,7 +62,7 @@ export function isBoolean(val) {
 /**
  * @method isNumber
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `val` is a number
  */
 export function isNumber(val) {
   return (
@@ -75,7 +75,7 @@ export function isNumber(val) {
 /**
  * @method isObject
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `val` is an object
  */
 export function isObject(val) {
   return (
@@ -87,7 +87,7 @@ export function isObject(val) {
 /**
  * @method isDate
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `val` is a date
  */
 export function isDate(val) {
   return (
@@ -99,7 +99,7 @@ export function isDate(val) {
 /**
  * @method isFunction
  * @param {Any} val value to check
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `val` is a function
  */
 export function isFunction(val) {
   return (
@@ -110,9 +110,9 @@ export function isFunction(val) {
 
 /**
  * @method hasProperty
- * @param {Object} object to examine
+ * @param {Object} obj to examine
  * @param {String} prop property to test
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `obj` has property `prop`
  */
 export function hasProperty(obj, prop) {
   const steps = prop.split('.');
@@ -155,7 +155,7 @@ const validationMap = {
  * @param {String} type to examine value for
  * @param {Any} val value to test
  * @throws {Error}
- * @return {Null}
+ * @return {Null} Returns `null` if the assertion is ok
  */
 export function assertType(type, val) {
   if (!(type in validationMap)) {
@@ -173,7 +173,7 @@ export function assertType(type, val) {
 /**
  * @method arrFromArguments
  * @param {array} args A function arguments array
- * @return {Array}
+ * @return {Array} Returns an array constructed from an arguments splat
  */
 export function arrFromArguments(args) {
   const retA = [];
@@ -187,7 +187,7 @@ export function arrFromArguments(args) {
  * @method mergeDict
  * @param {Object} a Primary object to merge into
  * @param {Object} b Seconday object to merge
- * @return {Object}
+ * @return {Object} Returns object `a` extended with properties from `b` if they do not exist in `a`
  */
 export function mergeDict(a, b = {}) {
   for (const keyB in b) {
@@ -218,16 +218,16 @@ export function mergeDict(a, b = {}) {
 }
 
 export default {
-  exists: exists,
-  clone: clone,
-  hasProperty: hasProperty,
-  mergeDict: mergeDict,
-  isArray: isArray,
-  isString: isString,
-  isBoolean: isBoolean,
-  isNumber: isNumber,
-  isObject: isObject,
-  isDate: isDate,
-  isFunction: isFunction,
-  assertType: assertType,
+  exists,
+  clone,
+  hasProperty,
+  mergeDict,
+  isArray,
+  isString,
+  isBoolean,
+  isNumber,
+  isObject,
+  isDate,
+  isFunction,
+  assertType,
 };

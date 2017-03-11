@@ -1,387 +1,387 @@
-import chai           from 'chai';
+import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import fs             from 'fs';
-import RSVP           from 'rsvp';
+import fs from 'fs';
+import RSVP from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlowFactory    from '../../src/xflow-factory';
-import XFlowRunner     from '../../src/xflow-runner';
+import XFlowFactory from '../../src/xflow-factory';
+import XFlowRunner from '../../src/xflow-runner';
 import XFlowDispatcher from '../../src/xflow-dispatcher';
 
-import FlowActions   from '../../src/actions/flow_actions';
-import FloxActions   from '../../src/actions/flox_actions';
+import FlowActions from '../../src/actions/flow_actions';
+import FloxActions from '../../src/actions/flox_actions';
 import ObjectActions from '../../src/actions/object_actions';
 
 import CallXFlowActions from '../../src/actions/callxflow_actions';
 
-var stdDispatcherDefs = {
-  'flox' : {
-    'name'      : 'flox',
-    'version'   : 1,
-    'dispatch'  : FloxActions.Dispatch,
-    'dispatchQ' : FloxActions.DispatchQ
+const stdDispatcherDefs = {
+  'flox': {
+    'name': 'flox',
+    'version': 1,
+    'dispatch': FloxActions.Dispatch,
+    'dispatchQ': FloxActions.DispatchQ,
   },
-  'object' : {
-    'name'      : 'object',
-    'version'   : 1,
-    'dispatch'  : ObjectActions.Dispatch,
-    'dispatchQ' : ObjectActions.DispatchQ
+  'object': {
+    'name': 'object',
+    'version': 1,
+    'dispatch': ObjectActions.Dispatch,
+    'dispatchQ': ObjectActions.DispatchQ,
   },
-  'flow' : {
-    'name'      : 'flow',
-    'version'   : 1,
-    'dispatch'  : FlowActions.Dispatch,
-    'dispatchQ' : FlowActions.DispatchQ
-  }
+  'flow': {
+    'name': 'flow',
+    'version': 1,
+    'dispatch': FlowActions.Dispatch,
+    'dispatchQ': FlowActions.DispatchQ,
+  },
 };
 
-function getInstances() {
-  var dispatcher = new XFlowDispatcher();
-  var factory    = new XFlowFactory(dispatcher);
-  var runner     = new XFlowRunner({
-    factory   : factory
+const getInstances = ()=> {
+  const dispatcher = new XFlowDispatcher();
+  const factory = new XFlowFactory(dispatcher);
+  const runner = new XFlowRunner({
+    factory: factory,
   });
 
   dispatcher.addDispatchers(stdDispatcherDefs);
 
   return {
-    runner     : runner,
-    factory    : factory,
-    dispatcher : dispatcher
+    runner: runner,
+    factory: factory,
+    dispatcher: dispatcher,
   };
 }
 
-function loadJson(path) {
-  var data = fs.readFileSync(path, 'utf-8');
+const loadJson = (path)=> {
+  const data = fs.readFileSync(path, 'utf-8');
   return JSON.parse(data);
 }
 
-describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [sync]', ()=> {
 
-  it('can call an xflow I', function() {
-    var json = loadJson('data/flows/create_object.json');
-    var instances = getInstances();
+  it('can call an xflow I', ()=> {
+    const json = loadJson('data/flows/create_object.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.run(json.id, {
-      'ReturnValue' : true
+    const res = instances.runner.run(json.id, {
+      'ReturnValue': true,
     });
 
     expect(res).to.deep.equal({
-      'ReturnValue' : true
+      'ReturnValue': true,
     });
   });
 
-  it('can call an xflow II', function() {
-    var json = loadJson('data/flows/loop_5x.json');
-    var instances = getInstances();
+  it('can call an xflow II', ()=> {
+    const json = loadJson('data/flows/loop_5x.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.run(json.id, {
-      'CounterValue' : 0
+    const res = instances.runner.run(json.id, {
+      'CounterValue': 0,
     });
 
     expect(res).to.deep.equal({
-      'CounterValue' : 6
+      'CounterValue': 6,
     });
   });
 
-  it('can call an xflow III', function() {
-    var json = loadJson('data/flows/branch_boolean_condition.json');
-    var instances = getInstances();
+  it('can call an xflow III', ()=> {
+    const json = loadJson('data/flows/branch_boolean_condition.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.run(json.id, {
-      'CalcValueA' : 1,
-      'CalcValueB' : 2
+    const res = instances.runner.run(json.id, {
+      'CalcValueA': 1,
+      'CalcValueB': 2,
     });
 
     expect(res).to.deep.equal({
-      'ReturnValue' : true
+      'ReturnValue': true,
     });
   });
 
 });
 
-describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [async]', ()=> {
 
-  it('can call an xflow I', function() {
-    var json = loadJson('data/flows/create_object.json');
-    var instances = getInstances();
+  it('can call an xflow I', ()=> {
+    const json = loadJson('data/flows/create_object.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.runQ(json.id, {
-      'ReturnValue' : true
+    const res = instances.runner.runQ(json.id, {
+      'ReturnValue': true,
     });
 
     return expect(res).to.eventually.deep.equal({
-      'ReturnValue' : true
+      'ReturnValue': true,
     });
   });
 
-  it('can call an xflow II', function() {
-    var json = loadJson('data/flows/loop_5x.json');
-    var instances = getInstances();
+  it('can call an xflow II', ()=> {
+    const json = loadJson('data/flows/loop_5x.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.runQ(json.id, {
-      'CounterValue' : 0
+    const res = instances.runner.runQ(json.id, {
+      'CounterValue': 0,
     });
 
     return expect(res).to.eventually.deep.equal({
-      'CounterValue' : 6
+      'CounterValue': 6,
     });
   });
 
-  it('can call an xflow III', function() {
-    var json = loadJson('data/flows/branch_boolean_condition.json');
-    var instances = getInstances();
+  it('can call an xflow III', ()=> {
+    const json = loadJson('data/flows/branch_boolean_condition.json');
+    const instances = getInstances();
 
     instances.runner.addFlow(json);
 
-    var res = instances.runner.runQ(json.id, {
-      'CalcValueA' : 1,
-      'CalcValueB' : 2
+    const res = instances.runner.runQ(json.id, {
+      'CalcValueA': 1,
+      'CalcValueB': 2,
     });
 
     return expect(res).to.eventually.deep.equal({
-      'ReturnValue' : true
+      'ReturnValue': true,
     });
   });
 
 });
 
-describe('Cross-flow, call other xflow [sync]', function() {
+describe('Cross-flow, call other xflow [sync]', ()=> {
 
-  it('can call another xflow', function() {
-    var instances = getInstances();
+  it('can call another xflow', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res;
+    let res;
 
     res = instances.runner.run(json2.id, {
     });
 
     expect(res).to.deep.equal({
-      'CounterValue' : 1
+      'CounterValue': 1,
     });
 
     res = instances.runner.run(json2.id, {
-      'CounterValue' : 1
+      'CounterValue': 1,
     });
 
     expect(res).to.deep.equal({
-      'CounterValue' : 2
+      'CounterValue': 2,
     });
 
   });
 
-  it('can call another xflow multiple times', function() {
-    var instances = getInstances();
+  it('can call another xflow multiple times', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res;
+    let res;
 
     res = instances.runner.run(json2.id, {
     });
 
     expect(res).to.deep.equal({
-      'CounterValue' : 3
+      'CounterValue': 3,
     });
 
     res = instances.runner.run(json2.id, {
-      'CounterValue' : 3
+      'CounterValue': 3,
     });
 
     expect(res).to.deep.equal({
-      'CounterValue' : 6
+      'CounterValue': 6,
     });
 
   });
 
-  it('can call an xflow that calls an xflow multiple times', function() {
-    var instances = getInstances();
+  it('can call an xflow that calls an xflow multiple times', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
-    var json3 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
-    var json4 = loadJson('data/capability_flows/xflow-call-xflow-indirect.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+    const json3 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+    const json4 = loadJson('data/capability_flows/xflow-call-xflow-indirect.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
     instances.runner.addFlow(json3);
     instances.runner.addFlow(json4);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res1 = instances.runner.run(json4.id, {
-      'CounterValue' : 0
+    const res1 = instances.runner.run(json4.id, {
+      'CounterValue': 0,
     });
 
-    var res2 = instances.runner.run(json4.id, {
-      'CounterValue' : 3
+    const res2 = instances.runner.run(json4.id, {
+      'CounterValue': 3,
     });
 
     expect(res1).to.deep.equal({
-      'CounterValue' : 9
+      'CounterValue': 9,
     });
 
     expect(res2).to.deep.equal({
-      'CounterValue' : 12
+      'CounterValue': 12,
     });
 
   });
 
 });
 
-describe('Cross-flow, call other xflow [async]', function() {
+describe('Cross-flow, call other xflow [async]', ()=> {
 
-  it('can call another xflow', function() {
-    var instances = getInstances();
+  it('can call another xflow', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res1 = instances.runner.runQ(json2.id, {
-      'CounterValue' : 0
+    const res1 = instances.runner.runQ(json2.id, {
+      'CounterValue': 0,
     });
 
-    var res2 = instances.runner.runQ(json2.id, {
-      'CounterValue' : 1
+    const res2 = instances.runner.runQ(json2.id, {
+      'CounterValue': 1,
     });
 
     return RSVP.all([
       expect(res1).to.eventually.deep.equal({
-        'CounterValue' : 1
+        'CounterValue': 1,
       }),
       expect(res2).to.eventually.deep.equal({
-        'CounterValue' : 2
-      })
+        'CounterValue': 2,
+      }),
     ]);
 
   });
 
-  it('can call another xflow multiple times', function() {
-    var instances = getInstances();
+  it('can call another xflow multiple times', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res1 = instances.runner.runQ(json2.id, {
-      'CounterValue' : 0
+    const res1 = instances.runner.runQ(json2.id, {
+      'CounterValue': 0,
     });
 
-    var res2 = instances.runner.runQ(json2.id, {
-      'CounterValue' : 3
+    const res2 = instances.runner.runQ(json2.id, {
+      'CounterValue': 3,
     });
 
     return RSVP.all([
       expect(res1).to.eventually.deep.equal({
-        'CounterValue' : 3
+        'CounterValue': 3,
       }),
       expect(res2).to.eventually.deep.equal({
-        'CounterValue' : 6
-      })
+        'CounterValue': 6,
+      }),
     ]);
 
   });
 
-  it('can call an xflow that calls an xflow multiple times', function() {
-    var instances = getInstances();
+  it('can call an xflow that calls an xflow multiple times', ()=> {
+    const instances = getInstances();
 
-    var json1 = loadJson('data/capability_flows/add_1.json');
-    var json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
-    var json3 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
-    var json4 = loadJson('data/capability_flows/xflow-call-xflow-indirect.json');
+    const json1 = loadJson('data/capability_flows/add_1.json');
+    const json2 = loadJson('data/capability_flows/xflow-call-xflow.json');
+    const json3 = loadJson('data/capability_flows/xflow-call-xflow-3x.json');
+    const json4 = loadJson('data/capability_flows/xflow-call-xflow-indirect.json');
 
     instances.runner.addFlow(json1);
     instances.runner.addFlow(json2);
     instances.runner.addFlow(json3);
     instances.runner.addFlow(json4);
 
-    var callXFlowActions = new CallXFlowActions({
-      runner: instances.runner
+    const callXFlowActions = new CallXFlowActions({
+      runner: instances.runner,
     });
 
     instances.dispatcher.addDispatcher(
       'callxflow', callXFlowActions.getDispatcher()
     );
 
-    var res1 = instances.runner.runQ(json4.id, {
-      'CounterValue' : 0
+    const res1 = instances.runner.runQ(json4.id, {
+      'CounterValue': 0,
     });
 
-    var res2 = instances.runner.runQ(json4.id, {
-      'CounterValue' : 3
+    const res2 = instances.runner.runQ(json4.id, {
+      'CounterValue': 3,
     });
 
     return RSVP.all([
       expect(res1).to.eventually.deep.equal({
-        'CounterValue' : 9
+        'CounterValue': 9,
       }),
       expect(res2).to.eventually.deep.equal({
-        'CounterValue' : 12
-      })
+        'CounterValue': 12,
+      }),
     ]);
 
   });

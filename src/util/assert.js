@@ -11,111 +11,111 @@ import LangUtil from '../util/lang';
  * @param {Any} o value to check
  * @throws {Error} Error
  */
-export function exists(o) {
+const exists = (o)=> {
   if (!LangUtil.exists(o)) {
     throw new Error(
       'assert.exists : value does not exist'
     );
   }
-}
+};
 
 /**
  * @method isArray
  * @param {Any} o value to check
  * @throws {Error} Error
  */
-export function isArray(o) {
+const isArray = (o)=> {
   exists(o);
   if (!LangUtil.isArray(o)) {
     throw new Error(
       `assert.isArray : not an Array ${o}`
     );
   }
-}
+};
 
 /**
  * @method isBoolean
  * @param {Any} o value to check
  * @throws {Error} Error
  */
-export function isBoolean(o) {
+const isBoolean = (o)=> {
   exists(o);
   if (!LangUtil.isBoolean(o)) {
     throw new Error(
       `assert.isBoolean : not a Boolean : ${o}`
     );
   }
-}
+};
 
 /**
  * @method isNumber
  * @throws {Error} Error
  * @param {Any} o value to check
  */
-export function isNumber(o) {
+const isNumber = (o)=> {
   exists(o);
   if (!LangUtil.isNumber(o)) {
     throw new Error(
       `assert.isNumber : not a Number : ${o}`
     );
   }
-}
+};
 
 /**
  * @method isString
  * @param {Any} o value to check
  * @throws {Error}
  */
-export function isString(o) {
+const isString = (o)=> {
   exists(o);
   if (!LangUtil.isString(o)) {
     throw new Error(
       `assert.isString : not a String : ${o}`
     );
   }
-}
+};
 
 /**
  * @method isObject
  * @param {Any} o value to check
  * @throws {Error}
  */
-export function isObject(o) {
+const isObject = (o)=> {
   exists(o);
   if (!LangUtil.isObject(o)) {
     throw new Error(
       `assert.isObject : not a Object : ${o}`
     );
   }
-}
+};
 
 /**
  * @method isDate
  * @param {Any} o value to check
  * @throws {Error}
  */
-export function isDate(o) {
+const isDate = (o)=> {
   exists(o);
   if (!LangUtil.isDate(o)) {
     throw new Error(
       `assert.isDate : not a Date : ${o}`
     );
   }
-}
+};
 
 /**
  * @method isFunction
  * @param {Any} o value to check
  * @throws {Error}
  */
-export function isFunction(o) {
+const isFunction = (o)=> {
   exists(o);
   if (!LangUtil.isFunction(o)) {
     throw new Error(
       `assert.isFunction : not a Function : ${o}`
     );
   }
-}
+};
 
 /**
  * @method length
@@ -123,7 +123,7 @@ export function isFunction(o) {
  * @param {Number} len length
  * @throws {Error}
  */
-export function length(o, len) {
+const length = (o, len)=> {
   exists(o);
   isNumber(o.length);
   if (o.length !== len) {
@@ -131,7 +131,7 @@ export function length(o, len) {
       `assert.length : required ${len} and found ${o.length}`
     );
   }
-}
+};
 
 /**
  * @method hasProperty
@@ -139,13 +139,13 @@ export function length(o, len) {
  * @param {String} prop property to test
  * @throws {Error}
  */
-export function hasProperty(obj, prop) {
+const hasProperty = (obj, prop)=> {
   if (!LangUtil.hasProperty(obj, prop)) {
     throw new Error(
       `assert.hasProperty : property ${prop} not found in ${obj}`
     );
   }
-}
+};
 
 /**
  * @method equal
@@ -153,24 +153,38 @@ export function hasProperty(obj, prop) {
  * @param {Any} b
  * @throws {Error}
  */
-export function equal(a, b) {
+const equal = (a, b)=> {
   if (a !== b) {
     throw new Error(
       `assert.equal : value ${a} does not equal ${b}`
     );
   }
-}
+};
+
+export {
+  exists,
+  isArray,
+  isString,
+  isBoolean,
+  isObject,
+  isNumber,
+  isDate,
+  isFunction,
+  length,
+  hasProperty,
+  equal,
+};
 
 export default {
-  exists: exists,
-  isArray: isArray,
-  isString: isString,
-  isBoolean: isBoolean,
-  isObject: isObject,
-  isNumber: isNumber,
-  isDate: isDate,
-  isFunction: isFunction,
-  length: length,
-  hasProperty: hasProperty,
+  exists,
+  isArray,
+  isString,
+  isBoolean,
+  isObject,
+  isNumber,
+  isDate,
+  isFunction,
+  length,
+  hasProperty,
   equal: equal,
 };

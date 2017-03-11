@@ -1,4 +1,10 @@
-import LangUtil from './lang';
+import {
+  exists,
+  isObject,
+  isString,
+  isNumber,
+  isArray,
+} from './lang';
 
 /**
  * XFlow helper functions
@@ -6,17 +12,11 @@ import LangUtil from './lang';
  * @static
  */
 
-const exists = LangUtil.exists;
-const isObject = LangUtil.isObject;
-const isString = LangUtil.isString;
-const isNumber = LangUtil.isNumber;
-const isArray = LangUtil.isArray;
-
 /**
  * @method isSameNode
  * @param {Object} a First node
  * @param {Object} b Second node
- * @return {Boolean}
+ * @return {Boolean} Returns `true` is `a` and `b` have the same node ID
  */
 export function isSameNode(a, b) {
   return (
@@ -28,7 +28,7 @@ export function isSameNode(a, b) {
  * @method isSameBranch
  * @param {Object} a First branch
  * @param {Object} b Second branch
- * @return {Boolean}
+ * @return {Boolean} Returns `true` if `a` and `b` are the same branch
  */
 export function isSameBranch(a, b) {
   return (

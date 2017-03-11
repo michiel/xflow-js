@@ -2,7 +2,6 @@ import LangUtil from '../util/lang';
 import ASTBuilder from './ast-builder';
 
 const ast = ASTBuilder;
-const exists = LangUtil.exists;
 
 const nodeName = (id)=> {
   return `node${id}`;

@@ -119,7 +119,7 @@ const DispatchQ = (node, state)=> {
 };
 
 export default {
-  Dispatch: Dispatch,
-  DispatchQ: DispatchQ,
+  Dispatch,
+  DispatchQ,
 };
 

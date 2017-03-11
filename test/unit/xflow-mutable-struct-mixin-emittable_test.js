@@ -1,18 +1,18 @@
-import chai           from 'chai';
+import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import fs             from 'fs';
-import RSVP           from 'rsvp';
+import fs from 'fs';
+import RSVP from 'rsvp';
 
 chai.use(chaiAsPromised);
 
-import XFlowMutableStruct  from '../../src/xflow-mutable-struct';
+import XFlowMutableStruct from '../../src/xflow-mutable-struct';
 
 function getJSON(path) {
-  var data = fs.readFileSync(path, 'utf-8');
+  const data = fs.readFileSync(path, 'utf-8');
 
   try {
     JSON.parse(data);
-  } catch(e) {
+  } catch (e) {
     console.log('Cannot parse JSON - The offending file is : ', path);
     throw new Error('Cannot parse JSON - The offending file is : ' + path);
   }
@@ -23,9 +23,9 @@ function getJSON(path) {
 describe('XFlowMutableStruct emissions', function() {
 
   it('can emit events', function() {
-    var json      = getJSON('data/flows/10_steps.json');
-    var xf        = new XFlowMutableStruct(json);
-    var defer     = RSVP.defer();
+    const json = getJSON('data/flows/10_steps.json');
+    const xf = new XFlowMutableStruct(json);
+    const defer = RSVP.defer();
 
     xf.on('change', function(event, deltas) {
       expect(deltas[0].op).to.equal('add');
@@ -33,7 +33,7 @@ describe('XFlowMutableStruct emissions', function() {
       defer.resolve();
     });
 
-    var node = xf.newNode();
+    const node = xf.newNode();
     xf.addNode(node);
 
     return defer.promise;

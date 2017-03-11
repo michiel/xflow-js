@@ -5,29 +5,29 @@ import fs from 'fs';
 
 import FlowUtil from '../../../src/util/flow';
 
-var getEntryNode   = FlowUtil.getEntryNode;
-var getNodeType    = FlowUtil.getNodeType;
-var getNode        = FlowUtil.getNode;
-var isTerminalNode = FlowUtil.isTerminalNode;
-var isSameNode     = FlowUtil.isSameNode;
+const getEntryNode = FlowUtil.getEntryNode;
+const getNodeType = FlowUtil.getNodeType;
+const getNode = FlowUtil.getNode;
+const isTerminalNode = FlowUtil.isTerminalNode;
+const isSameNode = FlowUtil.isSameNode;
 
-var nextId         = FlowUtil.nextId;
+const nextId = FlowUtil.nextId;
 
 describe('XFlow utils ', function() {
 
-  var data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
-  var json = JSON.parse(data);
+  const data = fs.readFileSync('data/flows/create_object.json', 'utf-8');
+  const json = JSON.parse(data);
 
   it('can find a single entry node', function() {
-    var node = getEntryNode(json.nodes);
-    var nodes = getNodeType(json.nodes, 'flow', 'start');
+    const node = getEntryNode(json.nodes);
+    const nodes = getNodeType(json.nodes, 'flow', 'start');
     expect(nodes.length).to.equal(1);
     expect(node).to.deep.equal(nodes[0]);
 
   });
 
   it('can find a terminal node', function() {
-    var nodes = getNodeType(json.nodes, 'flow', 'end');
+    const nodes = getNodeType(json.nodes, 'flow', 'end');
     expect(nodes.length).to.equal(1);
 
     expect(isTerminalNode(
@@ -70,13 +70,11 @@ describe('XFlow utils ', function() {
 
 });
 
-
 describe('XFlow utils / bad data ', function() {
 
-
   it('can find a single entry node', function() {
-    var data = fs.readFileSync('data/bad_flows/no_entry_nodes.json', 'utf-8');
-    var json = JSON.parse(data);
+    const data = fs.readFileSync('data/bad_flows/no_entry_nodes.json', 'utf-8');
+    const json = JSON.parse(data);
 
     expect(function() {
       getNode(1, json.nodes);
@@ -85,8 +83,8 @@ describe('XFlow utils / bad data ', function() {
   });
 
   it('can find a single entry node', function() {
-    var data = fs.readFileSync('data/invalid_flows/identical_id_nodes.json', 'utf-8');
-    var json = JSON.parse(data);
+    const data = fs.readFileSync('data/invalid_flows/identical_id_nodes.json', 'utf-8');
+    const json = JSON.parse(data);
 
     expect(function() {
       getNode(1, json.nodes);
@@ -98,31 +96,30 @@ describe('XFlow utils / bad data ', function() {
 
 describe('XFlow utils nextId ', function() {
   it('returns the next ID', function() {
-    var list = [
+    const list = [
       {
-        id: 1
+        id: 1,
       },
       {
-        id: 2
-      }
+        id: 2,
+      },
     ];
 
     expect(nextId(list)).to.equal(3);
   });
 
   it('returns the next ID with a different key name', function() {
-    var list = [
+    const list = [
       {
-        foo: 1
+        foo: 1,
       },
       {
-        foo: 2
-      }
+        foo: 2,
+      },
     ];
 
     expect(nextId(list, 'foo')).to.equal(3);
 
   });
 });
-
 

@@ -1,9 +1,9 @@
 import RSVP from 'rsvp';
-
 import Flox from '../flox';
-import LangUtil from '../util/lang';
 
-const exists = LangUtil.exists;
+import {
+  exists,
+} from '../util/lang';
 
 const NDProxyQ = {
   'evalExpr': (node, state)=> {
@@ -50,7 +50,12 @@ const DispatchQ = (node, state)=> {
   return defer.promise;
 };
 
+export {
+  Dispatch,
+  DispatchQ,
+};
+
 export default {
-  Dispatch: Dispatch,
-  DispatchQ: DispatchQ,
+  Dispatch,
+  DispatchQ,
 };

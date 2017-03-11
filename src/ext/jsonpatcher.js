@@ -2,7 +2,7 @@ import jsonpatch from 'fast-json-patch';
 
 class Patcher {
 
-  constructor(args = {}) {
+  constructor() {
   }
 
   diff(a, b) {

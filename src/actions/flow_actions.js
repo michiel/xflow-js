@@ -1,8 +1,8 @@
 import RSVP from 'rsvp';
 
-import LangUtil from '../util/lang';
-
-const exists = LangUtil.exists;
+import {
+  exists,
+} from '../util/lang';
 
 const checkBranchingConditions = (node, state)=> {
   if (!(
@@ -116,6 +116,11 @@ const DispatchQ = (node, state)=> {
   );
 
   return defer.promise;
+};
+
+export {
+  Dispatch,
+  DispatchQ,
 };
 
 export default {

@@ -1,8 +1,6 @@
 import RSVP from 'rsvp';
 
-import LangUtil from '../util/lang';
-
-const exists = LangUtil.exists;
+import { exists } from '../util/lang';
 
 //
 // List operations
@@ -79,8 +77,13 @@ const Dispatch = (node, state)=> {
   return ListNDProxy[method](node, state);
 };
 
+export {
+  Dispatch,
+  DispatchQ,
+};
+
 export default {
-  Dispatch: Dispatch,
-  DispatchQ: DispatchQ,
+  Dispatch,
+  DispatchQ,
 };
 

@@ -55,6 +55,14 @@ const ExpressionStatementNode = (exp)=> {
   };
 };
 
+const BlockStatementNode = (body = [])=> {
+  body = [].concat(body);
+  return {
+    'type': 'BlockStatement',
+    'body': body,
+  };
+};
+
 const IfStatementNode = (tst, con, alt)=> {
   return {
     'type': 'IfStatement',
@@ -70,14 +78,6 @@ const BinaryExpressionNode = (operator, left, right)=> {
     'operator': operator,
     'left': left,
     'right': right,
-  };
-};
-
-const BlockStatementNode = (body = [])=> {
-  body = [].concat(body);
-  return {
-    'type': 'BlockStatement',
-    'body': body,
   };
 };
 

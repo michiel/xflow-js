@@ -14,12 +14,12 @@ import XFlowJSBuilder from '../../../../src/codegen/xflow-js-builder';
 import FloxGenerator from '../../../../src/codegen/actions/flox_generator';
 import CallXFlowGenerator from '../../../../src/codegen/actions/callxflow_generator';
 
-// function getXFlow(json, params) {
+// const getXFlow = (json, params)=> {
 //   var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
 //   return new XFlow(json, params, dispatcher);
 // }
 
-function buildScript(json) {
+const buildScript = (json)=> {
   const builder = new XFlowJSBuilder(json);
 
   builder.addGenerator('flox', new FloxGenerator());
@@ -49,14 +49,14 @@ function buildScript(json) {
 //   };
 // }
 
-function loadJson(path) {
+const loadJson = (path)=> {
   const data = fs.readFileSync(path, 'utf-8');
   return JSON.parse(data);
 }
 
-describe('CallXFlow AST Generator', function() {
+describe('CallXFlow AST Generator', ()=> {
 
-  it('loads a json flow and compiles to JS', function() {
+  it('loads a json flow and compiles to JS', ()=> {
 
     const json = loadJson('data/capability_flows/xflow-call-xflow.json');
 

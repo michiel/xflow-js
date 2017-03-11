@@ -36,7 +36,7 @@ const stdDispatcherDefs = {
   },
 };
 
-function getInstances() {
+const getInstances = ()=> {
   const dispatcher = new XFlowDispatcher();
   const factory = new XFlowFactory(dispatcher);
   const runner = new XFlowRunner({
@@ -52,14 +52,14 @@ function getInstances() {
   };
 }
 
-function loadJson(path) {
+const loadJson = (path)=> {
   const data = fs.readFileSync(path, 'utf-8');
   return JSON.parse(data);
 }
 
-describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [sync]', ()=> {
 
-  it('can call an xflow I', function() {
+  it('can call an xflow I', ()=> {
     const json = loadJson('data/flows/create_object.json');
     const instances = getInstances();
 
@@ -74,7 +74,7 @@ describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
     });
   });
 
-  it('can call an xflow II', function() {
+  it('can call an xflow II', ()=> {
     const json = loadJson('data/flows/loop_5x.json');
     const instances = getInstances();
 
@@ -89,7 +89,7 @@ describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
     });
   });
 
-  it('can call an xflow III', function() {
+  it('can call an xflow III', ()=> {
     const json = loadJson('data/flows/branch_boolean_condition.json');
     const instances = getInstances();
 
@@ -107,9 +107,9 @@ describe('Cross-flow, basic dynamic dispatch invocations [sync]', function() {
 
 });
 
-describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
+describe('Cross-flow, basic dynamic dispatch invocations [async]', ()=> {
 
-  it('can call an xflow I', function() {
+  it('can call an xflow I', ()=> {
     const json = loadJson('data/flows/create_object.json');
     const instances = getInstances();
 
@@ -124,7 +124,7 @@ describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
     });
   });
 
-  it('can call an xflow II', function() {
+  it('can call an xflow II', ()=> {
     const json = loadJson('data/flows/loop_5x.json');
     const instances = getInstances();
 
@@ -139,7 +139,7 @@ describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
     });
   });
 
-  it('can call an xflow III', function() {
+  it('can call an xflow III', ()=> {
     const json = loadJson('data/flows/branch_boolean_condition.json');
     const instances = getInstances();
 
@@ -157,9 +157,9 @@ describe('Cross-flow, basic dynamic dispatch invocations [async]', function() {
 
 });
 
-describe('Cross-flow, call other xflow [sync]', function() {
+describe('Cross-flow, call other xflow [sync]', ()=> {
 
-  it('can call another xflow', function() {
+  it('can call another xflow', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');
@@ -195,7 +195,7 @@ describe('Cross-flow, call other xflow [sync]', function() {
 
   });
 
-  it('can call another xflow multiple times', function() {
+  it('can call another xflow multiple times', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');
@@ -231,7 +231,7 @@ describe('Cross-flow, call other xflow [sync]', function() {
 
   });
 
-  it('can call an xflow that calls an xflow multiple times', function() {
+  it('can call an xflow that calls an xflow multiple times', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');
@@ -272,9 +272,9 @@ describe('Cross-flow, call other xflow [sync]', function() {
 
 });
 
-describe('Cross-flow, call other xflow [async]', function() {
+describe('Cross-flow, call other xflow [async]', ()=> {
 
-  it('can call another xflow', function() {
+  it('can call another xflow', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');
@@ -310,7 +310,7 @@ describe('Cross-flow, call other xflow [async]', function() {
 
   });
 
-  it('can call another xflow multiple times', function() {
+  it('can call another xflow multiple times', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');
@@ -346,7 +346,7 @@ describe('Cross-flow, call other xflow [async]', function() {
 
   });
 
-  it('can call an xflow that calls an xflow multiple times', function() {
+  it('can call an xflow that calls an xflow multiple times', ()=> {
     const instances = getInstances();
 
     const json1 = loadJson('data/capability_flows/add_1.json');

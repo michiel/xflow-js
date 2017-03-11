@@ -8,18 +8,18 @@ import DocRegistry from '../../../src/helper/docregistry';
 describe('DocRegistry ', function() {
 
   it('can add and get"', function() {
-    var docR = new DocRegistry();
-    var exDoc = {
-      id : 1
+    const docR = new DocRegistry();
+    const exDoc = {
+      id: 1,
     };
     docR.add(exDoc);
     expect(docR.get(1)).to.deep.equal(exDoc);
   });
 
   it('can add and remove"', function() {
-    var docR = new DocRegistry();
-    var exDoc = {
-      id : 1
+    const docR = new DocRegistry();
+    const exDoc = {
+      id: 1,
     };
     docR.add(exDoc);
     expect(docR.has(1)).to.equal(true);
@@ -30,9 +30,9 @@ describe('DocRegistry ', function() {
   });
 
   it('can only add a doc once"', function() {
-    var docR = new DocRegistry();
-    var exDoc = {
-      id : 1
+    const docR = new DocRegistry();
+    const exDoc = {
+      id: 1,
     };
     docR.add(exDoc);
     expect(function() {

@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 import RSVP from 'rsvp';
 
-import mixin          from '../../../src/util/mixin';
+import mixin from '../../../src/util/mixin';
 import emittableMixin from '../../../src/mixin/emittable';
 
 describe('Emittable mixin', function() {
@@ -136,13 +136,13 @@ describe('Emittable mixin', function() {
       mainInst.emitter.listeners(eventName).length
     ).to.equal(0);
 
-    mainInst.on(eventName,listenFn);
+    mainInst.on(eventName, listenFn);
 
     expect(
       mainInst.emitter.listeners(eventName).length
     ).to.equal(1);
 
-    mainInst.off(eventName,listenFn);
+    mainInst.off(eventName, listenFn);
 
     expect(
       mainInst.emitter.listeners(eventName).length

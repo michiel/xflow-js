@@ -1,13 +1,13 @@
-import chai           from 'chai';
+import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import fs             from 'fs';
+import fs from 'fs';
 
 chai.use(chaiAsPromised);
 
-import XFlowStruct  from '../../src/xflow-struct';
+import XFlowStruct from '../../src/xflow-struct';
 
 function getXFlowJSON(path) {
-  var data = fs.readFileSync(path, 'utf-8');
+  const data = fs.readFileSync(path, 'utf-8');
 //   try {
 //     JSON.parse(data);
 //   } catch(e) {
@@ -19,10 +19,10 @@ function getXFlowJSON(path) {
 describe('XFlowstruct ', function() {
 
   it('can get all variables ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
-    var xvars = xf.getVariables();
+    const xvars = xf.getVariables();
 
     expect(xvars.input.length).to.equal(1);
     expect(xvars.output.length).to.equal(1);
@@ -30,69 +30,69 @@ describe('XFlowstruct ', function() {
   });
 
   it('can get input variables ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
-    var xvars = xf.getInVariables();
+    const xvars = xf.getInVariables();
     expect(xvars.length).to.equal(1);
   });
 
   it('can get output variables ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
-    var xvars = xf.getOutVariables();
+    const xvars = xf.getOutVariables();
     expect(xvars.length).to.equal(1);
   });
 
   it('can get local variables ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
-    var xvars = xf.getLocalVariables();
+    const xvars = xf.getLocalVariables();
     expect(xvars.length).to.equal(0);
   });
 
   it('can get the version ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
     expect(xf.getVersion()).to.equal(1);
   });
 
   it('can get the name ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
     expect(xf.getName()).to.equal('steps');
   });
 
   it('can get the ID ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
     expect(xf.getId()).to.equal('steps');
   });
 
   it('can get the requirements ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
     expect(xf.getRequirements()).to.deep.equal([
       {
         'xtype': 'flow',
-        'version': 1
+        'version': 1,
       },
       {
         'xtype': 'flox',
-        'version': 1
-      }
+        'version': 1,
+      },
     ]);
   });
 
   it('can get JSON string of the flow ', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
 
     expect(function() {
       xf.toString();
@@ -100,9 +100,9 @@ describe('XFlowstruct ', function() {
   });
 
   it('can check if a node is an entry node', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
-    var nodes     = xf.getNodes();
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
+    const nodes = xf.getNodes();
 
     expect(
       xf.isEntryNode(nodes[0])
@@ -115,9 +115,9 @@ describe('XFlowstruct ', function() {
   });
 
   it('can find the in edges for a node', function() {
-    var json      = getXFlowJSON('data/flows/10_steps.json');
-    var xf        = new XFlowStruct(json);
-    var nodes     = xf.getNodes();
+    const json = getXFlowJSON('data/flows/10_steps.json');
+    const xf = new XFlowStruct(json);
+    const nodes = xf.getNodes();
 
     expect(xf.getInEdges(nodes[0]).length).to.equal(0);
     expect(xf.getInEdges(nodes[1]).length).to.equal(1);
@@ -125,7 +125,5 @@ describe('XFlowstruct ', function() {
 
   });
 
-
 });
-
 

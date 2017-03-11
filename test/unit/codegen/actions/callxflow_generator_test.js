@@ -1,18 +1,18 @@
-import chai           from 'chai';
+import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import fs             from 'fs';
-import vm             from 'vm';
+import fs from 'fs';
+import vm from 'vm';
 
 chai.use(chaiAsPromised);
 
 // import XFlow           from '../../../../src/xflow';
 // import XFlowDispatcherHelper  from '../../../helper/xflow-dispatcher';
-import XFlowJSBuilder  from '../../../../src/codegen/xflow-js-builder';
+import XFlowJSBuilder from '../../../../src/codegen/xflow-js-builder';
 
 // import Flox                 from '../../../src/flox';
 
-import FloxGenerator        from '../../../../src/codegen/actions/flox_generator';
-import CallXFlowGenerator   from '../../../../src/codegen/actions/callxflow_generator';
+import FloxGenerator from '../../../../src/codegen/actions/flox_generator';
+import CallXFlowGenerator from '../../../../src/codegen/actions/callxflow_generator';
 
 // function getXFlow(json, params) {
 //   var dispatcher = XFlowDispatcherHelper.getXFlowDispatcherBasic();
@@ -20,15 +20,15 @@ import CallXFlowGenerator   from '../../../../src/codegen/actions/callxflow_gene
 // }
 
 function buildScript(json) {
-  var builder = new XFlowJSBuilder(json);
+  const builder = new XFlowJSBuilder(json);
 
   builder.addGenerator('flox', new FloxGenerator());
   builder.addGenerator('callxflow', new CallXFlowGenerator());
 
-  var jscode   = builder.generate();
+  const jscode = builder.generate();
   // console.log('JSCODE ', jscode);
   return new vm.Script(jscode, {
-    displayErrors : true
+    displayErrors: true,
   });
 }
 
@@ -50,7 +50,7 @@ function buildScript(json) {
 // }
 
 function loadJson(path) {
-  var data = fs.readFileSync(path, 'utf-8');
+  const data = fs.readFileSync(path, 'utf-8');
   return JSON.parse(data);
 }
 
@@ -58,9 +58,9 @@ describe('CallXFlow AST Generator', function() {
 
   it('loads a json flow and compiles to JS', function() {
 
-    var json = loadJson('data/capability_flows/xflow-call-xflow.json');
+    const json = loadJson('data/capability_flows/xflow-call-xflow.json');
 
-    var script   = buildScript(json);
+    let script = buildScript(json);
     script = script; // jshint
 
 //     var ctxt     = vm.createContext(getEnv({
@@ -75,5 +75,4 @@ describe('CallXFlow AST Generator', function() {
   });
 
 });
-
 

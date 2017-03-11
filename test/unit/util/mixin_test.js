@@ -11,9 +11,9 @@ describe('Mixin', function() {
     }
 
     const toMix = {
-      test : function() {
+      test: function() {
         return 44;
-      }
+      },
     };
 
     mixin(Main, toMix);
@@ -26,10 +26,10 @@ describe('Mixin', function() {
     }
 
     const toMix = {
-      theValue : 45,
-      test : function() {
+      theValue: 45,
+      test: function() {
         return this.theValue;
-      }
+      },
     };
 
     mixin(Main, toMix);
@@ -45,7 +45,7 @@ describe('Mixin', function() {
 
     const toMix = {
       constructor() {
-      }
+      },
     };
 
     expect(function() {
@@ -63,7 +63,7 @@ describe('Mixin', function() {
 
     const toMix = {
       test() {
-      }
+      },
     };
 
     expect(function() {
@@ -81,7 +81,7 @@ describe('Mixin', function() {
     const toMix = {
       twiggle() {
         this.theValue = this.theValue + 1;
-      }
+      },
     };
 
     mixin(Main, toMix);
@@ -104,10 +104,10 @@ describe('Mixin', function() {
     }
 
     const toMix = {
-      theValue : 1,
+      theValue: 1,
       twiggle() {
         this.theValue = this.theValue + 1;
-      }
+      },
     };
 
     mixin(Main, toMix);

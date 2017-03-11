@@ -8,7 +8,7 @@ describe('Lang utils ', function() {
 
   describe('exists ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.exists();
       expect(res).to.equal(false);
       res = LangUtil.exists(null);
@@ -20,7 +20,7 @@ describe('Lang utils ', function() {
 
   describe('isArray ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isArray();
       expect(res).to.equal(false);
       res = LangUtil.isArray(null);
@@ -29,7 +29,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Array values', function() {
-      var res;
+      let res;
       res = LangUtil.isArray(Array);
       expect(res).to.equal(false);
       res = LangUtil.isArray('array');
@@ -38,17 +38,17 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return true for Arrays', function() {
-      var res;
+      let res;
       res = LangUtil.isArray([]);
       expect(res).to.equal(true);
-      res = LangUtil.isArray([1,2,3]);
+      res = LangUtil.isArray([1, 2, 3]);
       expect(res).to.equal(true);
     });
   });
 
   describe('isString ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isString();
       expect(res).to.equal(false);
       res = LangUtil.isString(null);
@@ -57,7 +57,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-String values', function() {
-      var res;
+      let res;
       res = LangUtil.isString();
       expect(res).to.equal(false);
       res = LangUtil.isString(123);
@@ -66,11 +66,11 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
       res = LangUtil.isString({});
       expect(res).to.equal(false);
-      res = LangUtil.isString([1,2,3]);
+      res = LangUtil.isString([1, 2, 3]);
       expect(res).to.equal(false);
     });
     it('should always return true for String values', function() {
-      var res;
+      let res;
       res = LangUtil.isString('');
       expect(res).to.equal(true);
       res = LangUtil.isString('string');
@@ -80,7 +80,7 @@ describe('Lang utils ', function() {
 
   describe('isBoolean ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isBoolean();
       expect(res).to.equal(false);
       res = LangUtil.isBoolean(null);
@@ -89,7 +89,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Boolean values', function() {
-      var res;
+      let res;
       res = LangUtil.isBoolean();
       expect(res).to.equal(false);
       res = LangUtil.isBoolean(123);
@@ -98,11 +98,11 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
       res = LangUtil.isBoolean({});
       expect(res).to.equal(false);
-      res = LangUtil.isBoolean([1,2,3]);
+      res = LangUtil.isBoolean([1, 2, 3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Boolean values', function() {
-      var res;
+      let res;
       res = LangUtil.isBoolean(true);
       expect(res).to.equal(true);
       res = LangUtil.isBoolean(false);
@@ -112,7 +112,7 @@ describe('Lang utils ', function() {
 
   describe('isNumber ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isNumber();
       expect(res).to.equal(false);
       res = LangUtil.isNumber(null);
@@ -121,7 +121,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Number values', function() {
-      var res;
+      let res;
       res = LangUtil.isNumber();
       expect(res).to.equal(false);
       res = LangUtil.isNumber(NaN);
@@ -130,11 +130,11 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
       res = LangUtil.isNumber({});
       expect(res).to.equal(false);
-      res = LangUtil.isNumber([1,2,3]);
+      res = LangUtil.isNumber([1, 2, 3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Number values', function() {
-      var res;
+      let res;
       res = LangUtil.isNumber(10);
       expect(res).to.equal(true);
       res = LangUtil.isNumber(-10);
@@ -154,7 +154,7 @@ describe('Lang utils ', function() {
 
   describe('isObject ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isObject();
       expect(res).to.equal(false);
       res = LangUtil.isObject(null);
@@ -163,7 +163,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Object values', function() {
-      var res;
+      let res;
       res = LangUtil.isObject([]);
       expect(res).to.equal(false);
       res = LangUtil.isObject(123);
@@ -172,21 +172,21 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
       res = LangUtil.isObject(NaN);
       expect(res).to.equal(false);
-      res = LangUtil.isObject([1,2,3]);
+      res = LangUtil.isObject([1, 2, 3]);
       expect(res).to.equal(false);
     });
     it('should always return true for Object values', function() {
-      var res;
+      let res;
       res = LangUtil.isObject({});
       expect(res).to.equal(true);
-      res = LangUtil.isObject({ 'a' : 2 });
+      res = LangUtil.isObject({ 'a': 2 });
       expect(res).to.equal(true);
     });
   });
 
   describe('isDate ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isDate();
       expect(res).to.equal(false);
       res = LangUtil.isDate(null);
@@ -195,7 +195,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Date values', function() {
-      var res;
+      let res;
       res = LangUtil.isDate([]);
       expect(res).to.equal(false);
       res = LangUtil.isDate(123);
@@ -204,7 +204,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
       res = LangUtil.isDate(NaN);
       expect(res).to.equal(false);
-      res = LangUtil.isDate([1,2,3]);
+      res = LangUtil.isDate([1, 2, 3]);
       expect(res).to.equal(false);
       res = LangUtil.isDate(0);
       expect(res).to.equal(false);
@@ -212,7 +212,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return true for Date values', function() {
-      var res;
+      let res;
       res = LangUtil.isDate((new Date()));
       expect(res).to.equal(true);
     });
@@ -220,7 +220,7 @@ describe('Lang utils ', function() {
 
   describe('isFunction ', function() {
     it('should always return false for various null forms', function() {
-      var res;
+      let res;
       res = LangUtil.isFunction();
       expect(res).to.equal(false);
       res = LangUtil.isFunction(null);
@@ -229,7 +229,7 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return false for various non-Function values', function() {
-      var res;
+      let res;
       res = LangUtil.isFunction(1);
       expect(res).to.equal(false);
       res = LangUtil.isFunction('array');
@@ -238,27 +238,26 @@ describe('Lang utils ', function() {
       expect(res).to.equal(false);
     });
     it('should always return true for Functions', function() {
-      var res = LangUtil.isFunction(
+      const res = LangUtil.isFunction(
         function() {}
       );
       expect(res).to.equal(true);
     });
   });
 
-
   describe('hasProperty ', function() {
 
-    var obj = {
-      nested : {
-        twodeep : {
-          numValue : 1,
-          falseValue : false
+    const obj = {
+      nested: {
+        twodeep: {
+          numValue: 1,
+          falseValue: false,
         },
-        numValue : 1,
-        falseValue : false
+        numValue: 1,
+        falseValue: false,
       },
-      numValue : 1,
-      falseValue : false
+      numValue: 1,
+      falseValue: false,
     };
 
     it('should return false for non-existant values', function() {
@@ -321,9 +320,9 @@ describe('Lang utils ', function() {
       )).to.deep.equal({});
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4 }
-      )).to.deep.equal({ 'a' : 3 });
+        { 'a': 3 },
+        { 'a': 4 }
+      )).to.deep.equal({ 'a': 3 });
 
     });
 
@@ -336,16 +335,16 @@ describe('Lang utils ', function() {
       )).to.deep.equal({});
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4 },
-        { 'a' : 5 }
-      )).to.deep.equal({ 'a' : 3 });
+        { 'a': 3 },
+        { 'a': 4 },
+        { 'a': 5 }
+      )).to.deep.equal({ 'a': 3 });
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4, 'check' : false },
-        { 'a' : 5, 'check' : true }
-      )).to.deep.equal({ 'a' : 3, 'check' : false });
+        { 'a': 3 },
+        { 'a': 4, 'check': false },
+        { 'a': 5, 'check': true }
+      )).to.deep.equal({ 'a': 3, 'check': false });
 
     });
 
@@ -359,43 +358,41 @@ describe('Lang utils ', function() {
       )).to.deep.equal({});
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4 },
-        { 'a' : 5 },
-        { 'a' : 6 }
-      )).to.deep.equal({ 'a' : 3 });
+        { 'a': 3 },
+        { 'a': 4 },
+        { 'a': 5 },
+        { 'a': 6 }
+      )).to.deep.equal({ 'a': 3 });
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4, 'check' : false },
-        { 'a' : 5, 'check' : true,  'num' : 2 },
-        { 'a' : 6, 'check' : false, 'num' : 3 }
-      )).to.deep.equal({ 'a' : 3, 'check' : false, 'num' : 2 });
+        { 'a': 3 },
+        { 'a': 4, 'check': false },
+        { 'a': 5, 'check': true, 'num': 2 },
+        { 'a': 6, 'check': false, 'num': 3 }
+      )).to.deep.equal({ 'a': 3, 'check': false, 'num': 2 });
 
     });
 
     it('should properly merge 5 dicts', function() {
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4 },
-        { 'a' : 5 },
-        { 'a' : 6 },
-        { 'a' : 7 }
-      )).to.deep.equal({ 'a' : 3 });
+        { 'a': 3 },
+        { 'a': 4 },
+        { 'a': 5 },
+        { 'a': 6 },
+        { 'a': 7 }
+      )).to.deep.equal({ 'a': 3 });
 
       expect(LangUtil.mergeDict(
-        { 'a' : 3 },
-        { 'a' : 4, 'check' : false },
-        { 'a' : 5, 'check' : true,  'num' : 2 },
-        { 'a' : 6, 'check' : false, 'num' : 3 },
-        { 'a' : 6, 'check' : false, 'obj' : {} }
-      )).to.deep.equal({ 'a' : 3, 'check' : false, 'num' : 2, 'obj' : {} });
+        { 'a': 3 },
+        { 'a': 4, 'check': false },
+        { 'a': 5, 'check': true, 'num': 2 },
+        { 'a': 6, 'check': false, 'num': 3 },
+        { 'a': 6, 'check': false, 'obj': {} }
+      )).to.deep.equal({ 'a': 3, 'check': false, 'num': 2, 'obj': {} });
 
     });
   });
 
 });
-
-
 

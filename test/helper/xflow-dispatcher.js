@@ -1,55 +1,55 @@
 import XFlowDispatcher from '../../src/xflow-dispatcher';
 
-import FlowActions   from '../../src/actions/flow_actions';
-import FloxActions   from '../../src/actions/flox_actions';
+import FlowActions from '../../src/actions/flow_actions';
+import FloxActions from '../../src/actions/flox_actions';
 import ObjectActions from '../../src/actions/object_actions';
 
 function getXFlowDispatcherBasic() {
   return new XFlowDispatcher({
-    'flox' : {
-      'name'      : 'flox',
-      'version'   : 1,
-      'dispatch'  : FloxActions.Dispatch,
-      'dispatchQ' : FloxActions.DispatchQ
+    'flox': {
+      'name': 'flox',
+      'version': 1,
+      'dispatch': FloxActions.Dispatch,
+      'dispatchQ': FloxActions.DispatchQ,
     },
-    'object' : {
-      'name'      : 'object',
-      'version'   : 1,
-      'dispatch'  : ObjectActions.Dispatch,
-      'dispatchQ' : ObjectActions.DispatchQ
+    'object': {
+      'name': 'object',
+      'version': 1,
+      'dispatch': ObjectActions.Dispatch,
+      'dispatchQ': ObjectActions.DispatchQ,
     },
-    'flow' : {
-      'name'      : 'flow',
-      'version'   : 1,
-      'dispatch'  : FlowActions.Dispatch,
-      'dispatchQ' : FlowActions.DispatchQ
-    }
+    'flow': {
+      'name': 'flow',
+      'version': 1,
+      'dispatch': FlowActions.Dispatch,
+      'dispatchQ': FlowActions.DispatchQ,
+    },
   });
 }
 
-function getXFlowDispatcherExt(args={}) {
-  let setup = {
-    'flox' : {
-      'name'      : 'flox',
-      'version'   : 1,
-      'dispatch'  : FloxActions.Dispatch,
-      'dispatchQ' : FloxActions.DispatchQ
+function getXFlowDispatcherExt(args = {}) {
+  const setup = {
+    'flox': {
+      'name': 'flox',
+      'version': 1,
+      'dispatch': FloxActions.Dispatch,
+      'dispatchQ': FloxActions.DispatchQ,
     },
-    'object' : {
-      'name'      : 'object',
-      'version'   : 1,
-      'dispatch'  : ObjectActions.Dispatch,
-      'dispatchQ' : ObjectActions.DispatchQ
+    'object': {
+      'name': 'object',
+      'version': 1,
+      'dispatch': ObjectActions.Dispatch,
+      'dispatchQ': ObjectActions.DispatchQ,
     },
-    'flow' : {
-      'name'      : 'flow',
-      'version'   : 1,
-      'dispatch'  : FlowActions.Dispatch,
-      'dispatchQ' : FlowActions.DispatchQ
-    }
+    'flow': {
+      'name': 'flow',
+      'version': 1,
+      'dispatch': FlowActions.Dispatch,
+      'dispatchQ': FlowActions.DispatchQ,
+    },
   };
 
-  for (let name in args) {
+  for (const name in args) {
     setup[name] = args[name];
   }
 
@@ -57,7 +57,7 @@ function getXFlowDispatcherExt(args={}) {
 }
 
 export default {
-  getXFlowDispatcherBasic : getXFlowDispatcherBasic,
-  getXFlowDispatcherExt   : getXFlowDispatcherExt
+  getXFlowDispatcherBasic: getXFlowDispatcherBasic,
+  getXFlowDispatcherExt: getXFlowDispatcherExt,
 };
 

@@ -5,10 +5,10 @@ describe('Assertion utils ', function() {
 
   describe('exists', function() {
     it('should correctly assert if a property exists', function() {
-      var assertError = function() {
+      const assertError = function() {
         AssertUtil.exists();
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.exists(1);
       };
       expect(assertError).to.throw(Error);
@@ -19,13 +19,13 @@ describe('Assertion utils ', function() {
 
   describe('isArray', function() {
     it('should correctly assert if a property is an Array', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isArray();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isArray(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isArray([]);
       };
       expect(assertEmptyError).to.throw(Error);
@@ -37,13 +37,13 @@ describe('Assertion utils ', function() {
 
   describe('isString', function() {
     it('should correctly assert if a property is a String', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isString();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isString(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isString('string');
       };
       expect(assertEmptyError).to.throw(Error);
@@ -53,16 +53,15 @@ describe('Assertion utils ', function() {
 
   });
 
-
   describe('isBoolean', function() {
     it('should correctly assert if a property is a Boolean', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isBoolean();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isBoolean(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isBoolean(false);
       };
       expect(assertEmptyError).to.throw(Error);
@@ -72,16 +71,15 @@ describe('Assertion utils ', function() {
 
   });
 
-
   describe('isString', function() {
     it('should correctly assert if a property is a String', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isString();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isString(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isString('string');
       };
       expect(assertEmptyError).to.throw(Error);
@@ -91,16 +89,15 @@ describe('Assertion utils ', function() {
 
   });
 
-
   describe('isNumber', function() {
     it('should correctly assert if a property is a Number', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isNumber();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isNumber(true);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isNumber(1);
       };
       expect(assertEmptyError).to.throw(Error);
@@ -110,16 +107,15 @@ describe('Assertion utils ', function() {
 
   });
 
-
   describe('isObject', function() {
     it('should correctly assert if a property is a Object', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isObject();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isObject(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isObject({});
       };
       expect(assertEmptyError).to.throw(Error);
@@ -131,13 +127,13 @@ describe('Assertion utils ', function() {
 
   describe('isDate', function() {
     it('should correctly assert if a property is a Date', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isDate();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isDate(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isDate((new Date()));
       };
       expect(assertEmptyError).to.throw(Error);
@@ -149,13 +145,13 @@ describe('Assertion utils ', function() {
 
   describe('isFunction', function() {
     it('should correctly assert if a property is a Function', function() {
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.isFunction();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.isFunction(1);
       };
-      var assertOk = function() {
+      const assertOk = function() {
         AssertUtil.isFunction(function() {});
       };
       expect(assertEmptyError).to.throw(Error);
@@ -168,36 +164,36 @@ describe('Assertion utils ', function() {
   describe('length', function() {
     it('should correctly assert the length of a property', function() {
       /* jshint maxstatements:25 */
-      var assertEmptyError = function() {
+      const assertEmptyError = function() {
         AssertUtil.length();
       };
-      var assertIncorrectError = function() {
+      const assertIncorrectError = function() {
         AssertUtil.length(1);
       };
 
-      var assertOk1 = function() {
+      const assertOk1 = function() {
         AssertUtil.length([], 0);
       };
-      var assertOk2 = function() {
-        AssertUtil.length([1,2], 2);
+      const assertOk2 = function() {
+        AssertUtil.length([1, 2], 2);
       };
-      var assertOk3 = function() {
+      const assertOk3 = function() {
         AssertUtil.length('', 0);
       };
-      var assertOk4 = function() {
+      const assertOk4 = function() {
         AssertUtil.length('123', 3);
       };
 
-      var assertNOK1 = function() {
+      const assertNOK1 = function() {
         AssertUtil.length([], 2);
       };
-      var assertNOK2 = function() {
-        AssertUtil.length([1,2], 1);
+      const assertNOK2 = function() {
+        AssertUtil.length([1, 2], 1);
       };
-      var assertNOK3 = function() {
+      const assertNOK3 = function() {
         AssertUtil.length('123', 4);
       };
-      var assertNOK4 = function() {
+      const assertNOK4 = function() {
         AssertUtil.length('123', 2);
       };
 
@@ -217,8 +213,5 @@ describe('Assertion utils ', function() {
 
   });
 
-
 });
-
-
 

@@ -1,4 +1,3 @@
-import LangUtil from '../util/lang';
 import ASTBuilder from './ast-builder';
 
 const ast = ASTBuilder;

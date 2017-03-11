@@ -1,8 +1,8 @@
 import RSVP from 'rsvp';
 
-import LangUtil from '../util/lang';
-
-const exists = LangUtil.exists;
+import {
+  exists,
+} from '../util/lang';
 
 //
 // Object operations
@@ -84,14 +84,19 @@ const DispatchQ = (node, state)=> {
       return defer.resolve(state);
     },
     (err) => {
-      return defer.reject(state);
+      return defer.reject(err);
     }
   );
 
   return defer.promise;
 };
 
+export {
+  Dispatch,
+  DispatchQ,
+};
+
 export default {
-  Dispatch: Dispatch,
-  DispatchQ: DispatchQ,
+  Dispatch,
+  DispatchQ,
 };

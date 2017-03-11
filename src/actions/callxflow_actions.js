@@ -1,13 +1,17 @@
 import RSVP from 'rsvp';
 
-import LangUtil from '../util/lang';
+import {
+  isObject,
+  hasProperty,
+  isString,
+} from '../util/lang';
 
 const isValidNode = (node)=> {
   return (
-    LangUtil.isObject(node) &&
+    isObject(node) &&
       (node.nodetype === 'callxflow') &&
-      LangUtil.hasProperty(node, 'parameters.xflowid') &&
-      LangUtil.isString(node.parameters.xflowid)
+      hasProperty(node, 'parameters.xflowid') &&
+      isString(node.parameters.xflowid)
   );
 };
 

@@ -6,6 +6,38 @@ const nodeName = (id)=> {
   return `node${id}`;
 };
 
+const ObjectExpression = (props = [])=> {
+  return ast.ObjectExpression(props);
+};
+
+const Value = (val)=> {
+  return ast.Literal(val);
+};
+
+const Identifier = (name)=> {
+  return ast.Identifier(name);
+};
+
+const Property = (key, value)=> {
+  return ast.Property(key, value);
+};
+
+const Member = (obj, prop)=> {
+  return ast.MemberExpression(obj, prop);
+};
+
+const ScopeObject = ()=> {
+  return Identifier('scope');
+};
+
+const ScopeVariable = (name)=> {
+  return Member('scope', name);
+};
+
+const CallExpression = (fn, args = [])=> {
+  return ast.CallExpression(fn, args);
+};
+
 const Program = (body = [], paramChecks = [], localvars = [], retvals = [])=> {
   return ast.Program([
     ast.FunctionDeclaration(
@@ -76,26 +108,6 @@ const Branch = (expr, idT, idF)=> {
   );
 };
 
-const ObjectExpression = (props = [])=> {
-  return ast.ObjectExpression(props);
-};
-
-const ScopeObject = ()=> {
-  return Identifier('scope');
-};
-
-const ScopeVariable = (name)=> {
-  return Member('scope', name);
-};
-
-const Value = (val)=> {
-  return ast.Literal(val);
-};
-
-const Identifier = (name)=> {
-  return ast.Identifier(name);
-};
-
 const ThrowIfUndefined = (ident, err)=> {
   return ast.IfStatement(
     TestBoolean(
@@ -110,18 +122,6 @@ const ThrowIfUndefined = (ident, err)=> {
       )
     )
   );
-};
-
-const Property = (key, value)=> {
-  return ast.Property(key, value);
-};
-
-const Member = (obj, prop)=> {
-  return ast.MemberExpression(obj, prop);
-};
-
-const CallExpression = (fn, args = [])=> {
-  return ast.CallExpression(fn, args);
 };
 
 const Assignment = (a, b)=> {
@@ -139,22 +139,22 @@ const VariableDeclaration = (varname, varinit)=> {
 };
 
 export default {
-  Assignment: Assignment,
-  BlockStatement: BlockStatement,
-  Branch: Branch,
-  CallNode: CallNode,
-  CallExpression: CallExpression,
-  FlowNode: FlowNode,
-  Identifier: Identifier,
-  Member: Member,
-  ObjectExpression: ObjectExpression,
-  Program: Program,
-  Property: Property,
-  ScopeVariable: ScopeVariable,
-  ScopeObject: ScopeObject,
-  TestBoolean: TestBoolean,
-  ThrowIfUndefined: ThrowIfUndefined,
-  Value: Value,
-  VariableDeclaration: VariableDeclaration,
+  Assignment,
+  BlockStatement,
+  Branch,
+  CallNode,
+  CallExpression,
+  FlowNode,
+  Identifier,
+  Member,
+  ObjectExpression,
+  Program,
+  Property,
+  ScopeVariable,
+  ScopeObject,
+  TestBoolean,
+  ThrowIfUndefined,
+  Value,
+  VariableDeclaration,
 };
 

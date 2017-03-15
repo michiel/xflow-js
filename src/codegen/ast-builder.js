@@ -6,16 +6,16 @@ const exists = LangUtil.exists;
 const AssignmentExpressionNode = (left, operator, right)=> {
   return {
     'type': 'AssignmentExpression',
-    'operator': operator,
-    'left': left,
-    'right': right,
+    operator,
+    left,
+    right,
   };
 };
 
 const IdentifierNode = (name)=> {
   return {
     'type': 'Identifier',
-    'name': name,
+    name,
   };
 };
 
@@ -23,7 +23,7 @@ const ProgramNode = (body = [])=> {
   body = [].concat(body);
   return {
     'type': 'Program',
-    'body': body,
+    body,
   };
 };
 
@@ -59,7 +59,7 @@ const BlockStatementNode = (body = [])=> {
   body = [].concat(body);
   return {
     'type': 'BlockStatement',
-    'body': body,
+    body,
   };
 };
 
@@ -75,9 +75,9 @@ const IfStatementNode = (tst, con, alt)=> {
 const BinaryExpressionNode = (operator, left, right)=> {
   return {
     'type': 'BinaryExpression',
-    'operator': operator,
-    'left': left,
-    'right': right,
+    operator,
+    left,
+    right,
   };
 };
 
@@ -144,8 +144,8 @@ const ObjectExpressionNode = (props = [])=> {
 const PropertyNode = (key, value)=> {
   return {
     'type': 'Property',
-    'key': key,
-    'value': value,
+    key,
+    value,
     'computed': false,
     'kind': 'init',
     'method': false,
@@ -156,7 +156,7 @@ const PropertyNode = (key, value)=> {
 const ArrayExpressionNode = (elements = [])=>{
   return {
     'type': 'ArrayExpression',
-    'elements': elements,
+    elements,
   };
 };
 

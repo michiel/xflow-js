@@ -40,7 +40,6 @@ const substituteExpression = (expr, state)=> {
               `flox.substituteExpression : invalid value found for ${key}`
             );
           }
-          break;
         default:
           throw new Error(
             `flox.substituteExpression : invalid value found for ${key}`
@@ -130,13 +129,28 @@ const evaluateExpressionQ = (node, state)=> {
 // parse and substituteExpression are primarily exposed for testing
 //
 
-export default {
-  parse: parse,
-  evaluateExpression: evaluateExpression,
-  substituteExpression: substituteExpression,
-  parseQ: parseQ,
-  substituteExpressionQ: substituteExpressionQ,
-  evaluateExpressionQ: evaluateExpressionQ,
-  whitespaceRE: wsRE,
-  expressionRE: expRE,
+const whitespaceRE = wsRE;
+const expressionRE = expRE;
+
+export {
+  whitespaceRE,
+  expressionRE,
+  parse,
+  evaluateExpression,
+  substituteExpression,
+  parseQ,
+  substituteExpressionQ,
+  evaluateExpressionQ,
 };
+
+export default {
+  whitespaceRE,
+  expressionRE,
+  parse,
+  evaluateExpression,
+  substituteExpression,
+  parseQ,
+  substituteExpressionQ,
+  evaluateExpressionQ,
+};
+

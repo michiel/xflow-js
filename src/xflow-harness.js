@@ -3,10 +3,6 @@ import RSVP from 'rsvp';
 import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 
-import XFlow from './xflow';
-
-import { exists } from './util/lang';
-
 /**
  * XFlowHarness - class for scheduling and executing XFlows
  *

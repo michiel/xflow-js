@@ -1,11 +1,13 @@
 import xfnode from '../xflow-js-node-builder';
-import FlowUtil from '../../util/flow';
 import Assert from '../../util/assert';
+import {
+  assertIsNode,
+} from '../../util/flow';
 
 import BaseGenerator from './base_generator';
 
 function assertCallXFlowNode(node) {
-  FlowUtil.assertIsNode(node);
+  assertIsNode(node);
 
   Assert.equal(node.nodetype, 'callxflow');
   Assert.equal(node.action, 'call');

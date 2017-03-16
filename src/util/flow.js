@@ -25,6 +25,19 @@ export function isSameNode(a, b) {
 }
 
 /**
+ * @method isSameEdge
+ * @param {Array} a First edge
+ * @param {Array} b Second edge
+ * @return {Boolean}
+ */
+export function isSameEdge(a, b) {
+  return (
+    (a[0] === b[0]) &&
+      (a[1] === b[1])
+  );
+}
+
+/**
  * @method isSameBranch
  * @param {Object} a First branch
  * @param {Object} b Second branch
@@ -35,19 +48,6 @@ export function isSameBranch(a, b) {
     isSameEdge(a.edge, b.edge) &&
       (a.name === b.name) &&
       (a.value === b.value)
-  );
-}
-
-/**
- * @method isSameEdge
- * @param {Array} a First edge
- * @param {Array} b Second edge
- * @return {Boolean}
- */
-export function isSameEdge(a, b) {
-  return (
-    (a[0] === b[0]) &&
-      (a[1] === b[1])
   );
 }
 

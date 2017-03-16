@@ -57,8 +57,6 @@ class XFlowJSBuilder {
 
     if (this.xflow.isBranchNode(node)) {
 
-      const paramName = node.parameters.name;
-
       const branches = this.xflow.getOutEdges(node).map(
         (edge) => {
           return this.xflow.getBranchesFor(edge)[0];

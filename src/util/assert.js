@@ -186,5 +186,5 @@ export default {
   isFunction,
   length,
   hasProperty,
-  equal: equal,
+  equal,
 };

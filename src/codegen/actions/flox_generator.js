@@ -1,6 +1,8 @@
 import xfnode from '../xflow-js-node-builder';
-import FlowUtil from '../../util/flow';
 import Assert from '../../util/assert';
+import {
+  assertIsNode,
+} from '../../util/flow';
 
 import BaseGenerator from './base_generator';
 
@@ -8,7 +10,7 @@ class FloxGenerator extends BaseGenerator {
 
   generateFrom(node) {
 
-    FlowUtil.assertIsNode(node);
+    assertIsNode(node);
 
     Assert.equal(node.nodetype, 'flox');
     Assert.equal(node.action, 'evalexpr');

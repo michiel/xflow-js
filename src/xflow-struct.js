@@ -2,12 +2,21 @@ import XFlowValidator from './xflow-validator';
 
 const validator = new XFlowValidator();
 
-import FlowUtil from './util/flow';
-import LangUtil from './util/lang';
+import {
+  getEntryNode,
+  isEntryNode,
+  isSameEdge,
+  isBranchNode,
+  isTerminalNode,
+  getNode,
+  nextId,
+  assertIsValidParamScope,
+  assertIsNode,
+} from './util/flow';
 
-const exists = LangUtil.exists;
-const clone = LangUtil.clone;
-const mergeDict = LangUtil.mergeDict;
+import {
+  clone,
+} from './util/lang';
 
 /**
  * XFlowStruct class
@@ -69,18 +78,18 @@ class XFlowStruct {
   getBranchesFor(edge) {
     return this.json.branches.filter(
       (branch) =>
-        FlowUtil.isSameEdge(edge, branch.edge)
+        isSameEdge(edge, branch.edge)
     );
   }
 
   /**
    * Get the node with id
    * @param {Number} id
-   * @method FlowUtil.getNode
+   * @method getNode
    * @return {Node} XFlow node
    */
   getNode(id) {
-    return FlowUtil.getNode(id, this.json.nodes);
+    return getNode(id, this.json.nodes);
   }
 
   /**
@@ -101,7 +110,7 @@ class XFlowStruct {
       );
     }
 
-    return FlowUtil.getNode(
+    return getNode(
       this.getOutEdges(node)[0][1], /* [first edge][next node id] */
       this.json.nodes
     );
@@ -109,41 +118,41 @@ class XFlowStruct {
 
   /**
    * Get the first node of the flow
-   * @method FlowUtil.getEntryNode
+   * @method getEntryNode
    * @return {Node} XFlow node
    */
   getEntryNode() {
-    return FlowUtil.getEntryNode(this.json.nodes);
+    return getEntryNode(this.json.nodes);
   }
 
   /**
    * Test if a node is the entry node (first node of the flow)
-   * @method FlowUtil.isEntryNode
+   * @method isEntryNode
    * @param {Node} node XFlow node
    * @return {Boolean}
    */
   isEntryNode(node) {
-    return FlowUtil.isEntryNode(node);
+    return isEntryNode(node);
   }
 
   /**
    * Test if a node is a terminal node
-   * @method FlowUtil.isTerminalNode
+   * @method isTerminalNode
    * @param {Node} node XFlow node
    * @return {Boolean}
    */
   isTerminalNode(node) {
-    return FlowUtil.isTerminalNode(node);
+    return isTerminalNode(node);
   }
 
   /**
    * Test if a node is a branch node
-   * @method FlowUtil.isBranchNode
+   * @method isBranchNode
    * @param {Node} XFlow node
    * @return {Boolean}
    */
   isBranchNode(node) {
-    return FlowUtil.isBranchNode(node);
+    return isBranchNode(node);
   }
 
   //
@@ -152,7 +161,7 @@ class XFlowStruct {
 
   /**
    * Get an Array of all the flow nodes
-   * @method FlowUtil.getNodes
+   * @method getNodes
    * @return {Array} Array of Nodes
    */
   getNodes() {

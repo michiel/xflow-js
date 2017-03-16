@@ -7,17 +7,18 @@ import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 
 import XFlowStruct from './xflow-struct';
-import FlowUtil from './util/flow';
-import LangUtil from './util/lang';
+import {
+  isSameEdge,
+  isTerminalNode,
+  getEntryNode,
+  getNode,
+} from './util/flow';
 
-const exists = LangUtil.exists;
-const mergeDict = LangUtil.mergeDict;
-const clone = LangUtil.clone;
-
-const isSameEdge = FlowUtil.isSameEdge;
-const isTerminalNode = FlowUtil.isTerminalNode;
-const getEntryNode = FlowUtil.getEntryNode;
-const getNode = FlowUtil.getNode;
+import {
+  exists,
+  mergeDict,
+  clone,
+} from './util/lang';
 
 const initVariables = (vars) => {
   const dict = {};

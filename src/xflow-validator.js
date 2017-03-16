@@ -1,20 +1,20 @@
-import RSVP from 'rsvp';
 import tv4 from 'tv4';
 
-import FlowUtil from './util/flow';
-import LangUtil from './util/lang';
-import Flox from './flox';
+import {
+  getNodeType,
+} from './util/flow';
+
+import {
+  exists,
+  isArray,
+} from './util/lang';
+
+import {
+  expressionRE,
+  whitespaceRE,
+} from './flox';
 
 import FlowV1Schema from '../data/schemas/xflow-schema';
-
-const exists = LangUtil.exists;
-const mergeDict = LangUtil.mergeDict;
-const isArray = LangUtil.isArray;
-const getEntryNode = FlowUtil.getEntryNode;
-const getNodeType = FlowUtil.getNodeType;
-
-const expressionRE = Flox.expressionRE;
-const whitespaceRE = Flox.whitespaceRE;
 
 const nodeDesc = (node)=> {
   return `node-${node.id}:[${node.label || 'unlabeled'}]`;
@@ -22,8 +22,8 @@ const nodeDesc = (node)=> {
 
 const validationError = (code, message, path = [])=> {
   return {
-    code: code,
-    message: message,
+    code,
+    message,
     paths: isArray(path) ? path : [path],
   };
 };
@@ -79,7 +79,6 @@ const allNodesHaveAtLeastOneEdge = (flow)=> {
 };
 
 const hasOneEntryNode = (flow)=> {
-  const res = true;
   const errors = [];
   const entryNodes = getNodeType(flow.nodes, 'flow', 'start');
   if (entryNodes.length === 0) {
@@ -323,7 +322,7 @@ class XFlowValidator {
         expressionsReferenceKnownVariables(flow).length === 0,
         allReturnValuesExist(flow).length === 0,
         variablesAreDefinedOnlyOnce(flow).length === 0,
-        // variablesAreUniquePerScope(flow).length === 0,
+        variablesAreUniquePerScope(flow).length === 0,
         allNodesHaveAtLeastOneEdge(flow).length === 0,
       ];
 

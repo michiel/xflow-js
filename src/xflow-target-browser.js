@@ -13,20 +13,20 @@ import CallXFlowASTGenerator from './codegen/actions/callxflow_generator';
 import FloxASTGenerator from './codegen/actions/flox_generator';
 
 export default {
-  XFlow: XFlow,
-  XFlowStruct: XFlowStruct,
-  XFlowMutableStruct: XFlowMutableStruct,
-  XFlowDispatcher: XFlowDispatcher,
-  XFlowFactory: XFlowFactory,
-  XFlowRunner: XFlowRunner,
-  XFlowHarness: XFlowHarness,
-  XFlowValidator: XFlowValidator,
-  XFlowMetrics: XFlowMetrics,
+  XFlow,
+  XFlowStruct,
+  XFlowMutableStruct,
+  XFlowDispatcher,
+  XFlowFactory,
+  XFlowRunner,
+  XFlowHarness,
+  XFlowValidator,
+  XFlowMetrics,
   CodeGen: {
-    XFlowJSBuilder: XFlowJSBuilder,
+    XFlowJSBuilder,
     Generators: {
-      CallXFlowASTGenerator: CallXFlowASTGenerator,
-      FloxASTGenerator: FloxASTGenerator,
+      CallXFlowASTGenerator,
+      FloxASTGenerator,
     },
   },
 };

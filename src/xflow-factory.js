@@ -4,10 +4,6 @@ import emittableMixin from './mixin/emittable';
 import XFlow from './xflow';
 import XFlowValidator from './xflow-validator';
 
-const logEmission = (...args)=> {
-  // console.log('FACTORY LOG EMISSION ', this.event, ...args);
-};
-
 /**
  * XFlowFactory - instantiates new executable flows with a dispatcher
  * @class XFlowFactory

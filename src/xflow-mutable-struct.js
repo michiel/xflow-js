@@ -1,17 +1,25 @@
-import patcher from './ext/jsonpatcher';
-
-const diffPatcher = patcher.create({});
-
 import mixin from './util/mixin';
 import emittableMixin from './mixin/emittable';
 import editableMixin from './mixin/editable';
 
 import XFlowStruct from './xflow-struct';
-import FlowUtil from './util/flow';
-import LangUtil from './util/lang';
 
-const exists = LangUtil.exists;
-const clone = LangUtil.clone;
+import {
+  getEntryNode,
+  isEntryNode,
+  isSameEdge,
+  isSameBranch,
+  isBranchNode,
+  isTerminalNode,
+  getNode,
+  nextId,
+  assertIsValidParamScope,
+  assertIsNode,
+  assertIsBranch,
+  assertIsEdge,
+  assertIsXvar,
+  isSameVariable,
+} from './util/flow';
 
 /**
  * XFlowMutableStruct class
@@ -44,7 +52,7 @@ class XFlowMutableStruct extends XFlowStruct {
   nextNodeId() {
     let n = 0;
     if (this._lastNodeId === 0) {
-      n = FlowUtil.nextId(this.json.nodes);
+      n = nextId(this.json.nodes);
     } else {
       n = this._lastNodeId + 1;
     }
@@ -73,7 +81,7 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} node XFNode
    */
   addNode(node) {
-    FlowUtil.assertIsNode(node);
+    assertIsNode(node);
     this.trackChanges(()=> {
       this.json.nodes.push(node);
     });
@@ -85,7 +93,7 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} node XFNode
    */
   removeNode(node) {
-    FlowUtil.assertIsNode(node);
+    assertIsNode(node);
     this.trackChanges(()=> {
       this.json.nodes = this.json.nodes.filter((el)=> {
         return el.id !== node.id;
@@ -99,7 +107,7 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} node XFNode
    */
   removeNodeAndReferences(node) {
-    FlowUtil.assertIsNode(node);
+    assertIsNode(node);
     this.trackChanges(()=> {
       const id = node.id;
       this.removeNode(node);
@@ -133,7 +141,7 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Array} XFlow JSON edge
    */
   addEdge(edge) {
-    FlowUtil.assertIsEdge(edge);
+    assertIsEdge(edge);
     this.trackChanges(()=> {
       this.json.edges.push(edge);
     });
@@ -145,10 +153,10 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Array} XFlow JSON edge
    */
   removeEdge(edge) {
-    FlowUtil.assertIsEdge(edge);
+    assertIsEdge(edge);
     this.trackChanges(()=> {
       this.json.edges = this.json.edges.filter((el)=> {
-        return !FlowUtil.isSameEdge(el, edge);
+        return !isSameEdge(el, edge);
       });
     });
   }
@@ -172,7 +180,7 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} XBranch JSON branch
    */
   addBranch(branch) {
-    FlowUtil.assertIsBranch(branch);
+    assertIsBranch(branch);
     this.trackChanges(()=> {
       this.json.branches.push(branch);
     });
@@ -184,10 +192,10 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} XFBranch JSON branch
    */
   removeBranch(branch) {
-    FlowUtil.assertIsBranch(branch);
+    assertIsBranch(branch);
     this.trackChanges(()=> {
       this.json.branches = this.json.branches.filter((el)=> {
-        return !FlowUtil.isSameBranch(el, branch);
+        return !isSameBranch(el, branch);
       });
     });
   }
@@ -199,8 +207,8 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} xvar XVar JSON
    */
   addVariable(paramScope, xvar) {
-    FlowUtil.assertIsValidParamScope(paramScope);
-    FlowUtil.assertIsXvar(xvar);
+    assertIsValidParamScope(paramScope);
+    assertIsXvar(xvar);
     this.trackChanges(()=> {
       this.json.variables[paramScope].push(xvar);
     });
@@ -213,10 +221,10 @@ class XFlowMutableStruct extends XFlowStruct {
    * @param {Object} xvar XVar JSON
    */
   removeVariable(paramScope, xvar) {
-    FlowUtil.assertIsValidParamScope(paramScope);
+    assertIsValidParamScope(paramScope);
     this.trackChanges(()=> {
       this.json.variables[paramScope] = this.json.variables[paramScope].filter((el)=> {
-        return !FlowUtil.isSameVariable(el, xvar);
+        return !isSameVariable(el, xvar);
       });
     });
   }

@@ -3,8 +3,6 @@ import RSVP from 'rsvp';
 import XFlowHarness from './xflow-harness';
 import DocRegistry from './helper/docregistry';
 
-import { exists } from './util/lang';
-
 class XFlowRunner {
 
   constructor(opts) {

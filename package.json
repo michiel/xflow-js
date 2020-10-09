@@ -20,7 +20,7 @@
     "escodegen": "^1.6.1",
     "eventemitter2": "^0.4.14",
     "fast-json-patch": "^2.2.1",
-    "json-pointer": "^0.3.0",
+    "json-pointer": "^0.6.1",
     "rsvp": "^3.0.17",
     "tv4": "^1.1.9"
   },
